@@ -46,7 +46,7 @@
     <nav class="navbar fixed-top navbar-expand-md navbar-light">
         <div class="container">
             <!-- Logo-->
-            <a class="navbar-brand mb-0" href="{% url '#' %}">TimeHoppers
+            <a class="navbar-brand mb-0" href="{% url 'home' %}">TimeHoppers
             </a>
             <!-- Bootstrap classes to collapse nav bar on smaller screens-->
             <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
@@ -64,24 +64,24 @@
                             aria-label="Go to Home Page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'about-us' %}"
-                            class="{%  if url_name == 'about-us' %}active {%  endif  %}nav-link"
+                        <a href="{% url 'home' %}"
+                            class="{%  if url_name == 'home' %}active {%  endif  %}nav-link"
                             aria-label="Go to About Us Page">About Us</a>
                     </li>
                     <li class="nav-item-active">
-                        <a href="{% url 'tour-list' %}"
-                            class="{%  if url_name == 'tour-list' %}active {%  endif  %}nav-link"
+                        <a href="{% url 'home' %}"
+                            class="{%  if url_name == 'home' %}active {%  endif  %}nav-link"
                             aria-label="Go to Tour List Page">View Tours</a>
                     </li>
                     {%  if user.is_authenticated  %}
                     <li class="nav-item-active">
-                        <a href="{%  url 'book-tour'  %}"
-                            class="{%  if url_name == 'book-tour'  %}active {%  endif  %}nav-link"
+                        <a href="{%  url 'home'  %}"
+                            class="{%  if url_name == 'home'  %}active {%  endif  %}nav-link"
                             aria-label="Book Tour">Book Tour</a>
                     </li>
                     <li class="nav-item-active">
-                        <a href="{%  url 'profile'  %}"
-                            class="{%  if url_name == 'profile'  %}active {%  endif  %}nav-link"
+                        <a href="{%  url 'home'  %}"
+                            class="{%  if url_name == 'home'  %}active {%  endif  %}nav-link"
                             aria-label="Profile Page">Profile</a>
                     </li>
                     <li class="nav-item-active">
