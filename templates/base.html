@@ -44,16 +44,34 @@
 <body class="d-flex flex-column min-vh-100">
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-md navbar-light">
-        <div class="container">
+        <div class="container d-flex justify-content-between">
             <!-- Logo-->
             <a class="navbar-brand mb-0" href="{% url 'home' %}">TimeHoppers
             </a>
 
-            <!-- Bootstrap classes to collapse nav bar on smaller screens-->
+
+            <!-- Hamburger Menu for Small Screens-->
             <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation bar"><span
                     class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- Search Bar -->
+            <div class="pt-2">
+                <form method="GET" action="">
+                    <div class="input-group w-100">
+                        <input class="form-control border border-black" type="search" id="form1" name="q"
+                            placeholder="Search">
+                        <div class="input-group-append">
+                            <button class="form-control btn btn-primary" type="submit">
+                                <span class="icon">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
             <!-- Add Nav Link Styling to Active Pages -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -113,32 +131,26 @@
                 </ul>
                 {% endwith %}
             </div>
-        </div>
 
-        <!-- Search Bar -->
-        <div class="navbar mb-0">
-            <form method="GET" action="">
-                <div class="input-group w-100">
-                    <input class="form-control border border-black" type="search" id="form1" name="q"
-                        placeholder="Search">
-                    <div class="input-group-append">
-                        <button class="form-control btn btn-primary" type="submit">
-                            <span class="icon">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        </button>
+            <!-- Shopping Bag -->
+            <div class="pb-2">
+                <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                    href="#">
+                    <div class="text-center">
+                        <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                        <p class="my-0">
+                            {% if grand_total %}
+                            €{{ grand_total|floatformat:2 }}
+                            {% else %}
+                            €0.00
+                            {% endif %}
+                        </p>
                     </div>
-                </div>
-            </form>
+                </a>
+            </div>
         </div>
-
-        <!-- Shopping Bag -->
-        <a class="navbar mb-0" href="{% url 'home' %}">Shopping Bag
-        </a>
-
 
     </nav>
-
     <main>
         <!-- Show Messages -->
 
