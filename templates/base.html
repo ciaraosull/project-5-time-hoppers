@@ -1,0 +1,150 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A website to book a time travelling tour">
+    <meta name="keywords" content="time travelling, guided tours">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <!-- Favicon link -->
+    <link rel="shortcut icon" href="{% static '#' %}">
+
+    <!-- Fontawesome link -->
+    <script src="https://kit.fontawesome.com/c296b1236c.js" crossorigin="anonymous"></script>
+
+    <!-- My CSS link -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title> Time Hoppers
+        {% block title %}
+        {% endblock title %}
+    </title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-md navbar-light">
+        <div class="container">
+            <!-- Logo-->
+            <a class="navbar-brand mb-0" href="{% url '#' %}">TimeHoppers
+            </a>
+            <!-- Bootstrap classes to collapse nav bar on smaller screens-->
+            <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation bar"><span
+                    class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Add Nav Link Styling to Active Pages -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                {% with request.resolver_match.url_name as url_name %}
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}"
+                            class="{%  if url_name == 'home' %}active {%  endif  %}nav-link"
+                            aria-label="Go to Home Page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'about-us' %}"
+                            class="{%  if url_name == 'about-us' %}active {%  endif  %}nav-link"
+                            aria-label="Go to About Us Page">About Us</a>
+                    </li>
+                    <li class="nav-item-active">
+                        <a href="{% url 'tour-list' %}"
+                            class="{%  if url_name == 'tour-list' %}active {%  endif  %}nav-link"
+                            aria-label="Go to Tour List Page">View Tours</a>
+                    </li>
+                    {%  if user.is_authenticated  %}
+                    <li class="nav-item-active">
+                        <a href="{%  url 'book-tour'  %}"
+                            class="{%  if url_name == 'book-tour'  %}active {%  endif  %}nav-link"
+                            aria-label="Book Tour">Book Tour</a>
+                    </li>
+                    <li class="nav-item-active">
+                        <a href="{%  url 'profile'  %}"
+                            class="{%  if url_name == 'profile'  %}active {%  endif  %}nav-link"
+                            aria-label="Profile Page">Profile</a>
+                    </li>
+                    <li class="nav-item-active">
+                        <a href="{%  url 'account_logout'  %}"
+                            class="{%  if url_name == 'account_logout'  %}active {%  endif  %}nav-link"
+                            aria-label="Logout">Logout</a>
+                    </li>
+                    {%  else  %}
+                    <li class="nav-item-active">
+                        <a href="{%  url 'account_login'  %}"
+                            class="{%  if url_name == 'account_login'  %}active {%  endif  %}nav-link"
+                            aria-label="Go to Log In Page">Login</a>
+                    </li>
+                    <li class="nav-item-active">
+                        <a href="{%  url 'account_signup'  %}"
+                            class="{%  if url_name == 'account_signup'  %}active {%  endif  %}nav-link"
+                            aria-label="Go to Register Page">Register</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% endwith %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Show Messages -->
+    <main>
+        <div class="text-center">
+            {%  if messages  %}
+            {%  for message in messages  %}
+            <div class="alert alert-{{  message.tags  }}">
+                {{  message  }}
+            </div>
+            {%  endfor  %}
+            {%  endif  %}
+        </div>
+
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto text-center text-white pt-2" id="footer">
+        <!-- Footer Grid container -->
+        <div class="container">
+            <!-- Section Footer Links -->
+            <section>
+                <!-- Contact Us Grid column -->
+                <div class="row-md-6 contact-us">
+                    <h5 class="text-uppercase font-weight-bold">Connect With Us:
+                        <a class="btn btn-primary btn-floating" id="linkedin-link"
+                            href="https://www.linkedin.com/in/ciara-o-sullivan-2834378b" target="_blank"
+                            aria-label="Go to linkedin profile" role="button"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-primary btn-floating" id="github-link" href="https://github.com/ciaraosull"
+                            target="_blank" aria-label="Go to Github profile" role="button"><i
+                                class="fab fa-github"></i></a>
+                    </h5>
+                </div>
+                <!-- Copyright -->
+                <div class="row-md-6 contact-us">
+                    <div class="text-center pb-3" id="copyright">
+                        © Ciara O'Sullivan 2022
+                    </div>
+                </div>
+            </section>
+        </div>
+    </footer>
+
+</body>
+
+</html>
