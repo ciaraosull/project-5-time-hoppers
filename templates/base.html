@@ -48,6 +48,7 @@
             <!-- Logo-->
             <a class="navbar-brand mb-0" href="{% url 'home' %}">TimeHoppers
             </a>
+
             <!-- Bootstrap classes to collapse nav bar on smaller screens-->
             <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation bar"><span
@@ -70,42 +71,53 @@
                         <a href="{% url 'home' %}" class="{%  if url_name == 'home' %}active {%  endif  %}nav-link"
                             aria-label="Go to Tour List Page">View Tours</a>
                     </li>
+                    <!-- My Account Drop-down menue if user logged in -->
                     {%  if user.is_authenticated  %}
-                    <li class="nav-item-active">
-                        <a href="{%  url 'home'  %}" class="{%  if url_name == 'home'  %}active {%  endif  %}nav-link"
-                            aria-label="Book Tour">Book Tour</a>
+                    <li class="nav-item-active dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            My Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li nav-item-active><a href="{%  url 'home'  %}"
+                                    class="{%  if url_name == 'home'  %}active {%  endif  %}nav-link"
+                                    aria-label="Profile Page">Profile</a></li>
+
+                            <li><a href="{%  url 'account_logout'  %}"
+                                    class="{%  if url_name == 'account_logout'  %}active {%  endif  %}nav-link"
+                                    aria-label="Logout">Logout</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item-active">
-                        <a href="{%  url 'home'  %}" class="{%  if url_name == 'home'  %}active {%  endif  %}nav-link"
-                            aria-label="Profile Page">Profile</a>
-                    </li>
-                    <li class="nav-item-active">
-                        <a href="{%  url 'account_logout'  %}"
-                            class="{%  if url_name == 'account_logout'  %}active {%  endif  %}nav-link"
-                            aria-label="Logout">Logout</a>
-                    </li>
+                    <!-- My Account Drop-down menue if user logged out -->
                     {%  else  %}
-                    <li class="nav-item-active">
-                        <a href="{%  url 'account_login'  %}"
-                            class="{%  if url_name == 'account_login'  %}active {%  endif  %}nav-link"
-                            aria-label="Go to Log In Page">Login</a>
-                    </li>
-                    <li class="nav-item-active">
-                        <a href="{%  url 'account_signup'  %}"
-                            class="{%  if url_name == 'account_signup'  %}active {%  endif  %}nav-link"
-                            aria-label="Go to Register Page">Register</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            My Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li nav-item-active><a href="{%  url 'account_login'  %}"
+                                    class="{%  if url_name == 'account_login'  %}active {%  endif  %}nav-link"
+                                    aria-label="Go to Log In Page">Login</a></li>
+
+                            <li><a href="{%  url 'account_signup'  %}"
+                                    class="{%  if url_name == 'account_signup'  %}active {%  endif  %}nav-link"
+                                    aria-label="Go to Register Page">Register</a></li>
+                        </ul>
                     </li>
                     {% endif %}
                 </ul>
                 {% endwith %}
             </div>
         </div>
+
     </nav>
 
-    <!-- Show Messages -->
     <main>
+        <!-- Show Messages -->
+
         <div class="container d-flex justify-content-center">
-            <div class="text-center">
+            <div class=" row text-center">
                 {%  if messages  %}
                 {%  for message in messages  %}
                 <div class="alert alert-{{  message.tags  }}">
@@ -116,9 +128,24 @@
             </div>
         </div>
 
+        <!-- Search Bar -->
+        <div class="container d-flex justify-content-end mt-3">
+            <form method="GET" action="">
+                <div class="input-group">
+                    <div class="form-outline">
+                        <input type="search" id="form1" class="form-control" name="q" placeholder="Search Our Site">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
+
     </main>
 
     <!-- Footer -->
