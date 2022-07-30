@@ -43,14 +43,16 @@
 
 <body class="d-flex flex-column min-vh-100">
     <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-md navbar-light">
+    <nav class="navbar fixed-top navbar-expand-md navbar-light p-5 pe-5">
+
         <!-- Hamburger Menu for Small Screens-->
         <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation bar"><span
                 class="navbar-toggler-icon"></span>
         </button>
+
         <!-- Logo-->
-        <a class="navbar-brand mb-0" href="{% url 'home' %}">TimeHoppers
+        <a class="navbar-brand mb-0 ms-3" href="{% url 'home' %}">TimeHoppers
         </a>
 
         <!-- Nav Links -->
@@ -95,7 +97,7 @@
 
                         {% endif %}
 
-                        <!-- My Account Drop-down menue if user logged out -->
+                        <!-- My Account Drop-down menu if user logged out -->
                         {%  else  %}
                         <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li nav-item-active><a href="{%  url 'account_login'  %}"
@@ -112,8 +114,8 @@
             {% endwith %}
         </div>
 
-        <!-- Search Bar -->
-        <div class="pt-2">
+        <!-- Search Bar on Large Screens-->
+        <div class="d-none d-lg-block pt-2">
             <form method="GET" action="">
                 <div class="input-group w-100">
                     <input class="form-control border border-black" type="search" id="form1" name="q"
@@ -128,6 +130,32 @@
                 </div>
             </form>
         </div>
+
+        <!-- Search Icon for Small Screens-->
+        <li class="list-inline-item">
+            <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <div class="text-center">
+                    <div><i class="fas fa-search fa-lg"></i></div>
+                    <p class="my-0">Search</p>
+                </div>
+            </a>
+            <div class="dropdown-menu w-100 p-3 my-0" aria-labelledby="mobile-search">
+                <form class="form" method="GET" action="">
+                    <div class="input-group w-100">
+                        <input class="form-control border border-black rounded-0" type="search" id="form1" name="q"
+                            placeholder="Search">
+                        <div class="input-group-append">
+                            <button class="form-control fbtn btn-primary" type="submit">
+                                <span class="icon">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </li>
 
         <!-- Shopping Bag -->
         <div class="pb-2">
