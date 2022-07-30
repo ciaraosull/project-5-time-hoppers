@@ -87,6 +87,8 @@ Within the timeframe work stopped with X of the timebox User Story points total 
 
 16. **Admin User**
 
+A super user was created to allow access to the admin section of the website.
+
 17. **Footer**
         
 18. **Error Pages**
