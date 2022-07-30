@@ -65,7 +65,7 @@ main {
 
 /* Custom styling for Home Page */
 .landing-text {
-    height: 80vh;
+    height: 50vh;
     display: flex;
     justify-content: center;
     margin: 30px 50px;
