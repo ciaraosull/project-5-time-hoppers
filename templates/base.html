@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    
+
     {% block meta %}
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% endblock %}
 
-    
+
     {% block corejs %}
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -59,29 +59,24 @@
                 {% with request.resolver_match.url_name as url_name %}
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="{% url 'home' %}"
-                            class="{%  if url_name == 'home' %}active {%  endif  %}nav-link"
+                        <a href="{% url 'home' %}" class="{%  if url_name == 'home' %}active {%  endif  %}nav-link"
                             aria-label="Go to Home Page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'home' %}"
-                            class="{%  if url_name == 'home' %}active {%  endif  %}nav-link"
+                        <a href="{% url 'home' %}" class="{%  if url_name == 'home' %}active {%  endif  %}nav-link"
                             aria-label="Go to About Us Page">About Us</a>
                     </li>
                     <li class="nav-item-active">
-                        <a href="{% url 'home' %}"
-                            class="{%  if url_name == 'home' %}active {%  endif  %}nav-link"
+                        <a href="{% url 'home' %}" class="{%  if url_name == 'home' %}active {%  endif  %}nav-link"
                             aria-label="Go to Tour List Page">View Tours</a>
                     </li>
                     {%  if user.is_authenticated  %}
                     <li class="nav-item-active">
-                        <a href="{%  url 'home'  %}"
-                            class="{%  if url_name == 'home'  %}active {%  endif  %}nav-link"
+                        <a href="{%  url 'home'  %}" class="{%  if url_name == 'home'  %}active {%  endif  %}nav-link"
                             aria-label="Book Tour">Book Tour</a>
                     </li>
                     <li class="nav-item-active">
-                        <a href="{%  url 'home'  %}"
-                            class="{%  if url_name == 'home'  %}active {%  endif  %}nav-link"
+                        <a href="{%  url 'home'  %}" class="{%  if url_name == 'home'  %}active {%  endif  %}nav-link"
                             aria-label="Profile Page">Profile</a>
                     </li>
                     <li class="nav-item-active">
@@ -109,14 +104,16 @@
 
     <!-- Show Messages -->
     <main>
-        <div class="text-center">
-            {%  if messages  %}
-            {%  for message in messages  %}
-            <div class="alert alert-{{  message.tags  }}">
-                {{  message  }}
+        <div class="container d-flex justify-content-center">
+            <div class="text-center">
+                {%  if messages  %}
+                {%  for message in messages  %}
+                <div class="alert alert-{{  message.tags  }}">
+                    {{  message  }}
+                </div>
+                {%  endfor  %}
+                {%  endif  %}
             </div>
-            {%  endfor  %}
-            {%  endif  %}
         </div>
 
         {% block content %}

@@ -18,7 +18,7 @@ body {
 }
 
 main {
-    padding-top: 110px;
+    padding-top: 80px;
     flex: 1 0 auto;
 }
 
@@ -61,4 +61,13 @@ main {
 #github-link {
     background-color: #333333;
     color: #f5f5f5 !important;
+}
+
+/* Custom styling for Home Page */
+.landing-text {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    margin: 30px 50px;
+    flex-direction: column;
 }
