@@ -57,6 +57,7 @@
 
             <!-- Add Nav Link Styling to Active Pages -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
                 {% with request.resolver_match.url_name as url_name %}
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -110,6 +111,20 @@
                 {% endwith %}
             </div>
         </div>
+        <!-- Search Bar -->
+        <form method="GET" action="">
+            <div class="input-group w-100">
+                <input class="form-control border border-black rounded-0" type="search" id="form1" name="q"
+                    placeholder="Search our site">
+                <div class="input-group-append">
+                    <button class="form-control btn btn-primary" type="submit">
+                        <span class="icon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
 
     </nav>
 
@@ -126,20 +141,6 @@
                 {%  endfor  %}
                 {%  endif  %}
             </div>
-        </div>
-
-        <!-- Search Bar -->
-        <div class="container d-flex justify-content-end mt-3">
-            <form method="GET" action="">
-                <div class="input-group">
-                    <div class="form-outline">
-                        <input type="search" id="form1" class="form-control" name="q" placeholder="Search Our Site">
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </form>
         </div>
 
         {% block content %}
