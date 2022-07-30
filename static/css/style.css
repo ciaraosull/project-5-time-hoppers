@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+/* Styling for flexbox sticky footer */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    padding-top: 110px;
+    flex: 1 0 auto;
+}
+
+/* Custom styling for nav bar */
+.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.nav-link.active {
+    color: #ec1818 !important;
+    border-bottom: 1px solid;
+}
+
+#navbarNav a:hover {
+    color: #ec1818;
+}
+
+/* Custom styling for footer */
+#footer {
+    background-color: #ec1818 ;
+    position: relative;
+    flex-shrink: 0;
+}
+
+#footer a {
+    text-decoration: none;
+}
+
+#footer a:hover {
+    letter-spacing: 1px;
+}
+
+#footer .btn-primary {
+    border-radius: 50px
+}
+
+#linkedin-link,
+#github-link {
+    background-color: #333333;
+    color: #f5f5f5 !important;
+}
