@@ -1,108 +1,227 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+Project 5 README
 
-Welcome ciaraosull,
+# **Time Hoppers**
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Overview
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+Time Hoppers is a website for a fictitious time travelling tour guide company.  This site allows people to view, book and purchase tours on offer from different eras in time.  
 
-## Gitpod Reminders
+Users can read reviews and ratings of tours, post reviews and rate tours and set up a profile where they can view their purchase history.  User can also search for a specific tour or filter the tour by certain categories.
+View the live project [Here]( https://time-hoppers.herokuapp.com/)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+![Responsive Design Screenshot]()
 
-`python3 -m http.server`
+## User Experience (UX)
 
-A blue button should appear to click: _Make Public_,
+### User Stories
 
-Another blue button should appear to click: _Open Browser_.
+As a user I want to:
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+*	
+### Agile Approach in this Project
 
-A blue button should appear to click: _Make Public_,
+An Agile Approach was used to develop this site.  That is, each activity was broken down into small bite-sized portions and performed iteratively, so that as it was repeated, it was tweaked and improved on with each cycle.  According to a report from the [Standish Group (2018)](https://standishgroup.myshopify.com/), Agile projects are statistically twice more likely to succeed, and a third less likely to fail than waterfall projects.
 
-Another blue button should appear to click: _Open Browser_.
+To complete the overall aim of the Time Hoppers idea, Epics were formed (documented under GitHub Issues) and these then were broken down into specific tasks called User Stories.  These User Stories are small, self-contained units of development work designed to accomplish a specific goal.  These User Stories then had acceptance criteria attached for each so that it was clear when the User Stories were achieved as each of these conditions were met.  The acceptance criteria where then further broken down into tasks.  These tasks were the list of actions required to implement the User Story. They described the technical work details and activities to be performed to complete each User Story properly.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+**Example:**
 
-To log into the Heroku toolbelt CLI:
+    **Epic - **
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+    User Story - 
+    Acceptance Criteria 1
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+    Acceptance Criteria 2
 
-------
+    Tasks:
+    *
 
-## Release History
+Story points estimated the effort required to complete a particular User Story in one iteration.  To create a Product Backlog GitHub Milestones was used to track progress on groups of issues relating to the User Stories.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+Timeboxing defined the iteration where the User Stories were developed based on the assigned priority.  The MoSCoW Prioritization technique was used to assign priorities for Product Backlog Items to be completed in a particular time box.  GitHub Labels was used to categories the User Stories into Must Have, Should Have and Could Have. This clearly showed which User Stories were more important to implement first and in what order.  This kept the scope of the project in focus at all times and only implemented what was essential first.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+Information radiators in Agile show real-time, informative and straightforward work status.  This project used a Kaban board, which was set up in GitHub Projects ([here]() to help keep track of work to do, in progress and completed.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+Within the timeframe work stopped with X of the timebox User Story points total of all Must Have and some Should Have prioritised User Stories.  Any left uncompleted and are documented in the future features section below.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+## Features
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+**This website takes the users stories mentioned above into consideration to create a positive UX.  The users stories are discussed in more detail below with examples of how each is implemented.**
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+1. **Favicon**
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+2. **Header**
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+*   Logo
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+*   Navigation Bar
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+3. **Landing Page**
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+4. **About Us**
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+5. **Tour List View**
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+6. **Tour Detail View**
 
-------
+7. **Register, Sign In & Log Out**
 
-## FAQ about the uptime script
 
-**Why have you added this script?**
+8. **Profile Page**
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+9. **Booking a Tour**
 
-**How will this affect me?**
+10. **Payment**
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+11. **Creating a Review**
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+12. **Updating & Deleting a Review**
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+13. **Updating & Deleting a Review**
 
-**So….?**
+14. **Ratings**
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+15. **Searching & Filtering**
 
-**Can I opt out?**
+16. **Admin User**
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+17. **Footer**
+        
+18. **Error Pages**
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+Custom Error Pages were created to support the professionalism design and ensure appropriate link was added back to the main site to guide users who come across these messages.
 
-**Anything more?**
+* 400 Bad Request - the server cannot process the request due to something that is perceived to be a user error (it may be incorrect or corrupt).
+* 403 Page Forbidden - the user does not have permission to access this resource
+* 404 Page Not Found - the user requested a page that is not available
+* 500 Server Error - internal server error where there is a general problem with the website's server and not the fault of the user
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
 
----
+### Features Left to Implement
 
-Happy coding!
+## Design
+
+### Data Model
+
+[LucidCharts](www.lucidchart.com) was used to visualise the custom models for this project.  [AllAuth](https://django-allauth.readthedocs.io/en/latest/) was also used for the user authentication system.  This uses the built-in Django User Model.
+![ERD Image]()
+
+### Wireframes
+
+After the design of the models [Balsamic Wireframes](www.balsamiq.com) were created to visualise the content the user sees and to design a positive UX (as described in more detail in the Features section).  A mobile first approach was used to design the site specifically for mobile use and then the design was altered slightly for desktop view.  [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) was used with some customised styling to create a unique feel to the site.  [Font Awesome](https://fontawesome.com/) Icons were used throughout the site for reading accessibility also.
+
+### Fonts
+Fonts were imported from [Google Fonts](https://fonts.google.com/).
+
+### Colour Scheme
+
+The colour scheme was chosen by using [Coolors](https://coolors.co/). The following palette was chosen for using on the fonts throughout the site due to high contrast for user reading accessibility:
+
+![Colour Pallet]()
+
+## Testing
+
+### Validator Testing
+
+
+### Interesting Bugs & Issues
+
+## Security
+
+All SECRET access keys are stored safely in env.py file to prevent unwanted connections to the database and this was set up before the first push to Github.
+
+Django’s setting DEBUG was set to False after development for deployment to prevent access to error screens revealing code or database entries.
+
+Django allauth was used to set up user registration and Django’s LoginRequiredMixin and UserPassesTestMixin were used to ensure only signed in users and authors can edit / delete their own posts or comments etc.
+
+Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this site to prevent valid requests to the backend server being created for malicious purposes.
+
+
+## Technologies Used
+
+*   Languages:
+    *   Python: used to develop the server-side
+    *   HTML: the markup language used to create the web pages
+    *   CSS: the styling language used to add custom styling
+
+*   Frameworks and libraries:
+    *   Django: python framework used to create all the backend logic
+    *   Bootstrap5: CSS Framework for developing responsiveness and mobile-first
+    *   Django-allauth: authentication library used to create the user accounts
+
+*   Databases:
+    *   SQLite: used as the database during development
+    *   PostgreSQL: the database used to store all the data on deployment
+
+*   Other tools:
+    *   Balsamiq Wireframes: used to create the wireframes for design
+    *   Chrome DevTools: used to debug the website
+    *   Crispy Forms: used to manage Django Forms
+    *   AWS: the image hosting service used to upload images
+    *   Coolors: used to make the colour palette
+    *   Font Awesome: used to create the icons
+    *   Github Projects: used to track the progress of the project
+    *   Git: the version control system
+    *   GitHub: used to host the source code
+    *   GitPod: the IDE used
+    *   Heroku: the hosting service
+    *   LucidCharts: used to create the ERD data model design
+    *   Microsoft Paint 3D: used to create and manipulate images
+    *   Pip3: the package manager used to install the dependencies
+    *   Psycopg2: the database driver used to connect to the database
+## Deployment
+
+The site was deployed via Heroku.
+1.  Log in to Heroku or create an account if required.
+2.  Then, click the button labelled New from the dashboard in the top right corner and from the drop-down menu select Create New App.  You must enter a unique app name
+3.  Next, select your region.
+4.  Click on the Create App button.
+5.  In your app go to Resources tab and add a Heroku Postgres database.
+6.  The next page you will see is the project’s Deploy Tab. Click on the Settings Tab and scroll down to Config Vars and enter:
+    *   DATABASE_URL = the URL of your heroku postgres database
+    *   SECRET_KEY = a secret key for your app.
+    *   PORT = 8000
+    *   DISABLE_COLLECTSTATIC = 1 during development and remove when deploying to production
+
+7.  Scroll to the top of the page and now choose the Deploy tab.
+8.  Select Github as the deployment method.
+9.  Confirm you want to connect to GitHub.
+10. Search for the repository name and click the connect button.
+11. Scroll to the bottom of the deploy page and select preferred deployment type:
+12. Click either Enable Automatic Deploys for automatic deployment when you push updates to Github.
+13. Select the correct branch for deployment from the drop-down menu and click Deploy Branch for manual deployment.
+
+NB: Ensure in Django settings, DEBUG is False, create a Procfile and save database and secret key to env.py.
+
+### Version Control
+
+Git was used as the version control software. Commands such as git add ., git status, git commit and git push were used to add, save, stage and push the code to the GitHub repository where the source code is stored.
+
+### Cloning
+
+To clone this repository from GitHub to a local computer to make it easier to fix merge conflicts, add or remove files, and push larger commits or contribute use the following steps:
+
+1.  On GitHub, navigate to the main page of the repository.
+
+2.  Above the list of files, click Code.
+
+3.  Click Use GitHub CLI, then the copy icon.
+
+4.  Open Git Bash and change the current working directory to the location where you want the cloned directory.
+
+5.  Type git clone, and then paste the URL that was copied from step 3 above.
+
+6. Press Enter to create the local clone.
+
+### Forking
+A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project.
+
+To fork this project, go to the top left of the repository, where you see the Fork Icon and click Fork.  This will create a copy of the repository for you.
+
+## Credits
+### Content
+
+## Acknowledgements
+
