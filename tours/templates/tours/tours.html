@@ -57,6 +57,10 @@
                                     Review{{ tour.reviews.count|pluralize }}: </strong>
                                 <i>{{ tour.reviews.count }}</i>
                             </small></p>
+                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                        class="fa-solid fa-euro-sign"></i>
+                                <i>{{ tour.price }}</i> per person
+                            </strong></small></p>
                         <p class="card-text text-start p-2">
                             {{  tour.description | striptags | slice:100 | safe  }}.......
                         </p>
