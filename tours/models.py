@@ -32,6 +32,11 @@ class Tour(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        """ To display the tours by date added in desending order """
+        ordering = ['-date_added']
 
     def __str__(self):
         """ To return the name objects as a string """

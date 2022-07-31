@@ -5,12 +5,15 @@ from .models import Tour, Category
 
 
 @admin.register(Tour)
-class PostAdmin(SummernoteModelAdmin):
+class TourAdmin(SummernoteModelAdmin):
     """ Display Tour Model on Admin Site """
-    list_display = ('tour_name', 'category')
+    list_display = ('date_added', 'tour_name', 'category', 'rating', 'price', 'image')
     search_fields = ['tour_name', 'description']
-    list_filter = ('price', 'rating')
+    list_filter = ('date_added', 'price', 'rating')
     summernote_fields = ('description')
 
 
-admin.site.register(Category)
+@admin.register(Category)
+class CategoryAdmin(SummernoteModelAdmin):
+    """ Display Category Model on Admin Site """
+    list_display = ('category_name', 'friendly_name')
