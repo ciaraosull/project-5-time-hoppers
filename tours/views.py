@@ -2,8 +2,15 @@
 Imports for Tours View
 """
 from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import (
+    ListView,
+    DetailView,
+    UpdateView,
+    DeleteView
+)
 from django.core.paginator import Paginator
 from .models import Tour, Review
 from .forms import ReviewForm
@@ -59,3 +66,54 @@ class TourDetailView(DetailView):
         context['paginator'] = paginator
         context['review_form'] = ReviewForm()
         return context
+
+
+class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """ Class to allow logged in users to update reviews """
+    model = Review
+    form_class = ReviewForm
+
+    def form_valid(self, form):
+        """
+        Function to set signed in user
+        as author of the comment form to post
+        """
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        """
+        To get the review to be updated
+        and ensure only the author can update it
+        """
+        review = self.get_object()
+        if self.request.user == review.name:
+            return True
+        return False
+
+    def get_success_url(self):
+        """ On successful comment update, return to post-detail view"""
+        post = self.object.post
+        return reverse_lazy('post-detail', kwargs={'slug': post.slug})
+
+
+class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """
+    Allow user who created comment to delete it.
+    """
+    model = Review()
+
+    def test_func(self):
+        """
+        To get the review to be deleted
+        and ensure only the author of the review can delete it
+        """
+        review = self.get_object()
+        if self.request.user == review.name:
+            return True
+        return False
+
+    def get_success_url(self):
+        """ On successful review deletion, stay on same page"""
+        tour = self.object.post
+        return reverse_lazy('post-detail', kwargs={'pk': tour.pk})
