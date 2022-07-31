@@ -5,6 +5,10 @@
 {% block content %}
 
 <!-- Tours List Main Content -->
+
+<!-- Empty div to land the link from the pagination page to the tours list section 
+                so not blocked by fixed header -->
+<div id="tours-list"></div>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -25,24 +29,22 @@
                         src="{{tour.image_url }}" width="300" alt="Tour Image">
                     {%  else  %}
                     <!-- Default Image -->
-                    <img class="rounded-circle border shadow mb-3 bg-body rounded mx-auto d-block mt-3"
-                        src= "/media/temp-image.png"
-                        width="300" alt="Default Image">
+                    <img class="rounded-circle shadow mb-3 bg-body rounded mx-auto d-block mt-3"
+                        src="/media/temp-image.png" width="200" alt="Default Image">
                     {%  endif  %}
                 </div>
                 <!-- Snippet Details of Each Tour-->
                 <div class="col-md-7 text-md-start text-center">
                     <div class="card-body mb-3 mt-3">
                         <h4 class="card-title">
-                            <a class="text-decoration-none"
-                                href="">{{  tour.tour_name  }}
+                            <a class="text-decoration-none" href="">{{  tour.tour_name  }}
                             </a>
                         </h4>
                         <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                            class="fa-regular fa-star"></i>
-                        Rating{{ tour.rating.count|pluralize }}</strong>
-                    <i>{{ tour.rating.count }}</i>
-                </small></p>
+                                        class="fa-regular fa-star"></i>
+                                    Rating{{ tour.rating.count|pluralize }}</strong>
+                                <i>{{ tour.rating.count }}</i>
+                            </small></p>
                         <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
                                         class="fa-regular fa-comment"></i>
                                     Review{{ tour.reviews.count|pluralize }}</strong>
@@ -59,5 +61,32 @@
     </div>
 </section>
 
+<!-- Tours List Pagination -->
+<div class="paginate d-flex justify-content-center mb-4 mt-3">
+    {%  if is_paginated  %}
 
-{% endblock %}
+    {%  if page_obj.has_previous  %}
+    <a class="btn btn-outline-secondary btn-sm mb4 me-1" href="?page=1#tours-list">First</a>
+    <a class="btn btn-outline-secondary btn-sm mb4 me-1"
+        href="?page={{  page_obj.previous_page_number  }}#tours-list">Previous</a>
+    {%  endif  %}
+
+    {%  for num in page_obj.paginator.page_range  %}
+    {%  if page_obj.number == num  %}
+    <a class="btn btn-secondary btn-sm mb4 me-1" href="?page={{  num  }}#tours-list">{{  num  }}</a>
+    {%  elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3"  %}
+    <a class="btn btn-outline-secondary btn-sm mb4 me-1" href="?page={{  num  }}#tours-list">{{  num  }}</a>
+    {%  endif  %}
+    {%  endfor  %}
+
+    {%  if page_obj.has_next  %}
+    <a class="btn btn-outline-secondary btn-sm mb4 me-1"
+        href="?page={{  page_obj.next_page_number  }}#tours-list">Next</a>
+    <a class="btn btn-outline-secondary btn-sm mb4 me-1"
+        href="?page={{  page_obj.paginator.num_pages  }}#tours-list">Last</a>
+    {%  endif  %}
+
+    {%  endif  %}
+
+
+    {% endblock %}

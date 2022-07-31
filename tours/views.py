@@ -11,4 +11,4 @@ class TourListView(ListView):
     template_name = 'tours/tours.html'
     context_object_name = 'tours'
     ordering = ['-date_added']
-    paginate_by = 6
+    paginate_by = 2
