@@ -74,3 +74,8 @@ main {
     margin: 30px 50px;
     flex-direction: column;
 }
+
+/* Custom styling for Tour List View Page */
+.card-text {
+    font-size: 1.25rem !important;
+}

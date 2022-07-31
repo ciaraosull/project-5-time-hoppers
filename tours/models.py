@@ -14,7 +14,7 @@ class Category(models.Model):
 
     def __str__(self):
         """ To return the name objects as a string """
-        return self.name
+        return self.category_name
 
     def get_friendly_name(self):
         """ To return the friendly name objects as a string """
@@ -30,7 +30,7 @@ class Tour(models.Model):
     rating = models.DecimalField(
         max_digits=5, decimal_places=0, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
+    image_url = models.URLField(null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
@@ -44,7 +44,7 @@ class Tour(models.Model):
 
 
 class Review(models.Model):
-    """ Model for Comments """
+    """ Model for User Reviews """
     tour = models.ForeignKey(
         Tour, on_delete=models.CASCADE, related_name='reviews')
     name = models.ForeignKey(
