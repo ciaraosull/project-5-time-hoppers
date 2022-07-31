@@ -79,3 +79,7 @@ main {
 .card-text {
     font-size: 1.25rem !important;
 }
+
+.filter-menu {
+    background-color: red;
+}

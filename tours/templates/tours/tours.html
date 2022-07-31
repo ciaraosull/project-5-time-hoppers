@@ -3,20 +3,47 @@
 {% load static %}
 
 {% block content %}
+<!-- Filter Tours Section -->
+<section class="container d-flex justify-content-end pt-3 pb-3">
+    <div class="row">
+        <div class="col">
+            <!-- Filter Tours Menu -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Filter Tours
+                </button>
+                <ul class="dropdown-menu">
+                    <a href="" class="dropdown-item">By Price</a>
+                    <a href="" class="dropdown-item ">By Rating</a>
+                    <a href="" class="dropdown-item ">By Category</a>
+                    <a href="" class="dropdown-item">Most Recent</a>
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <!-- Special Offers Filter Menu -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Special Offers
+                </button>
+                <ul class="dropdown-menu">
+                    <a href="" class="dropdown-item">Group Discounts</a>
+                    <a href="" class="dropdown-item ">Last Minute Deals</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
-<!-- Tours List Main Content -->
 
 <!-- Empty div to land the link from the pagination page to the tours list section 
                 so not blocked by fixed header -->
 <div id="tours-list"></div>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            Tours List
-        </div>
-    </div>
-</div>
 
+
+<!-- List of Tours -->
 <section class="container d-flex justify-content-center">
     <div>
         {%  for tour in tours  %}
@@ -59,8 +86,8 @@
                             </small></p>
                         <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
                                         class="fa-solid fa-euro-sign"></i>
-                                <i>{{ tour.price }}</i> per person
-                            </strong></small></p>
+                                    <i>{{ tour.price }}</i> per person
+                                </strong></small></p>
                         <p class="card-text text-start p-2">
                             {{  tour.description | striptags | slice:100 | safe  }}.......
                         </p>
@@ -73,7 +100,7 @@
 </section>
 
 <!-- Tours List Pagination -->
-<div class="paginate d-flex justify-content-center mb-4 mt-3">
+<section class="paginate d-flex justify-content-center mb-4 mt-3">
     {%  if is_paginated  %}
 
     {%  if page_obj.has_previous  %}
@@ -98,6 +125,7 @@
     {%  endif  %}
 
     {%  endif  %}
+</section>
 
 
-    {% endblock %}
+{% endblock %}
