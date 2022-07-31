@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'django_summernote',
     'home',
     'tours',
 ]
@@ -161,6 +162,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # may need to take out when
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+SUMMERNOTE_CONFIG = {
+    'width': '100%',
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
