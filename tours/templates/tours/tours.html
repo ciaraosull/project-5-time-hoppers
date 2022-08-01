@@ -61,7 +61,7 @@
                         {%  if tour.image_url  %}
                         <a class="text-decoration-none" href="{% url 'tour-detail' tour.id %}"
                             aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
-                                src="/media/temp-image.png" width="200px" alt="Tour Image"></a>
+                                src="{{tour.image_url }}" width="200px" alt="Tour Image"></a>
                         <div class="card-body">
 
                             {%  else  %}
