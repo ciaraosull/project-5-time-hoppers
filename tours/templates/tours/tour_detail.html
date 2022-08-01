@@ -7,60 +7,75 @@
 {%  load crispy_forms_tags  %}
 
 
-<!-- Tours Detail -->
-<section class="container d-flex justify-content-center">
-    <div>
-        <div class=" card mb-3 shadow p-2 mb-3 bg-body rounded" style="max-width: 900px;">
-            <div class="row g-0">
-                <div class="col-md-5">
-                    {%  if tour.image_url  %}
-                    <!-- Tour Image -->
+<section id="hero-outer">
 
-                    <img class="rounded-circle shadow mb-3 bg-body rounded mx-auto d-block mt-3"
-                        src="{{tour.image_url }}" width="300" alt="Tour Image">
-                    {%  else  %}
-                    <!-- Default Image -->
-                    <img class="rounded-circle shadow mb-3 bg-body rounded mx-auto d-block mt-3"
-                        src="/media/temp-image.png" width="200" alt="Default Image">
-                    {%  endif  %}
-                </div>
-                <!-- Snippet Details of Each Tour-->
-                <div class="col-md-7 text-md-start text-center">
-                    <div class="card-body mb-3 mt-3">
-                        <h4 class="card-title">
-                            <a class="text-decoration-none" href="">{{  tour.tour_name  }}
-                            </a>
-                        </h4>
-                        {% if tour.rating %}
-                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                        class="fa-regular fa-star"></i>
-                                    Rating: </strong>
-                                <i>{{ tour.rating }}</i>
-                            </small></p>
-                        {% else %}
-                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                        class="fa-regular fa-star"></i>
-                                    Not Rated Yet</strong>
-                            </small></p>
-                        {% endif %}
-                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                        class="fa-regular fa-comment"></i>
-                                    Review{{ tour.reviews.count|pluralize }}: </strong>
-                                <i>{{ tour.reviews.count }}</i>
-                            </small></p>
-                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                        class="fa-solid fa-euro-sign"></i>
-                                    <i>{{ tour.price }}</i> per person
-                                </strong></small></p>
-                        <p class="card-text text-start p-2">
-                            {{  tour.description | striptags | slice:100 | safe  }}.......
-                        </p>
+    <div id="hero-image">
+        {%  if tour.image_url  %}
+        <!-- Background Image -->
+
+        <img src="{{tour.image_url }}" alt="Tour Image" width="100%" height="100%">
+        {%  else  %}
+        <!-- Default Image -->
+        <img src="/media/temp-image.png" alt="Default Image" width="100%" height="100%">
+        {%  endif  %}
+    </div>
+
+    <div id="cover-text">
+
+        <!-- Tour Title -->
+        <div class="row g-0 mt-4">
+            <div class="col-md-8 offset-md-1 text-center text-md-start text-white">
+                <h1>{{  tour.tour_name  }}</h1>
+                <h2>Tour Details</h2>
+            </div>
+
+
+            <!-- Tours Detail -->
+            <section class="container d-flex justify-content-center">
+                <div>
+                    <div class=" card mb-3 shadow p-2 mb-3 bg-body rounded" style="max-width: 1000px;">
+                        <div class="row g-0">
+                            <!-- Details of Each Tour-->
+                            <div class="text-md-start text-center">
+                                <div class="card-body mb-3 mt-3">
+                                    <h4 class="card-title">
+                                        <a class="text-decoration-none" href="">{{  tour.tour_name  }}
+                                        </a>
+                                    </h4>
+                                    {% if tour.rating %}
+                                    <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                                    class="fa-regular fa-star"></i>
+                                                Rating: </strong>
+                                            <i>{{ tour.rating }}</i>
+                                        </small></p>
+                                    {% else %}
+                                    <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                                    class="fa-regular fa-star"></i>
+                                                Not Rated Yet</strong>
+                                        </small></p>
+                                    {% endif %}
+                                    <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                                    class="fa-regular fa-comment"></i>
+                                                Review{{ tour.reviews.count|pluralize }}: </strong>
+                                            <i>{{ tour.reviews.count }}</i>
+                                        </small></p>
+                                    <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                                    class="fa-solid fa-euro-sign"></i>
+                                                <i>{{ tour.price }}</i> per person
+                                            </strong></small></p>
+                                    <p class="card-text text-start p-2">
+                                        {{  tour.description | safe  }}.......
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 </section>
+
 
 
 <!-- Add Review Section -->
@@ -86,8 +101,7 @@
                                     {%  else  %}
                                     <!-- Default Image -->
                                     <img class="rounded-circle border border-3 shadow p-3 mb-3 bg-body rounded mx-auto d-block mt-3"
-                                        src=""
-                                        width="100" alt="Default Profile Image">
+                                        src="" width="100" alt="Default Profile Image">
                                     {%  endif  %}
                                 </div>
                                 <!-- Review Form-->
@@ -126,7 +140,9 @@
 {%  if reviews  %}
 <section class="container mt-3 mb-3 pt-3 reviews-section">
     <!-- Total Number of Reviews-->
-    <h4><i class="fa-solid fa-comment"></i> Review{{ tour.reviews.count|pluralize }}: {{ tour.reviews.count }}</h4>
+    <h4><i class="fa-solid fa-comment"></i> Review{{ tour.reviews.count|pluralize }}:
+        {{ tour.reviews.count }}
+    </h4>
     {% for review in reviews %}
     <div class="row pt-3">
         <div class="col-md-2"></div>
@@ -137,9 +153,8 @@
                 src="{{review.name.profile.profile_image.url }}" width="100" alt="Profile Image">
             {%  else  %}
             <!-- Default Image -->
-            <img class="rounded-circle border border-3 shadow p-3 mb-3 bg-body rounded mx-auto d-block mt-3"
-                src="" width="100"
-                alt="Default Profile Image">
+            <img class="rounded-circle border border-3 shadow p-3 mb-3 bg-body rounded mx-auto d-block mt-3" src=""
+                width="100" alt="Default Profile Image">
             {%  endif  %}
         </div>
 
@@ -157,7 +172,7 @@
             <!-- Update Review if User is Author -->
             <a class="btn btn-primary btn-sm me-3" href="{%  url 'review-update' review.pk  %}"
                 aria-label="Update Review">Update</a>
-                <!-- Delete Review if User is Author -->
+            <!-- Delete Review if User is Author -->
             <a class="btn btn-danger btn-sm ms-3" href="{%  url 'review-delete' review.pk  %}"
                 aria-label="Delete Review">Delete</a>
             {%  endif  %}
@@ -201,5 +216,6 @@
     </div>
 </section>
 {%  endif  %}
+
 
 {%  endblock content  %}
