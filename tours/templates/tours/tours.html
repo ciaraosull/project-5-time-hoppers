@@ -4,13 +4,14 @@
 
 {% block content %}
 
+<!-- Tours List Page Title -->
 <div class="row g-0 mt-4">
-    <div class="col-md-6 offset-md-3 text-center text-md-start">
+    <div class="col-md-8 offset-md-1 text-center text-md-start">
         <h1>TimeTravelling Tours</h1>
         <h2>Search a Moment in Time</h2>
     </div>
 
-    <div class="filter-menu pt-5 pb-3 col-md-6 offset-md-3 text-center text-md-start">
+    <div class="filter-menu pt-5 pb-3 col-md-7 offset-md-2 text-center text-md-start">
         <!-- Filter Tours Menu -->
         <div class="btn-group">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
@@ -18,11 +19,11 @@
                 Filter Tours
             </button>
             <ul class="dropdown-menu">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item ">By Rating</a>
-                <a href="" class="dropdown-item ">By Category</a>
-                <a href="" class="dropdown-item">Most Recent</a>
-                <a href="{% url 'tours-list' %}" class="dropdown-item">All Tours</a>
+                <a href="" class="dropdown-item" aria-label="#">By Price</a>
+                <a href="" class="dropdown-item" aria-label="#">By Rating</a>
+                <a href="" class="dropdown-item" aria-label="#">By Category</a>
+                <a href="" class="dropdown-item" aria-label="#">Most Recent</a>
+                <a href="{% url 'tours-list' %}" aria-label="Go to Tours List" class="dropdown-item">All Tours</a>
             </ul>
         </div>
 
@@ -33,8 +34,8 @@
                 Special Offers
             </button>
             <ul class="dropdown-menu">
-                <a href="" class="dropdown-item">Group Discounts</a>
-                <a href="" class="dropdown-item ">Last Minute Deals</a>
+                <a href="" class="dropdown-item" aria-label="#">Group Discounts</a>
+                <a href="" class="dropdown-item" aria-label="#">Last Minute Deals</a>
             </ul>
         </div>
     </div>
@@ -47,56 +48,70 @@
 
 
 <!-- List of Tours -->
-<section class="container d-flex justify-content-center">
-    <div>
+
+<section class="pt-3 pb-3 position-relative">
+    <div class="container px-md-5">
         {%  for tour in tours  %}
-        <div class=" card mb-3 shadow p-2 mb-3 bg-body rounded" style="max-width: 900px;">
-            <div class="row g-0">
-                <div class="col-md-5">
-                    {%  if tour.image_url  %}
-                    <!-- Tour Image -->
-                    <a href="{% url 'tour-detail' tour.id %}"><img
-                            class="rounded-circle shadow mb-3 bg-body rounded mx-auto d-block mt-3"
-                            src="{{tour.image_url }}" width="300" alt="Tour Image"></a>
-                    {%  else  %}
-                    <!-- Default Image -->
-                    <a href="{% url 'tour-detail' tour.id %}"><img
-                            class="rounded-circle shadow mb-3 bg-body rounded mx-auto d-block mt-3"
-                            src="/media/temp-image.png" width="200" alt="Default Image"></a>
-                    {%  endif  %}
-                </div>
-                <!-- Snippet Details of Each Tour-->
-                <div class="col-md-7 text-md-start text-center">
-                    <div class="card-body mb-3 mt-3">
-                        <h4 class="card-title">
-                            <a class="text-decoration-none"
-                                href="{% url 'tour-detail' tour.id %}">{{  tour.tour_name  }}
-                            </a>
-                        </h4>
-                        {% if product.rating %}
-                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                        class="fa-regular fa-star"></i>
-                                    Rating: </strong>
-                                <i>{{ tour.rating }}</i>
-                            </small></p>
-                        {% else %}
-                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                        class="fa-regular fa-star"></i>
-                                    Not Rated Yet</strong>
-                            </small></p>
-                        {% endif %}
-                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                        class="fa-regular fa-comment"></i>
-                                    Review{{ tour.reviews.count|pluralize }}: </strong>
-                                <i>{{ tour.reviews.count }}</i>
-                            </small></p>
-                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                        class="fa-solid fa-euro-sign"></i>
-                                    <i>{{ tour.price }}</i> per person
-                                </strong></small></p>
-                        <p class="card-text text-start p-2">
-                            {{  tour.description | striptags | slice:100 | safe  }}.......
-                        </p>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 col-12 card mb-3 shadow p-2 mb-3 bg-body rounded">
+                <div class="card-group">
+                    <div class="card">
+
+                        <!-- Tour Image -->
+                        {%  if tour.image_url  %}
+                        <a class="text-decoration-none" href="{% url 'tour-detail' tour.id %}"
+                            aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
+                                src="/media/temp-image.png" width="200px" alt="Tour Image"></a>
+                        <div class="card-body">
+
+                            {%  else  %}
+                            <!-- Default Image -->
+                            <a class="text-decoration-none" href="{% url 'tour-detail' tour.id %}"
+                                aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
+                                    src="/media/time-travel-sample.jpeg" width="200px" alt="Tour Image"></a>
+                            <div class="card-body">
+
+                                {%  endif  %}
+
+                                <!-- Tour Title-->
+                                <h4 class="card-title"><a class="text-decoration-none"
+                                        href="{% url 'tour-detail' tour.id %}"
+                                        aria-label="Go to Tour Detail">{{  tour.tour_name  }}
+                                    </a></h4>
+
+                                <!-- Ratings-->
+                                {% if product.rating %}
+                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                                class="fa-regular fa-star"></i>
+                                            Rating: </strong>
+                                        <i>{{ tour.rating }}</i>
+                                    </small></p>
+                                {% else %}
+                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                                class="fa-regular fa-star"></i>
+                                            Not Rated Yet</strong>
+                                    </small></p>
+                                {% endif %}
+
+                                <!-- Reviews-->
+                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                                class="fa-regular fa-comment"></i>
+                                            Review{{ tour.reviews.count|pluralize }}: </strong>
+                                        <i>{{ tour.reviews.count }}</i>
+                                    </small>
+                                </p>
+
+                                <!-- Price-->
+                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                                class="fa-solid fa-euro-sign"></i>
+                                            <i>{{ tour.price }}</i> per person
+                                        </strong></small>
+                                </p>
+
+                                <!-- Tour Description Snippet-->
+                                <p class="card-text">{{  tour.description | striptags | slice:100 | safe  }}.......</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,6 +119,7 @@
         {%  endfor  %}
     </div>
 </section>
+
 
 <!-- Tours List Pagination -->
 <section class="paginate d-flex justify-content-center mb-4 mt-3">
