@@ -69,7 +69,8 @@
                         aria-label="Go to About Us Page">About</a>
                 </li>
                 <li class="nav-item-active">
-                    <a href="{% url 'tours-list' %}" class="{%  if url_name == 'tours-list' %}active {%  endif  %}nav-link"
+                    <a href="{% url 'tours-list' %}"
+                        class="{%  if url_name == 'tours-list' %}active {%  endif  %}nav-link"
                         aria-label="Go to Tour List Page">Tours</a>
                 </li>
 
@@ -194,32 +195,70 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="mt-auto text-center text-white pt-2" id="footer">
-        <!-- Footer Grid container -->
-        <div class="container">
-            <!-- Section Footer Links -->
-            <section>
-                <!-- Contact Us Grid column -->
-                <div class="row-md-6 contact-us">
-                    <h5 class="text-uppercase font-weight-bold">Connect With Us:
-                        <a class="btn btn-primary btn-floating" id="linkedin-link"
-                            href="https://www.linkedin.com/in/ciara-o-sullivan-2834378b" target="_blank"
-                            aria-label="Go to linkedin profile" role="button"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-primary btn-floating" id="github-link" href="https://github.com/ciaraosull"
-                            target="_blank" aria-label="Go to Github profile" role="button"><i
-                                class="fab fa-github"></i></a>
-                    </h5>
-                </div>
-                <!-- Copyright -->
-                <div class="row-md-6 contact-us">
-                    <div class="text-center pb-3" id="copyright">
-                        © Ciara O'Sullivan 2022
+    <!--Footer Section-->
+
+    <footer id="footer">
+        <div class="container py-7 px-md-5 pt-2">
+            <div class="row g-0 p-3">
+                <!--Logo & Contact Details-->
+                <div class="col-md-6 mb-5 mb-md-0">
+                    <div class="mb-4 d-inline-block"><a
+                            class="navbar-brand pt-0 fs-3 text-white d-flex align-items-center" href=#>TimeHoppers</a>
+                    </div>
+                    <div class="footer-icons col-12 col-md-10 text-300 mb-3"><i class="fas fa-map-marker-alt"></i><a
+                            class="nav-link text-300 d-inline" href="#">2109
+                            123 Fake Street</a></div>
+                    <div class="footer-icons col-12 col-md-10 text-300 mb-3"><i class="fas fa-phone"></i><a
+                            class="nav-link text-300 d-inline" href="tel:+353123345678">+353 123 345678</a></div>
+                    <div class="footer-icons col-12 col-md-10 text-300 mb-3"><i class="fas fa-envelope"></i><a
+                            class="nav-link text-300 d-inline" href="mailto:fakeemail@gmail.com">fakeemail@gmail.com</a>
                     </div>
                 </div>
-            </section>
+                <!--Newsletter Form-->
+                <div class="col-md-6">
+                    <h5 class="text-white mb-2">SUBSCRIBE TO OUR NEWSLETTER</h5>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1"></label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-white">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+
+                        <div class="d-flex justify-content-start pt-2"><button type="submit"
+                                class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+
+                    <!--Social Media-->
+                    <div class="d-flex gap-2 flex-wrap justify-content-end align-items-center pb-2"><a
+                            class="social-icons" href="https://github.com/ciaraosull" target="_blank"
+                            aria-label="Go to github profile"><i class="fa-brands fa-square-github fa-2xl"></i></a><a
+                            class="social-icons" href="https://www.facebook.com/" target="_blank"
+                            aria-label="Go to facebook profile"><i
+                                class="fa-brands fa-square-facebook fa-2xl"></i></a><a class="social-icons"
+                            href="https://www.linkedin.com/in/ciara-o-sullivan-2834378b" target="_blank"
+                            aria-label="Go to linkedin profile"><i class="fa-brands fa-linkedin fa-2xl"></i></a></div>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <!-- Copyright Section-->
+    <section id="copyright">
+        <div class="container px-md-5">
+            <div class="row g-0 justify-content-md-between justify-content-evenly py-4">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-auto text-center text-md-start">
+                    <p class="fs--1 my-2 fw-light text-100">&copy; TimeHoppers, 2022</p>
+                </div>
+                <div class="col-12 col-sm-8 col-md-6">
+                    <p class="fs--1 fw-light my-2 text-center text-md-end"> Made with <i class="fas fa-heart"></i> by
+                        Ciara O'Sullivan</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </body>
 

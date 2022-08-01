@@ -37,13 +37,23 @@ main {
     border-bottom: 1px solid;
 }
 
-#navbarNav a:hover {
-    color: #ec1818;
+/* Custom Styling for buttons */
+
+.btn-primary {
+    border-radius: none !important;
+    background-color: #ec7718 !important;
+    border-color: #f19f5c !important;
+}
+
+/* Custom Styling for links */
+
+a:hover {
+    color: #ec7718 !important;
 }
 
 /* Custom styling for footer */
 #footer {
-    background-color: #ec1818 ;
+    background-color: #383636 ;
     position: relative;
     flex-shrink: 0;
 }
@@ -56,14 +66,22 @@ main {
     letter-spacing: 1px;
 }
 
-#footer .btn-primary {
-    border-radius: 50px
+.social-icons {
+    padding-left: 10px;
+    color: #f5f5f5;
 }
 
-#linkedin-link,
-#github-link {
-    background-color: #333333;
-    color: #f5f5f5 !important;
+.footer-icons {
+    color: #f5f5f5;
+}
+
+.footer-icons a {
+    color: #f5f5f5;
+}
+
+#copyright {
+    background-color: #000000;
+    color: #f5f5f5;
 }
 
 /* Custom styling for Home Page */
