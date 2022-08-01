@@ -62,55 +62,53 @@
                         <a class="text-decoration-none" href="{% url 'tour-detail' tour.id %}"
                             aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
                                 src="{{tour.image_url }}" width="200px" alt="Tour Image"></a>
+
+                        {%  else  %}
+                        <!-- Default Image -->
+                        <a class="text-decoration-none" href="{% url 'tour-detail' tour.id %}"
+                            aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
+                                src="/media/time-travel-sample.jpeg" width="200px" alt="Tour Image"></a>
+
+                        {%  endif  %}
+
                         <div class="card-body">
+                            <!-- Tour Title-->
+                            <h4 class="card-title"><a class="text-decoration-none"
+                                    href="{% url 'tour-detail' tour.id %}"
+                                    aria-label="Go to Tour Detail">{{  tour.tour_name  }}
+                                </a></h4>
 
-                            {%  else  %}
-                            <!-- Default Image -->
-                            <a class="text-decoration-none" href="{% url 'tour-detail' tour.id %}"
-                                aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
-                                    src="/media/time-travel-sample.jpeg" width="200px" alt="Tour Image"></a>
-                            <div class="card-body">
+                            <!-- Ratings-->
+                            {% if product.rating %}
+                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                            class="fa-regular fa-star"></i>
+                                        Rating: </strong>
+                                    <i>{{ tour.rating }}</i>
+                                </small></p>
+                            {% else %}
+                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                            class="fa-regular fa-star"></i>
+                                        Not Rated Yet</strong>
+                                </small></p>
+                            {% endif %}
 
-                                {%  endif  %}
+                            <!-- Reviews-->
+                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                            class="fa-regular fa-comment"></i>
+                                        Review{{ tour.reviews.count|pluralize }}: </strong>
+                                    <i>{{ tour.reviews.count }}</i>
+                                </small>
+                            </p>
 
-                                <!-- Tour Title-->
-                                <h4 class="card-title"><a class="text-decoration-none"
-                                        href="{% url 'tour-detail' tour.id %}"
-                                        aria-label="Go to Tour Detail">{{  tour.tour_name  }}
-                                    </a></h4>
+                            <!-- Price-->
+                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                            class="fa-solid fa-euro-sign"></i>
+                                        <i>{{ tour.price }}</i> per person
+                                    </strong></small>
+                            </p>
 
-                                <!-- Ratings-->
-                                {% if product.rating %}
-                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                                class="fa-regular fa-star"></i>
-                                            Rating: </strong>
-                                        <i>{{ tour.rating }}</i>
-                                    </small></p>
-                                {% else %}
-                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                                class="fa-regular fa-star"></i>
-                                            Not Rated Yet</strong>
-                                    </small></p>
-                                {% endif %}
-
-                                <!-- Reviews-->
-                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                                class="fa-regular fa-comment"></i>
-                                            Review{{ tour.reviews.count|pluralize }}: </strong>
-                                        <i>{{ tour.reviews.count }}</i>
-                                    </small>
-                                </p>
-
-                                <!-- Price-->
-                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                                class="fa-solid fa-euro-sign"></i>
-                                            <i>{{ tour.price }}</i> per person
-                                        </strong></small>
-                                </p>
-
-                                <!-- Tour Description Snippet-->
-                                <p class="card-text">{{  tour.description | striptags | slice:100 | safe  }}.......</p>
-                            </div>
+                            <!-- Tour Description Snippet-->
+                            <p class="card-text">{{  tour.description | striptags | slice:100 | safe  }}.......</p>
                         </div>
                     </div>
                 </div>

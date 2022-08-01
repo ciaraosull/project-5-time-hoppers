@@ -102,22 +102,11 @@ main {
     font-size: 1.25rem !important;
 }
 
-/* Tour Detail Pages */
-#hero-outer {
-    height: 900px;
-    width: 100%;
-    position: relative;
-}
-
-#cover-text {
-    position: absolute;
-    z-index: 99;
-}
-
+/* Custom styling for Tour Detail View Page */
 #hero-image {
     z-index: -1;
     width: 100%;
     height: 100%;
     object-fit: fill;
-    position: absolute;
+    position: fixed;
 }
