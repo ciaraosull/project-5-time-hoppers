@@ -33,8 +33,16 @@ main {
 }
 
 .nav-link.active {
-    color: #ec1818 !important;
+    color: #ec7718 !important;
     border-bottom: 1px solid;
+}
+
+.nav-icons {
+    color: #000000 !important;
+}
+
+.nav-icons:hover {
+    color: #ec7718 !important;
 }
 
 /* Custom Styling for buttons */
@@ -45,11 +53,6 @@ main {
     border-color: #f19f5c !important;
 }
 
-/* Custom Styling for links */
-
-a:hover {
-    color: #ec7718 !important;
-}
 
 /* Custom styling for footer */
 #footer {
@@ -64,6 +67,7 @@ a:hover {
 
 #footer a:hover {
     letter-spacing: 1px;
+    color: #ec7718 !important;
 }
 
 .social-icons {
@@ -99,5 +103,5 @@ a:hover {
 }
 
 .filter-menu {
-    background-color: red;
+    background-color: #ec7718;
 }
