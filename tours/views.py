@@ -1,9 +1,11 @@
 """
 Imports for Tours View
 """
-from django.shortcuts import get_object_or_404, redirect
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.http import Http404
 from django.contrib import messages
+from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
@@ -18,11 +20,34 @@ from .forms import ReviewForm
 
 class TourListView(ListView):
     """ A view to show all tours including sort & search """
+    allow_empty = False
     model = Tour
     template_name = 'tours/tours.html'
     context_object_name = 'tours'
     ordering = ['-date_added']
     paginate_by = 6
+
+    def get_queryset(self):
+        """ Define query_set to get search results """
+        queryset = super().get_queryset()
+        if self.request.GET:
+            if 'q' in self.request.GET:
+                query = self.request.GET.get("q")
+                if not query:
+                    messages.error(self.request, "Your search has no results")
+                return queryset.filter(
+                        Q(tour_name__icontains=query)
+                        | Q(description__icontains=query)
+                        )
+        return queryset
+
+    def dispatch(self, *args, **kwargs):
+        """ Message & redirect if no results found from search query """
+        try:
+            return super().dispatch(*args, **kwargs)
+        except Http404:
+            messages.error(self.request, "Your search has no results")
+            return redirect('tours-list')
 
 
 class TourDetailView(DetailView):

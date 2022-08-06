@@ -117,7 +117,7 @@
 
         <!-- Search Bar on Large Screens-->
         <div class="d-none d-lg-block pt-2">
-            <form method="GET" action="">
+            <form method="GET" action="{% url 'tours-list' %}">
                 <div class="input-group w-100">
                     <input class="form-control border border-black" type="search" id="form1" name="q"
                         placeholder="Search">
@@ -142,7 +142,7 @@
                 </div>
             </a>
             <div class="dropdown-menu w-100 p-3 my-0" aria-labelledby="mobile-search">
-                <form class="form" method="GET" action="">
+                <form class="form" method="GET" action="{% url 'tours-list' %}">
                     <div class="input-group w-100">
                         <input class="form-control border border-black rounded-0" type="search" id="form1" name="q"
                             placeholder="Search">
