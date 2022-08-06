@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from django.contrib.messages import constants as messages
 if os.path.isfile('env.py'):
     import env # noqa
 
@@ -168,6 +169,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SUMMERNOTE_CONFIG = {
     'width': '100%',
+}
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
 }
 
 # Default primary key field type
