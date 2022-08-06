@@ -7,9 +7,17 @@ Project 5 README
 Time Hoppers is a website for a fictitious time travelling tour guide company.  This site allows people to view, book and purchase tours on offer from different eras in time.  
 
 Users can read reviews and ratings of tours, post reviews and rate tours and set up a profile where they can view their purchase history.  User can also search for a specific tour or filter the tour by certain categories.
+
+
 View the live project [Here]( https://time-hoppers.herokuapp.com/)
 
 ![Responsive Design Screenshot]()
+
+
+
+https://user-images.githubusercontent.com/93194443/182218911-91ba261e-89c1-4cfd-a8af-3c9852ba2528.mp4
+
+
 
 ## User Experience (UX)
 
