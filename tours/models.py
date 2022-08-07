@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     """ Categorise for User to Filter Tours"""
-    category_name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250)
     friendly_name = models.CharField(max_length=250, null=True, blank=True)
 
     class Meta:
@@ -14,7 +14,7 @@ class Category(models.Model):
 
     def __str__(self):
         """ To return the name objects as a string """
-        return self.category_name
+        return self.name
 
     def get_friendly_name(self):
         """ To return the friendly name objects as a string """

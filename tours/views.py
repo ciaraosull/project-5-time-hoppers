@@ -14,7 +14,7 @@ from django.views.generic import (
     DeleteView
 )
 from django.core.paginator import Paginator
-from .models import Tour, Review
+from .models import Tour, Review, Category
 from .forms import ReviewForm
 
 
@@ -29,7 +29,9 @@ class TourListView(ListView):
     def get_queryset(self):
         """ Define query_set to get search results """
         queryset = super().get_queryset()
+
         if self.request.GET:
+
             if 'q' in self.request.GET:
                 query = self.request.GET.get("q")
                 if not query:
@@ -80,7 +82,7 @@ class TourDetailView(DetailView):
         reviews = Review.objects.filter(tour=tour)
         paginator = Paginator(reviews, 6)
         page = self.request.GET.get('page')
-        context['reviewa'] = paginator.get_page(page)
+        context['reviews'] = paginator.get_page(page)
         context['page'] = page
         context['paginator'] = paginator
         context['review_form'] = ReviewForm()
@@ -95,7 +97,7 @@ class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         """
         Function to set signed in user
-        as author of the comment form to post
+        as author of the review form to post
         """
         form.instance.author = self.request.user
         return super().form_valid(form)
@@ -111,14 +113,14 @@ class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return False
 
     def get_success_url(self):
-        """ On successful comment update, return to post-detail view"""
-        post = self.object.post
-        return reverse_lazy('post-detail', kwargs={'slug': post.slug})
+        """ On successful review update, return to post-detail view"""
+        tour = self.object.tour
+        return reverse_lazy('tour-detail', kwargs={'pk': tour.pk})
 
 
 class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
-    Allow user who created comment to delete it.
+    Allow user who created review to delete it.
     """
     model = Review()
 
@@ -134,5 +136,5 @@ class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def get_success_url(self):
         """ On successful review deletion, stay on same page"""
-        tour = self.object.post
-        return reverse_lazy('post-detail', kwargs={'pk': tour.pk})
+        tour = self.object.tour
+        return reverse_lazy('tour-detail', kwargs={'pk': tour.pk})

@@ -23,7 +23,7 @@ class TourAdmin(SummernoteModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     """ Display Category Model on Admin Site """
-    list_display = ('category_name', 'friendly_name')
+    list_display = ('name', 'friendly_name')
 
 
 @admin.register(Review)
