@@ -113,6 +113,11 @@
                 </div>
             </div>
         </div>
+        <!-- If Search Results do not match show message-->
+        {%  empty  %}
+        <div>
+            <h1>No Results Match Your Search</h1>
+        </div>
         {%  endfor  %}
     </div>
 </section>

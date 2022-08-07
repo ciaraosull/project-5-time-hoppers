@@ -20,7 +20,6 @@ from .forms import ReviewForm
 
 class TourListView(ListView):
     """ A view to show all tours including sort & search """
-    allow_empty = False
     model = Tour
     template_name = 'tours/tours.html'
     context_object_name = 'tours'
@@ -34,20 +33,15 @@ class TourListView(ListView):
             if 'q' in self.request.GET:
                 query = self.request.GET.get("q")
                 if not query:
-                    messages.error(self.request, "Your search has no results")
+                    messages.error(
+                        self.request,
+                        "You did not enter anything to search"
+                        )
                 return queryset.filter(
                         Q(tour_name__icontains=query)
                         | Q(description__icontains=query)
                         )
         return queryset
-
-    def dispatch(self, *args, **kwargs):
-        """ Message & redirect if no results found from search query """
-        try:
-            return super().dispatch(*args, **kwargs)
-        except Http404:
-            messages.error(self.request, "Your search has no results")
-            return redirect('tours-list')
 
 
 class TourDetailView(DetailView):
