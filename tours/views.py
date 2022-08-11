@@ -26,7 +26,7 @@ class TourListView(ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        """ 
+        """
         Define query_set to get user search results or search by category
         """
         queryset = super().get_queryset()

@@ -31,13 +31,23 @@
         <div class="btn-group">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
                 aria-expanded="false">
+                Filter By Era
+            </button>
+            <ul class="dropdown-menu">
+                <a href="{% url 'tours-list' %}?category=80s_tours" class="dropdown-item" aria-label="List 80s Tours">80s Tours</a>
+                <a href="{% url 'tours-list' %}?category=70s_tours" class="dropdown-item" aria-label="List 70s Tours">70s Tours</a>
+            </ul>
+        </div>
+
+        <!-- Special Offers Filter Menu -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
                 Special Offers
             </button>
             <ul class="dropdown-menu">
                 <a href="{% url 'tours-list' %}?category=group_discounts" class="dropdown-item" aria-label="List Group Discounts">Group Discounts</a>
                 <a href="{% url 'tours-list' %}?category=last_minute_deals" class="dropdown-item" aria-label="List Last Minute Deals">Last Minute Deals</a>
-                <a href="{% url 'tours-list' %}?category=80s_tours" class="dropdown-item" aria-label="List 80s Tours">80s Tours</a>
-                <a href="{% url 'tours-list' %}?category=70s_tours" class="dropdown-item" aria-label="List 70s Tours">70s Tours</a>
             </ul>
         </div>
     </div>
