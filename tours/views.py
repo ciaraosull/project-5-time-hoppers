@@ -1,8 +1,7 @@
 """
 Imports for Tours View
 """
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.http import Http404
+from django.shortcuts import redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -14,7 +13,7 @@ from django.views.generic import (
     DeleteView
 )
 from django.core.paginator import Paginator
-from .models import Tour, Review, Category
+from .models import Tour, Review
 from .forms import ReviewForm
 
 
@@ -27,7 +26,9 @@ class TourListView(ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        """ Define query_set to get search results """
+        """ 
+        Define query_set to get user search results or search by category
+        """
         queryset = super().get_queryset()
 
         if self.request.GET:
@@ -43,6 +44,11 @@ class TourListView(ListView):
                         Q(tour_name__icontains=query)
                         | Q(description__icontains=query)
                         )
+
+            if 'category' in self.request.GET:
+                categories = self.request.GET['category'].split(',')
+                return queryset.filter(category__name__in=categories)
+
         return queryset
 
 
