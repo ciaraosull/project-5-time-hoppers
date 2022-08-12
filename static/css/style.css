@@ -109,8 +109,5 @@ main {
     height: 100%;
     object-fit: fill;
     position: fixed;
-}
-
-.tour-detail {
-    background-color: #f19f5c;
+    background-color: rgba(236,119,24, .18);
 }
