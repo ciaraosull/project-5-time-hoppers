@@ -111,3 +111,22 @@ main {
     position: fixed;
     background-color: rgba(236,119,24, .18);
 }
+
+/*forms */
+.form-group {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.form-style {
+    background-color: #383636 !important;
+    color: #f5f5f5;
+}
+
+.sign-up-link {
+    color: #f5f5f5 !important;
+}
+
+.sign-up-link:hover {
+    color: #ec7718 !important;
+}
