@@ -92,9 +92,9 @@
                                 aria-label="Logout">Logout</a></li>
 
                         {% if request.user.is_superuser %}
-                        <li nav-item-active><a href="{%  url 'home'  %}"
-                                class="{%  if url_name == 'home'  %}active {%  endif  %}nav-link"
-                                aria-label="Profile Page">Admin Site</a></li>
+                        <li nav-item-active><a href="{%  url 'admin:index'  %}"
+                                class="{%  if url_name == 'admin-site'  %}active {%  endif  %}nav-link"
+                                aria-label="Admin Page">Admin Site</a></li>
 
                         {% endif %}
 
