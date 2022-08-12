@@ -34,8 +34,10 @@
                 Filter By Era
             </button>
             <ul class="dropdown-menu">
-                <a href="{% url 'tours-list' %}?category=80s_tours" class="dropdown-item" aria-label="List 80s Tours">80s Tours</a>
-                <a href="{% url 'tours-list' %}?category=70s_tours" class="dropdown-item" aria-label="List 70s Tours">70s Tours</a>
+                <a href="{% url 'tours-list' %}?category=80s_tours" class="dropdown-item"
+                    aria-label="List 80s Tours">1980s Tours</a>
+                <a href="{% url 'tours-list' %}?category=70s_tours" class="dropdown-item"
+                    aria-label="List 70s Tours">1970s Tours</a>
             </ul>
         </div>
 
@@ -46,8 +48,10 @@
                 Special Offers
             </button>
             <ul class="dropdown-menu">
-                <a href="{% url 'tours-list' %}?category=group_discounts" class="dropdown-item" aria-label="List Group Discounts">Group Discounts</a>
-                <a href="{% url 'tours-list' %}?category=last_minute_deals" class="dropdown-item" aria-label="List Last Minute Deals">Last Minute Deals</a>
+                <a href="{% url 'tours-list' %}?category=group_discounts" class="dropdown-item"
+                    aria-label="List Group Discounts">Group Discounts</a>
+                <a href="{% url 'tours-list' %}?category=last_minute_deals" class="dropdown-item"
+                    aria-label="List Last Minute Deals">Last Minute Deals</a>
             </ul>
         </div>
     </div>
@@ -60,11 +64,12 @@
 
 
 <!-- List of Tours -->
+
 <section class="pt-3 pb-3 position-relative">
     <div class="container px-md-5">
-        {%  for tour in tours  %}
         <div class="row">
-            <div class="col-lg-4 col-sm-6 col-12 card mb-3 shadow p-2 mb-3 bg-body rounded">
+            {%  for tour in tours  %}
+            <div class="col-lg-4 col-md-5 col-12 card m-3 shadow p-2 mb-3 bg-body rounded">
                 <div class="card-group">
                     <div class="card">
 
@@ -124,13 +129,13 @@
                     </div>
                 </div>
             </div>
+            <!-- If Search Results do not match show message-->
+            {%  empty  %}
+            <div>
+                <h1>No Results Match Your Search</h1>
+            </div>
+            {%  endfor  %}
         </div>
-        <!-- If Search Results do not match show message-->
-        {%  empty  %}
-        <div>
-            <h1>No Results Match Your Search</h1>
-        </div>
-        {%  endfor  %}
     </div>
 </section>
 
