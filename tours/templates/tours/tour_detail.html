@@ -19,54 +19,56 @@
 
 <!-- Tours Detail -->
 <section class="pt-5 pb-3 col-md-7 offset-md-2 text-center text-md-start">
-    <div>
-        <div class="card mb-3 shadow p-2 mb-3 bg-body rounded" style="max-width: 1000px;">
-            <div class="row g-0">
-                <div>
-                    <!-- Tour Image -->
-                    {%  if tour.image_url  %}
-                    <a class="d-lg-none text-decoration-none" href="{% url 'tour-detail' tour.id %}"
-                        aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
-                            src="{{tour.image_url }}" width="200px" alt="Tour Image"></a>
+    <div class="row">
+        <div class="col ps-4">
+            <div class="card mb-3 shadow p-2 mb-3 bg-body rounded">
+                <div class="row g-0">
+                    <div>
+                        <!-- Tour Image -->
+                        {%  if tour.image_url  %}
+                        <a class="d-lg-none text-decoration-none" href="{% url 'tour-detail' tour.id %}"
+                            aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
+                                src="{{tour.image_url }}" width="200px" alt="Tour Image"></a>
 
-                    {%  else  %}
-                    <!-- Default Image -->
-                    <a class="d-lg-none text-decoration-none" href="{% url 'tour-detail' tour.id %}"
-                        aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
-                            src="/media/time-travel-sample.jpeg" width="200px" alt="Tour Image"></a>
+                        {%  else  %}
+                        <!-- Default Image -->
+                        <a class="d-lg-none text-decoration-none" href="{% url 'tour-detail' tour.id %}"
+                            aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
+                                src="/media/time-travel-sample.jpeg" width="200px" alt="Tour Image"></a>
 
-                    {%  endif  %}
+                        {%  endif  %}
 
-                </div>
-                <!-- Details of Each Tour-->
-                <div class="text-md-start text-center">
-                    <div class="card-body mb-3 mt-3">
-                        <h1>{{  tour.tour_name  }}</h1>
-                        <h2>Tour Details</h2>
-                        {% if tour.rating %}
-                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                        class="fa-regular fa-star"></i>
-                                    Rating: </strong>
-                                <i>{{ tour.rating }}</i>
-                            </small></p>
-                        {% else %}
-                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                        class="fa-regular fa-star"></i>
-                                    Not Rated Yet</strong>
-                            </small></p>
-                        {% endif %}
-                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                        class="fa-regular fa-comment"></i>
-                                    Review{{ tour.reviews.count|pluralize }}: </strong>
-                                <i>{{ tour.reviews.count }}</i>
-                            </small></p>
-                        <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
-                                        class="fa-solid fa-euro-sign"></i>
-                                    <i>{{ tour.price }}</i> per person
-                                </strong></small></p>
-                        <p class="card-text text-start p-2">
-                            {{  tour.description | safe  }}.......
-                        </p>
+                    </div>
+                    <!-- Details of Each Tour-->
+                    <div class="text-md-start text-center">
+                        <div class="card-body mb-3 mt-3">
+                            <h1>{{  tour.tour_name  }}</h1>
+                            <h2>Tour Details</h2>
+                            {% if tour.rating %}
+                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                            class="fa-regular fa-star"></i>
+                                        Rating: </strong>
+                                    <i>{{ tour.rating }}</i>
+                                </small></p>
+                            {% else %}
+                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                            class="fa-regular fa-star"></i>
+                                        Not Rated Yet</strong>
+                                </small></p>
+                            {% endif %}
+                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                            class="fa-regular fa-comment"></i>
+                                        Review{{ tour.reviews.count|pluralize }}: </strong>
+                                    <i>{{ tour.reviews.count }}</i>
+                                </small></p>
+                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                            class="fa-solid fa-euro-sign"></i>
+                                        <i>{{ tour.price }}</i> per person
+                                    </strong></small></p>
+                            <p class="card-text text-start p-2">
+                                {{  tour.description | safe  }}.......
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -165,7 +167,7 @@
                 <ul class="list-unstyled">
                     <li><i class="fa-solid fa-calendar-days"></i> <i>{{  review.date_posted  }}</i></li>
                 </ul>
-                <div class="text-start">
+                <div class="text-start ms-3">
                     <p>{{ review.your_review | linebreaks  }}</p>
                 </div>
 

@@ -110,3 +110,7 @@ main {
     object-fit: fill;
     position: fixed;
 }
+
+.tour-detail {
+    background-color: #f19f5c;
+}
