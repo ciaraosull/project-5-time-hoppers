@@ -16,22 +16,24 @@
         <div class="btn-group">
             <button type="button" class="btn btn-secondary dropdown-toggle m-2" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Filter Tours
+                Sort By
             </button>
             <ul class="dropdown-menu">
-                <a href="" class="dropdown-item" aria-label="#">By Price</a>
-                <a href="" class="dropdown-item" aria-label="#">By Rating</a>
-                <a href="" class="dropdown-item" aria-label="#">By Category</a>
-                <a href="" class="dropdown-item" aria-label="#">Most Recent</a>
+                <a href="{% url 'tours-list' %}?sort=price-lowest" class="dropdown-item" aria-label="#">By Price: <small>Low to High</small></a>
+                <a href="{% url 'tours-list' %}?sort=price-highest" class="dropdown-item" aria-label="#">By Price: <small>High to Low</small></a>
+                <a href="{% url 'tours-list' %}?sort=rating" class="dropdown-item" aria-label="#">By Highest Rating</a>
+                <a href="{% url 'tours-list' %}?sort=tour-name-ascending" class="dropdown-item" aria-label="#">By Name: <small>A-Z</small></a>
+                <a href="{% url 'tours-list' %}?sort=tour-name-desending" class="dropdown-item" aria-label="#">By Name: <small>Z-A</small></a>
+                <a href="{% url 'tours-list' %}?sort=most-recent" class="dropdown-item" aria-label="#">Most Recent</a>
                 <a href="{% url 'tours-list' %}" aria-label="Go to Tours List" class="dropdown-item">All Tours</a>
             </ul>
         </div>
 
         <!-- Special Offers Filter Menu -->
         <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+            <button type="button" class="btn btn-secondary dropdown-toggle m-2" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Filter By Era
+                Filter By
             </button>
             <ul class="dropdown-menu">
                 <a href="{% url 'tours-list' %}?category=80s_tours" class="dropdown-item"
@@ -43,7 +45,7 @@
 
         <!-- Special Offers Filter Menu -->
         <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+            <button type="button" class="btn btn-secondary dropdown-toggle m-2" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Special Offers
             </button>

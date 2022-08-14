@@ -27,12 +27,27 @@ class TourListView(ListView):
 
     def get_queryset(self):
         """
-        Define query_set to get user search results or search by category
+        Define query_set to get user search results, search by category or sort
         """
         queryset = super().get_queryset()
-
         if self.request.GET:
 
+            # sort by
+            sort = self.request.GET.get('sort')
+            if sort == 'most-recent':
+                queryset = queryset.order_by('-date_added')
+            if sort == 'tour-name-ascending':
+                queryset = queryset.order_by('tour_name')
+            if sort == 'tour-name-desending':
+                queryset = queryset.order_by('-tour_name')
+            if sort == 'price-lowest':
+                queryset = queryset.order_by('price')
+            if sort == 'price-highest':
+                queryset = queryset.order_by('-price')
+            if sort == 'rating':
+                queryset = queryset.order_by('rating')
+
+            # get user search results
             if 'q' in self.request.GET:
                 query = self.request.GET.get("q")
                 if not query:
@@ -40,14 +55,15 @@ class TourListView(ListView):
                         self.request,
                         "You did not enter anything to search"
                         )
-                return queryset.filter(
+                queryset = queryset.filter(
                         Q(tour_name__icontains=query)
                         | Q(description__icontains=query)
                         )
 
+            # search by category
             if 'category' in self.request.GET:
                 categories = self.request.GET['category'].split(',')
-                return queryset.filter(category__name__in=categories)
+                queryset = queryset.filter(category__name__in=categories)
 
         return queryset
 
