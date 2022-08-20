@@ -33,19 +33,18 @@ class TourListView(ListView):
         if self.request.GET:
 
             # sort by
-            sort = self.request.GET.get('sort')
-            if sort == 'most-recent':
-                queryset = queryset.order_by('-date_added')
-            if sort == 'tour-name-ascending':
-                queryset = queryset.order_by('tour_name')
-            if sort == 'tour-name-desending':
-                queryset = queryset.order_by('-tour_name')
-            if sort == 'price-lowest':
-                queryset = queryset.order_by('price')
-            if sort == 'price-highest':
-                queryset = queryset.order_by('-price')
-            if sort == 'rating':
-                queryset = queryset.order_by('rating')
+            if 'sort' in self.request.GET:
+                sort = self.request.GET['sort']
+                if sort == 'tour_name':
+                    queryset = queryset.order_by('tour_name')
+
+                if 'direction' in self.request.GET:
+                    direction = self.request.GET['direction']
+                    if direction == 'ascending':
+                        sort = f'{sort}'
+                    if direction == 'desending':
+                        sort = f'-{sort}'
+                queryset = queryset.order_by(sort)
 
             # get user search results
             if 'q' in self.request.GET:
@@ -66,6 +65,16 @@ class TourListView(ListView):
                 queryset = queryset.filter(category__name__in=categories)
 
         return queryset
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data()
+    #     query = self.request.GET.get("q")
+    #     context['search_query'] = query
+    #     sort = self.request.GET['sort']
+    #     direction = self.request.GET['direction']
+    #     sort_by = f'{sort}_{direction}'
+    #     context['sort_by'] = sort_by
+    #     return context
 
 
 class TourDetailView(DetailView):
