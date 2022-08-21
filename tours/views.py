@@ -66,15 +66,15 @@ class TourListView(ListView):
 
         return queryset
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data()
-    #     query = self.request.GET.get("q")
-    #     context['search_query'] = query
-    #     sort = self.request.GET['sort']
-    #     direction = self.request.GET['direction']
-    #     sort_by = f'{sort}_{direction}'
-    #     context['sort_by'] = sort_by
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        query = self.request.GET.get("q")
+        context['search_query'] = query
+        # sort = self.request.GET['sort']
+        # direction = self.request.GET['direction']
+        # sort_by = f'{sort}_{direction}'
+        # context['sort_by'] = sort_by
+        return context
 
 
 class TourDetailView(DetailView):
