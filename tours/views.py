@@ -9,12 +9,13 @@ from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
     DetailView,
+    FormView,
     UpdateView,
     DeleteView
 )
 from django.core.paginator import Paginator
 from .models import Tour, Review
-from .forms import ReviewForm
+from .forms import ReviewForm, BookingForm
 
 
 class TourListView(ListView):
@@ -99,8 +100,7 @@ class TourDetailView(DetailView):
             review.save()
             messages.success(request, 'Your Review Was Successfully Added')
             return redirect('tour-detail', tour.pk)
-        else:
-            review_form = ReviewForm()
+        review_form = ReviewForm()
 
     def get_context_data(self, **kwargs):
         """
@@ -118,6 +118,19 @@ class TourDetailView(DetailView):
         context['paginator'] = paginator
         context['review_form'] = ReviewForm()
         return context
+
+
+class BookingView(FormView):
+    """ Booking """
+    form_class = BookingForm
+    template_name = 'tours/booking_form.html'
+    success_url = reverse_lazy('tours-list')
+
+    def form_valid(self, form):
+        """ Save booking & show success message """
+        form.save()
+        messages.success(self.request, 'Booking Successfully Added to Basket')
+        return super(BookingView, self).form_valid(form)
 
 
 class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
