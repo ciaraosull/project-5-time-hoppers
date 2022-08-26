@@ -3,6 +3,11 @@ from django import forms
 from .models import Review
 
 
+class DateInput(forms.DateInput):
+    """Change input type to date picker"""
+    input_type = 'date'
+
+
 class ReviewForm(forms.ModelForm):
     """Create a form for users to leave reviews on tour page"""
     class Meta:
