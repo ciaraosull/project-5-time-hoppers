@@ -26,6 +26,7 @@ class BookingForm(forms.ModelForm):
             choices=DEPARTURE_TIME_CHOICES,
             required=True
             )
+
         fields = [
             'tour_name',
             'book_tour_date',
