@@ -15,7 +15,10 @@
                         </legend>
                         {{  form | crispy  }}
                     </fieldset>
-                    <div class="form-group d-flex justify-content-end">
+                    <div class="form-group d-flex justify-content-between">
+                        <!-- Cancel Booking & Return back to previous page where tour booking was listed -->
+                        <a class="btn btn-outline-secondary btn-lg mt-4 mb-5" href="{{request.META.HTTP_REFERER}}">Cancel</a>
+                        <!-- Submit Booking -->
                         <button class="btn btn-primary btn-lg mt-4 mb-5" type="submit">Book Tour</button>
                     </div>
                 </form>

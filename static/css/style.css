@@ -53,6 +53,23 @@ main {
     border-color: #f19f5c !important;
 }
 
+.btn-primary:hover {
+    border-radius: none !important;
+    background-color: #fdfcfb !important;
+    color: #ec7718 !important;
+    border-color: #f19f5c !important;
+}
+
+.btn-outline-secondary {
+    background-color: #383636 !important;
+    color: #fdfcfb !important;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #fdfcfb !important;
+    color: #383636 !important;
+}
+
 
 /* Custom styling for footer */
 #footer {
