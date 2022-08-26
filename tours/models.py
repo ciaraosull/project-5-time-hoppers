@@ -1,6 +1,8 @@
 """ Imports for Tours """
+from decimal import Decimal
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
 
 
 class Category(models.Model):
@@ -14,7 +16,7 @@ class Category(models.Model):
 
     def __str__(self):
         """ To return the name objects as a string """
-        return self.name
+        return f"Category Name: {self.name}"
 
     def get_friendly_name(self):
         """ To return the friendly name objects as a string """
@@ -25,8 +27,9 @@ class Tour(models.Model):
     """ Tour Details"""
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
-    tour_name = models.CharField(max_length=254)
+    tour_name = models.CharField(max_length=250)
     description = models.TextField()
+    tour_duration = models.CharField(max_length=250, null=True, blank=True)
     rating = models.DecimalField(
         max_digits=5, decimal_places=0, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
@@ -40,7 +43,7 @@ class Tour(models.Model):
 
     def __str__(self):
         """ To return the name objects as a string """
-        return self.tour_name
+        return f"Tour Name: {self.tour_name}"
 
 
 class Review(models.Model):
@@ -58,3 +61,46 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review {self.your_review} by {self.name}"
+
+
+class DepartureTime(models.Model):
+    """ Departure times for tour bookings """
+    DEPARTURE_TIME_CHOICES = [
+        ('9:00', '9am'),
+        ('11:00', '11am'),
+        ('13:00', '1pm'),
+        ('15:00', '3pm'),
+        ('20:00', '8pm'),
+        ]
+
+    departure_time = models.CharField(
+        max_length=5,
+        choices=DEPARTURE_TIME_CHOICES
+        )
+
+    def __str__(self):
+        """ To return the name objects as a string """
+        return f"Depart at: {self.departure_time}"
+
+
+class Booking(models.Model):
+    """ Model for Booking """
+    tour_name = models.ForeignKey(
+        Tour, on_delete=models.CASCADE, related_name='bookings')
+    book_tour_date = models.DateField()
+    departure_time = models.ForeignKey(
+        'DepartureTime', on_delete=models.CASCADE)
+    quantity = models.DecimalField(
+        max_digits=20,
+        decimal_places=0,
+        validators=[MinValueValidator(Decimal('0.01'))]
+            )
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        """ To display the booking by created on in desending order """
+        ordering = ['-book_tour_date']
+
+    def __str__(self):
+        """ To return the individual title objects as a string """
+        return f"Booking: {self.tour_name} on {self.book_tour_date}"
