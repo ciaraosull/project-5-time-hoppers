@@ -29,7 +29,12 @@ class Tour(models.Model):
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
     tour_name = models.CharField(max_length=250)
     description = models.TextField()
-    tour_duration = models.CharField(max_length=250, null=True, blank=True)
+    tour_duration = models.CharField(
+        null=True,
+        max_length=250,
+        help_text="Specify quantity by days or hours only"
+        )
+    accessibility_friendly = models.BooleanField(null=True, blank=True)
     rating = models.DecimalField(
         max_digits=5, decimal_places=0, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
@@ -63,8 +68,8 @@ class Review(models.Model):
         return f"Review {self.your_review} by {self.name}"
 
 
-class DepartureTime(models.Model):
-    """ Departure times for tour bookings """
+class Booking(models.Model):
+    """ Model for Booking """
     DEPARTURE_TIME_CHOICES = [
         ('9:00', '9am'),
         ('11:00', '11am'),
@@ -73,28 +78,21 @@ class DepartureTime(models.Model):
         ('20:00', '8pm'),
         ]
 
+    tour_name = models.ForeignKey(
+        Tour, on_delete=models.CASCADE, related_name='bookings')
+    book_tour_date = models.DateField()
     departure_time = models.CharField(
         max_length=5,
         choices=DEPARTURE_TIME_CHOICES
         )
-
-    def __str__(self):
-        """ To return the name objects as a string """
-        return f"Depart at: {self.departure_time}"
-
-
-class Booking(models.Model):
-    """ Model for Booking """
-    tour_name = models.ForeignKey(
-        Tour, on_delete=models.CASCADE, related_name='bookings')
-    book_tour_date = models.DateField()
-    departure_time = models.ForeignKey(
-        'DepartureTime', on_delete=models.CASCADE)
-    quantity = models.DecimalField(
-        max_digits=20,
-        decimal_places=0,
-        validators=[MinValueValidator(Decimal('0.01'))]
-            )
+    quantity = models.PositiveSmallIntegerField(
+        help_text="Number of TimeHoppers over 18 years old only"
+        )
+    notes = models.TextField(
+        null=True,
+        max_length=500,
+        help_text="Note Any Specific Requirements Here"
+        )
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:

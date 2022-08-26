@@ -1,7 +1,7 @@
 """ Imports for admin site"""
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Tour, Category, Review, DepartureTime, Booking
+from .models import Tour, Category, Review, Booking
 
 
 @admin.register(Tour)
@@ -11,7 +11,7 @@ class TourAdmin(SummernoteModelAdmin):
         'date_added',
         'tour_name',
         'category',
-        'tour_duration'
+        'tour_duration',
         'rating',
         'price',
         'image'
@@ -35,12 +35,6 @@ class ReviewAdmin(admin.ModelAdmin):
     search_fields = ('name', 'your_review')
 
 
-@admin.register(DepartureTime)
-class DepartureTimeAdmin(admin.ModelAdmin):
-    """Class to display reviews on admin site"""
-    list_display = ('departure_time')
-
-
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
     """ Display Booking Model on Admin Site """
@@ -48,7 +42,7 @@ class BookingAdmin(admin.ModelAdmin):
         'tour_name',
         'book_tour_date',
         'departure_time',
-        'quantity'
+        'quantity',
         'date_added'
     )
     search_fields = ['tour_name']
