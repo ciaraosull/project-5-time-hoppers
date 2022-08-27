@@ -28,7 +28,6 @@ class BookingForm(forms.ModelForm):
             )
 
         fields = [
-            'tour_name',
             'book_tour_date',
             'departure_time',
             'quantity',

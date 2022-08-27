@@ -14,7 +14,7 @@ from django.views.generic import (
     DeleteView
 )
 from django.core.paginator import Paginator
-from .models import Tour, Review
+from .models import Tour, Review, Booking
 from .forms import ReviewForm, BookingForm
 
 
@@ -68,6 +68,7 @@ class TourListView(ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
+        """ Define context data to display in template"""
         context = super().get_context_data()
         query = self.request.GET.get("q")
         context['search_query'] = query
@@ -84,9 +85,9 @@ class TourDetailView(DetailView):
 
     def tour(self, request, pk):
         """
-        To get the tour detail view and display comment form
+        To get the tour detail view and display review form
         if user is logged in.  If form is valid then,
-        save the details of the comment form and include username
+        save the details of the commereview form and include username
         """
         tour = get_object_or_404(Tour, pk=pk)
         review_form = ReviewForm(data=request.POST)
@@ -105,7 +106,7 @@ class TourDetailView(DetailView):
     def get_context_data(self, **kwargs):
         """
         To display the review form and
-        paginate reviews list if the user is logged in
+        paginate reviews list
         """
         context = super().get_context_data()
         pk = self.kwargs['pk']
@@ -122,15 +123,38 @@ class TourDetailView(DetailView):
 
 class BookingView(FormView):
     """ Booking """
+    Model = Booking
     form_class = BookingForm
+    context_object_name = 'booking'
     template_name = 'tours/booking_form.html'
     success_url = reverse_lazy('tours-list')
 
     def form_valid(self, form):
-        """ Save booking & show success message """
-        form.save()
-        messages.success(self.request, 'Booking Successfully Added to Basket')
-        return super(BookingView, self).form_valid(form)
+        """ Save booking for chosen tour name & show success message """
+        pk = self.kwargs['pk']
+        tour = get_object_or_404(Tour, pk=pk)
+        booking_form = BookingForm(data=self.request.POST)
+
+        if booking_form.is_valid():
+            booking_form.instance.tour_name = tour
+            booking = booking_form.save(commit=False)
+            booking.tour_name = tour
+            booking.save()
+            messages.success(self.request, 'Booking Was Successfully Added')
+            return redirect('tour-detail', tour.pk)
+        booking_form = BookingForm()
+        
+    def get_context_data(self, **kwargs):
+        """
+        Define context data to display chosen tour name in booking form
+        """
+        context = super().get_context_data()
+        pk = self.kwargs['pk']
+        tour = get_object_or_404(Tour, pk=pk)
+        booking = Booking.objects.filter(tour_name=tour)
+        booking.tour_name = tour
+        context['tour_name'] = tour
+        return context
 
 
 class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

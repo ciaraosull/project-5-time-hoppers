@@ -46,7 +46,7 @@ class Tour(models.Model):
 
     def __str__(self):
         """ To return the name objects as a string """
-        return f"Tour Name: {self.tour_name}"
+        return self.tour_name
 
 
 class Review(models.Model):
@@ -89,7 +89,8 @@ class Booking(models.Model):
     notes = models.TextField(
         null=True,
         max_length=500,
-        help_text="Note Any Specific Requirements Here"
+        help_text="Note Any Specific Requirements Here",
+        blank=True
         )
     date_added = models.DateTimeField(auto_now_add=True)
 
