@@ -1,11 +1,20 @@
 """Form for Reviews"""
 from django import forms
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 from .models import Booking, Review
 
 
 class DateInput(forms.DateInput):
     """Change input type to date picker"""
     input_type = 'date'
+
+    def validate_date(self, date):
+        """
+        Set date validator to ensure past dates not accepted
+        """
+        if date < timezone.now().date():
+            raise ValidationError("Date cannot be in the past")
 
 
 class BookingForm(forms.ModelForm):
