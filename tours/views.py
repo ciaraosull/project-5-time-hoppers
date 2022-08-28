@@ -72,36 +72,37 @@ class TourListView(ListView):
         context = super().get_context_data()
         query = self.request.GET.get("q")
         context['search_query'] = query
-        # sort = self.request.GET['sort']
-        # direction = self.request.GET['direction']
-        # sort_by = f'{sort}_{direction}'
-        # context['sort_by'] = sort_by
         return context
 
 
 class TourDetailView(DetailView):
     """ Class to show the individual tours in a detail view """
     model = Tour
+    form_class = ReviewForm
 
-    def tour(self, request, pk):
+    def tour(self, pk):
         """
         To get the tour detail view and display review form
         if user is logged in.  If form is valid then,
         save the details of the commereview form and include username
         """
+
         tour = get_object_or_404(Tour, pk=pk)
-        review_form = ReviewForm(data=request.POST)
+        review_form = ReviewForm(data=self.request.POST)
 
         if review_form.is_valid():
-            review_form.instance.name = request.user
+            review_form.instance.name = self.request.user
             review_form.instance.tour = tour
             review = review_form.save(commit=False)
-            review.name = request.user
+            review.name = self.request.user
             review.tour = tour
             review.save()
-            messages.success(request, 'Your Review Was Successfully Added')
+            messages.success(
+                self.request, 'Your Review Was Successfully Added'
+                )
             return redirect('tour-detail', tour.pk)
-        review_form = ReviewForm()
+        else:
+            review_form = ReviewForm()
 
     def get_context_data(self, **kwargs):
         """
@@ -143,7 +144,7 @@ class BookingView(FormView):
             messages.success(self.request, 'Booking Was Successfully Added')
             return redirect('tour-detail', tour.pk)
         booking_form = BookingForm()
-        
+
     def get_context_data(self, **kwargs):
         """
         Define context data to display chosen tour name in booking form

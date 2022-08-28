@@ -30,12 +30,14 @@
                     Price: <small>Low to High</small></a>
                 <a href="{% url 'tours-list' %}?sort=price&direction=desending" class="dropdown-item" aria-label="#">By
                     Price: <small>High to Low</small></a>
-                <a href="{% url 'tours-list' %}?sort=rating&direction=desending" class="dropdown-item" aria-label="#">By Highest Rating</a>
+                <a href="{% url 'tours-list' %}?sort=rating&direction=desending" class="dropdown-item" aria-label="#">By
+                    Highest Rating</a>
                 <a href="{% url 'tours-list' %}?sort=tour_name&direction=ascending" class="dropdown-item"
                     aria-label="#">By Name: <small>A-Z</small></a>
                 <a href="{% url 'tours-list' %}?sort=tour_name&direction=desending" class="dropdown-item"
                     aria-label="#">By Name: <small>Z-A</small></a>
-                <a href="{% url 'tours-list' %}?sort=date_added&direction=desending" class="dropdown-item" aria-label="Sort By Most Recent">Most Recent</a>
+                <a href="{% url 'tours-list' %}?sort=date_added&direction=desending" class="dropdown-item"
+                    aria-label="Sort By Most Recent">Most Recent</a>
             </ul>
         </div>
 
@@ -78,13 +80,6 @@
             Tours Found: {{ tours|length }} {% if search_query %} found for
             <strong>"{{ search_query }}"</strong>{% endif %}
         </p>
-        <!-- <p>{% if sort_by == 'price_desending' %}Sort By Lowest Price{% endif %}</p>
-        <p>{% if sort_by == 'price_ascending' %}Sort By Highest Price{% endif %}></p>
-        <p>{% if sort_by == 'rating_desending' %}Sort By Higest Rated{% endif %}></p>
-        <p>{% if sort_by == 'tour_name_desending' %}Sort By Name Z-A {% endif %}></p>
-        <p>{% if sort_by == 'tour_name_ascending' %}Sort By Name A-Z {% endif %}></p>
-        <p>{% if sort_by == 'date_added_desending' %}Sort By Most Recent{% endif %}></p>
-        <p>{% if sort_by == 'date_added_desending' %}Sort By Most Recent{% endif %}></p> -->
     </div>
 </div>
 
@@ -157,7 +152,8 @@
             <!-- If Search Results do not match show message-->
             {%  empty  %}
             <div>
-                <h1>No Results Match Your Search <strong>"{{ search_query }}"</strong></h1>
+                <h1>No Tours listed for your search {% if search_query %}
+                    <strong>"{{ search_query }}"</strong>{% endif %}</h1>
             </div>
             {%  endfor  %}
         </div>
