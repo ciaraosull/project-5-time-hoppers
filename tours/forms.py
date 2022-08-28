@@ -40,15 +40,11 @@ class BookingForm(forms.ModelForm):
             'book_tour_date': DateInput()
             }
 
-    # def validate_date(self, date):
-    #     """
-    #     Set date validator to ensure past dates not accepted
-    #     """
-    #     if date < timezone.now().date():
-    #         raise ValidationError("Date cannot be in the past")
-
     def clean(self):
-        super(BookingForm, self).clean()
+        """
+        To clean form fields and raise validation errors to user if date in past or quantity 0
+        """
+        super().clean()
 
         book_tour_date = self.cleaned_data.get('book_tour_date')
         quantity = self.cleaned_data.get('quantity')
