@@ -79,7 +79,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                         My Account
                     </a>
-                    <!-- My Account Drop-down menue if user logged in -->
+                    <!-- My Account Drop-down menu if user logged in -->
                     {%  if user.is_authenticated  %}
 
                     <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -158,9 +158,9 @@
             </div>
         </li>
 
-        <!-- Shopping Bag -->
+        <!-- Shopping Basket -->
         <div class="pb-2 pt-2">
-            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="#">
+            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'basket' %}">
                 <div class="nav-icons text-center">
                     <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                     <p class="my-0">

@@ -152,8 +152,8 @@
             <!-- If Search Results do not match show message-->
             {%  empty  %}
             <div>
-                <h1>No Tours listed for your search {% if search_query %}
-                    <strong>"{{ search_query }}"</strong>{% endif %}</h1>
+                <h4>No Tours listed for your search {% if search_query %}
+                    <strong>"{{ search_query }}"</strong>{% endif %}</h4>
             </div>
             {%  endfor  %}
         </div>
