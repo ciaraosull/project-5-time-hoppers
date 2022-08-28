@@ -1,7 +1,8 @@
 """ URLS for Basket App"""
 from django.urls import path
-from basket.views import BasketView
+from . import views
 
 urlpatterns = [
-    path('', BasketView.as_view(), name='basket'),
+    path('', views.view_basket, name='view-basket'),
+    path('add/<item_id>/', views.add_to_basket, name='add-to-basket'),
 ]
