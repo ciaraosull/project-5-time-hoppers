@@ -183,6 +183,9 @@ class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def get_success_url(self):
         """ On successful review update, return to post-detail view"""
         tour = self.object.tour
+        messages.success(
+                self.request, 'Your Review Was Successfully Updated'
+                )
         return reverse_lazy('tour-detail', kwargs={'pk': tour.pk})
 
 
@@ -205,4 +208,7 @@ class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def get_success_url(self):
         """ On successful review deletion, stay on same page"""
         tour = self.object.tour
+        messages.success(
+                self.request, 'Your Review Was Successfully Deleted'
+                )
         return reverse_lazy('tour-detail', kwargs={'pk': tour.pk})
