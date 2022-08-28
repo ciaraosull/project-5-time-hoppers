@@ -83,7 +83,7 @@ class TourDetailView(DetailView):
         """
         To get the tour detail view and display review form
         if user is logged in.  If form is valid then,
-        save the details of the commereview form and include username
+        save the details of the view form and include username
         """
 
         tour = get_object_or_404(Tour, pk=pk)
@@ -190,7 +190,7 @@ class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
     Allow user who created review to delete it.
     """
-    model = Review()
+    model = Review
 
     def test_func(self):
         """
