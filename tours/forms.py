@@ -42,7 +42,7 @@ class BookingForm(forms.ModelForm):
 
     def clean(self):
         """
-        To clean form fields and raise validation errors to user if date in past or quantity 0
+        To clean form fields and raise validation errors to user
         """
         super().clean()
 
