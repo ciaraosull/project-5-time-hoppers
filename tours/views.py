@@ -78,9 +78,8 @@ class TourListView(ListView):
 class TourDetailView(DetailView):
     """ Class to show the individual tours in a detail view """
     model = Tour
-    form_class = ReviewForm
 
-    def tour(self, pk):
+    def post(self, request, pk):
         """
         To get the tour detail view and display review form
         if user is logged in.  If form is valid then,
@@ -88,17 +87,17 @@ class TourDetailView(DetailView):
         """
 
         tour = get_object_or_404(Tour, pk=pk)
-        review_form = ReviewForm(data=self.request.POST)
+        review_form = ReviewForm(data=request.POST)
 
         if review_form.is_valid():
-            review_form.instance.name = self.request.user
+            review_form.instance.name = request.user
             review_form.instance.tour = tour
             review = review_form.save(commit=False)
-            review.name = self.request.user
+            review.name = request.user
             review.tour = tour
             review.save()
             messages.success(
-                self.request, 'Your Review Was Successfully Added'
+                request, 'Your Review Was Successfully Added'
                 )
             return redirect('tour-detail', tour.pk)
         else:
