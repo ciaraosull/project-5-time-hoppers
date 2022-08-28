@@ -9,13 +9,6 @@ class DateInput(forms.DateInput):
     """Change input type to date picker"""
     input_type = 'date'
 
-    def validate_date(self, date):
-        """
-        Set date validator to ensure past dates not accepted
-        """
-        if date < timezone.now().date():
-            raise ValidationError("Date cannot be in the past")
-
 
 class BookingForm(forms.ModelForm):
     """ Create a Booking """
@@ -46,6 +39,27 @@ class BookingForm(forms.ModelForm):
         widgets = {
             'book_tour_date': DateInput()
             }
+
+    # def validate_date(self, date):
+    #     """
+    #     Set date validator to ensure past dates not accepted
+    #     """
+    #     if date < timezone.now().date():
+    #         raise ValidationError("Date cannot be in the past")
+
+    def clean(self):
+        super(BookingForm, self).clean()
+
+        book_tour_date = self.cleaned_data.get('book_tour_date')
+        quantity = self.cleaned_data.get('quantity')
+
+        if book_tour_date < timezone.now().date():
+            raise ValidationError("Book Tour Date cannot be in the past")
+
+        if quantity == 0:
+            raise ValidationError("Quantity must be more than 0")
+
+        return self.cleaned_data
 
 
 class ReviewForm(forms.ModelForm):
