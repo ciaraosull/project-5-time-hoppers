@@ -11,7 +11,7 @@
 <div class="container mb-2">
     <div class="row">
         <div class="col">
-            <h2 class="mb-4 mt-4">Shopping Basket</h2>
+            <h2 class="mb-4 mt-4">Review Your Booking Before Payment</h2>
             <hr>
         </div>
     </div>
@@ -19,24 +19,25 @@
     <!-- List of Bookings -->
     <div class="row">
         <div class="col">
-            {%  for booking in bookings  %}
-            {% if booking %}
             <div class="table-responsive rounded"></div>
+            <h2>Tour Name: {{  tour_name  }} here</h2>
             <div>
-                <h2>Tour Name: {{  booking.tour_name  }}</h2>
-                <p>Booked On: {{  booking.date_added  }}</p>
-                <p>Tour Date: {{  booking.book_tour_date  }}</p>
-                <p>Departure Time: {{  booking.departure_time  }}</p>
-                <p>Number of Tickets: {{  booking.quantity  }}</p>
+                <p>Tour Name: {{  tour_name  }}</p>
+                <p>Tour Date: {{  request.session.book_tour_date  }}</p>
+                <p>Departure Time: {{  request.session.departure_time  }}</p>
+                <p>Number of Tickets: {{  request.session.quantity  }}</p>
                 <p>Price: {{  tour.price  }}</p>
+                <p>{{  bookings  }}</p>
+                <p>{{request.session.basket}}</p>
+                <p>{{basket}}</p>
+
             </div>
-            {% else %}
-            <p class="mb-5">You have no Tour Bookings yet</p>
+            <!-- <p class="mb-5">You have no Tour Bookings yet</p>
             <a class="btn btn-primary mb4" href="{% url 'tours-list' %}" aria-label="Go to the Book Tour Section">Book
                 Tour
-            </a>
-            {% endif %}
-            {%  endfor  %}
+            </a> -->
+
+           
         </div>
     </div>
 </div>

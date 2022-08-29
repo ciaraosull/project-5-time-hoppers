@@ -28,11 +28,28 @@ class BookingView(FormView):
         booking_form = BookingForm(data=self.request.POST)
 
         if booking_form.is_valid():
+            basket = [
+                booking_form.data['book_tour_date'],
+                booking_form.data['departure_time'],
+                booking_form.cleaned_data['quantity'],
+                booking_form.data['notes']
+                ]
+
+            self.request.session['basket'] = basket
+
+            # self.request.session['book_tour_date'] = booking_form.data['book_tour_date']
+            # self.request.session['departure_time'] = booking_form.data['departure_time']
+            # self.request.session['quantity'] = booking_form.cleaned_data['quantity']
+            # self.request.session['notes'] = booking_form.data['notes']
+            print(self.request.session['basket'])
+            # booking_form.instance.name = self.request.user
             booking_form.instance.tour_name = tour
-            booking = booking_form.save(commit=False)
-            booking.tour_name = tour
-            booking.save()
-            messages.success(self.request, 'Booking Was Successfully Added')
+            # booking_form.name = self.request.user
+            # booking = booking_form.save(commit=False)
+            booking_form.tour_name = tour
+            # booking.save()
+            messages.success(self.request, 'Booking Successfully Added to Basket')
+            print(basket)
             return redirect('view-basket')
         booking_form = BookingForm()
 
