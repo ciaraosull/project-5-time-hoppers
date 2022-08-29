@@ -9,13 +9,12 @@ from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
     DetailView,
-    FormView,
     UpdateView,
     DeleteView
 )
 from django.core.paginator import Paginator
-from .models import Tour, Review, Booking
-from .forms import ReviewForm, BookingForm
+from .models import Tour, Review
+from .forms import ReviewForm
 
 
 class TourListView(ListView):
@@ -118,42 +117,6 @@ class TourDetailView(DetailView):
         context['page'] = page
         context['paginator'] = paginator
         context['review_form'] = ReviewForm()
-        return context
-
-
-class BookingView(FormView):
-    """ Booking """
-    Model = Booking
-    form_class = BookingForm
-    context_object_name = 'booking'
-    template_name = 'tours/booking_form.html'
-    success_url = reverse_lazy('tours-list')
-
-    def form_valid(self, form):
-        """ Save booking for chosen tour name & show success message """
-        pk = self.kwargs['pk']
-        tour = get_object_or_404(Tour, pk=pk)
-        booking_form = BookingForm(data=self.request.POST)
-
-        if booking_form.is_valid():
-            booking_form.instance.tour_name = tour
-            booking = booking_form.save(commit=False)
-            booking.tour_name = tour
-            booking.save()
-            messages.success(self.request, 'Booking Was Successfully Added')
-            return redirect('tour-detail', tour.pk)
-        booking_form = BookingForm()
-
-    def get_context_data(self, **kwargs):
-        """
-        Define context data to display chosen tour name in booking form
-        """
-        context = super().get_context_data()
-        pk = self.kwargs['pk']
-        tour = get_object_or_404(Tour, pk=pk)
-        booking = Booking.objects.filter(tour_name=tour)
-        booking.tour_name = tour
-        context['tour_name'] = tour
         return context
 
 

@@ -3,7 +3,6 @@ from django.urls import path
 from .views import (
     TourListView,
     TourDetailView,
-    BookingView,
     ReviewDeleteView,
     ReviewUpdateView
 )
@@ -11,11 +10,6 @@ from .views import (
 urlpatterns = [
     path('', TourListView.as_view(), name='tours-list'),
     path('<int:pk>/', TourDetailView.as_view(), name='tour-detail'),
-    path(
-        '<int:pk>/bookings/',
-        BookingView.as_view(),
-        name='bookings'
-        ),
     path(
         'reviews/<int:pk>/update/',
         ReviewUpdateView.as_view(),
