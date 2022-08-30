@@ -1,7 +1,7 @@
 """ Imports for Bookings """
+from django.contrib.auth.models import User
 from django.db import models
 from tours.models import Tour
-from django.contrib.auth.models import User
 
 
 class Booking(models.Model):
@@ -15,9 +15,16 @@ class Booking(models.Model):
         ]
 
     name = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True, related_name='user')
+        User, on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='user'
+        )
     tour_name = models.ForeignKey(
-        Tour, on_delete=models.CASCADE, related_name='bookings')
+        Tour,
+        on_delete=models.CASCADE,
+        related_name='bookings'
+        )
     book_tour_date = models.DateField()
     departure_time = models.CharField(
         max_length=5,
@@ -33,6 +40,7 @@ class Booking(models.Model):
         blank=True
         )
     date_added = models.DateTimeField(auto_now_add=True)
+    booked = models.BooleanField(default=False)
 
     class Meta:
         """ To display the booking by created on in desending order """
@@ -41,3 +49,15 @@ class Booking(models.Model):
     def __str__(self):
         """ To return the individual title objects as a string """
         return f"Booking: {self.tour_name} on {self.book_tour_date}"
+
+
+class Basket(models.Model):
+    """ Model for Basket to contain Booking Items """
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        )
+    booking_items = models.ManyToManyField(Booking)
+    date_ordered = models.DateTimeField(auto_now_add=True)
+    booked = models.BooleanField(default=False)
