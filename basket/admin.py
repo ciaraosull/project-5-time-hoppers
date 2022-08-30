@@ -7,7 +7,7 @@ from .models import Booking, Basket
 class BookingAdmin(admin.ModelAdmin):
     """ Display Booking Model on Admin Site """
     list_display = (
-        'tour_name',
+        'tour',
         'book_tour_date',
         'departure_time',
         'quantity',
@@ -15,7 +15,7 @@ class BookingAdmin(admin.ModelAdmin):
         'booked',
         'notes'
     )
-    search_fields = ['tour_name']
+    search_fields = ['tour']
     list_filter = ('date_added', 'booked', 'book_tour_date')
 
 

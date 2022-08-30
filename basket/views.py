@@ -30,10 +30,10 @@ class BookingView(LoginRequiredMixin, FormView):
 
         if booking_form.is_valid():
             booking_form.instance.name = self.request.user
-            booking_form.instance.tour_name = tour
+            booking_form.instance.tour = tour
             booking_form.name = self.request.user
             booking = booking_form.save(commit=False)
-            booking_form.tour_name = tour
+            booking_form.tour = tour
             booking.save()
             messages.success(self.request, 'Booking Successfully Added')
             return redirect('view-basket')
@@ -46,16 +46,22 @@ class BookingView(LoginRequiredMixin, FormView):
         context = super().get_context_data()
         pk = self.kwargs['pk']
         tour = get_object_or_404(Tour, pk=pk)
-        booking = Booking.objects.filter(tour_name=tour)
+        booking = Booking.objects.filter(tour=tour)
         booking.tour_name = tour
         context['tour_name'] = tour
         return context
 
 
-class BasketListView(ListView):
+class BasketListView(LoginRequiredMixin, ListView):
     """Class to show the posts in list view on home page """
-    model = Basket
+    model = Booking
     template_name = 'basket/basket.html'
     context_object_name = 'bookings'
     ordering = ['-date_added']
-    paginate_by = 6
+
+    def get_queryset(self):
+        """Only show Bookings by User """
+        return Booking.objects.filter(name=self.request.user)
+
+
+

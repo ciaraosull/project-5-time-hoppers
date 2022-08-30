@@ -12,7 +12,7 @@
 <div class="container mb-2">
     <div class="row">
         <div class="col">
-            <h2 class="mb-4 mt-4">Review Your Booking Before Payment</h2>
+            <h2 class="mb-4 mt-5">Booking Summary</h2>
         </div>
     </div>
 
@@ -28,27 +28,28 @@
                     <th>Dept Time</th>
                     <th>Price p/p</th>
                     <th>QTY</th>
-                    <th>Amount</th>
+                    <th>Total Tour Price</th>
                     <th></th>
                 </tr>
             </thead>
 
             <!--Table body-->
             <tbody>
+                {% for booking in bookings %}
                 <tr>
                     <th scope="row">
                         <img src="" alt=""
                             class="img-fluid">
                     </th>
                     <td>
-                        <h5><strong>Tour 1</strong></h5>
-                        <p class="text-muted">Tour Duration</p>
+                        <h5><strong>{{  booking.tour.tour_name}}</strong></h5>
+                        <p class="text-muted">{{  booking.tour.tour_duration}}</p>
                     </td>
-                    <td>Date</td>
-                    <td>Dept Time</td>
-                    <td>€ Price</td>
+                    <td>{{  booking.book_tour_date}}</td>
+                    <td>{{  booking.departure_time}}</td>
+                    <td>€ {{  booking.tour.price}}</td>
                     <td>
-                        <span class="qty">1 </span>
+                        <span class="qty">{{  booking.quantity}}</span>
                         <div class="btn-group" data-toggle="buttons">
                             <label class="btn btn-sm btn-primary btn-rounded">
                                 <input type="radio" name="options" id="option1">&mdash;
@@ -58,13 +59,14 @@
                             </label>
                         </div>
                     </td>
-                    <td>€ Price</td>
+                    <td>€ ??</td>
                     <td>
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top"
                             title="Remove item">X
                         </button>
                     </td>
                 </tr>
+                {%  endfor  %}
             </tbody>
         </table>
     </div>
@@ -72,8 +74,8 @@
     {%  else  %}
 
     <div>
-        <p>Please sign in to make or view bookings</p>
+        <p>No Bookings in Basket</p>
     </div>
-
     {%  endif %}
+
     {% endblock %}

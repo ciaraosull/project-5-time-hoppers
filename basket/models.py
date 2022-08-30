@@ -20,7 +20,7 @@ class Booking(models.Model):
         blank=True,
         related_name='user'
         )
-    tour_name = models.ForeignKey(
+    tour = models.ForeignKey(
         Tour,
         on_delete=models.CASCADE,
         related_name='bookings'
@@ -48,7 +48,7 @@ class Booking(models.Model):
 
     def __str__(self):
         """ To return the individual title objects as a string """
-        return f"Booking: {self.tour_name} on {self.book_tour_date}"
+        return f"Booking: {self.tour} on {self.book_tour_date}"
 
 
 class Basket(models.Model):
