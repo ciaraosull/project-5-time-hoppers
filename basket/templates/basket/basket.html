@@ -13,44 +13,67 @@
     <div class="row">
         <div class="col">
             <h2 class="mb-4 mt-4">Review Your Booking Before Payment</h2>
-            <hr>
         </div>
     </div>
 
     <!-- List of Bookings -->
-    <div class="row">
-        <div class="col">
-            {% if bookings %}
-            {%  for booking in bookings %}
-            <div class="table-responsive rounded"></div>
-            <h2>Tour Name: {{  tour_name  }} here</h2>
-            <div>
-                <p>Tour Name: {{  tour.tour_name  }}</p>
-                <p>Tour Date: {{  booking.book_tour_date  }}</p>
-                <p>Departure Time: {{  booking.departure_time  }}</p>
-                <p>Number of Tickets: {{  bookingt.quantity  }}</p>
-                <p>Price: {{  booking.price  }}</p>
-            {% endfor %}
+    <div class="table-responsive rounded">
+        <table class="table product-table">
+            <!--Table head-->
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Tour</th>
+                    <th>Date</th>
+                    <th>Dept Time</th>
+                    <th>Price p/p</th>
+                    <th>QTY</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+            </thead>
 
-            </div>
-            {%  else %}
-            <p class="mb-5">You have no Tour Bookings yet</p>
-            <a class="btn btn-primary mb4" href="{% url 'tours-list' %}" aria-label="Go to the Book Tour Section">Book
-                Tour
-            </a>
-
-            {% endif %}
-
-           
-        </div>
+            <!--Table body-->
+            <tbody>
+                <tr>
+                    <th scope="row">
+                        <img src="" alt=""
+                            class="img-fluid">
+                    </th>
+                    <td>
+                        <h5><strong>Tour 1</strong></h5>
+                        <p class="text-muted">Tour Duration</p>
+                    </td>
+                    <td>Date</td>
+                    <td>Dept Time</td>
+                    <td>€ Price</td>
+                    <td>
+                        <span class="qty">1 </span>
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-sm btn-primary btn-rounded">
+                                <input type="radio" name="options" id="option1">&mdash;
+                            </label>
+                            <label class="btn btn-sm btn-primary btn-rounded">
+                                <input type="radio" name="options" id="option2">+
+                            </label>
+                        </div>
+                    </td>
+                    <td>€ Price</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top"
+                            title="Remove item">X
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-</div>
 
-{%  else  %}
+    {%  else  %}
 
-<div>
-    <p>Please sign in to make or view bookings</p>
-</div>
+    <div>
+        <p>Please sign in to make or view bookings</p>
+    </div>
 
-{%  endif %}
-{% endblock %}
+    {%  endif %}
+    {% endblock %}

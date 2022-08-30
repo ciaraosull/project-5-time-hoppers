@@ -63,7 +63,7 @@ class Basket(models.Model):
     booked = models.BooleanField(default=False)
 
     class Meta:
-        """ To display the items in the basket by created on in desending order """
+        """ To display the basket by created on in desending order """
         ordering = ['-date_added']
 
     def __str__(self):
