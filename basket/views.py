@@ -10,7 +10,7 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 from tours.models import Tour
-from .models import Booking
+from .models import Booking, Basket
 from .forms import BookingForm
 
 
@@ -54,7 +54,7 @@ class BookingView(LoginRequiredMixin, FormView):
 
 class BasketListView(ListView):
     """Class to show the posts in list view on home page """
-    model = Booking
+    model = Basket
     template_name = 'basket/basket.html'
     context_object_name = 'bookings'
     ordering = ['-date_added']

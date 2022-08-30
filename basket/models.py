@@ -44,7 +44,7 @@ class Booking(models.Model):
 
     class Meta:
         """ To display the booking by created on in desending order """
-        ordering = ['-book_tour_date']
+        ordering = ['-date_added']
 
     def __str__(self):
         """ To return the individual title objects as a string """
@@ -59,5 +59,13 @@ class Basket(models.Model):
         blank=True,
         )
     booking_items = models.ManyToManyField(Booking)
-    date_ordered = models.DateTimeField(auto_now_add=True)
+    date_added = models.DateTimeField(auto_now_add=True)
     booked = models.BooleanField(default=False)
+
+    class Meta:
+        """ To display the items in the basket by created on in desending order """
+        ordering = ['-date_added']
+
+    def __str__(self):
+        """ To return the individual title objects as a string """
+        return f"Basket: {self.booking_items} added on {self.date_added}"
