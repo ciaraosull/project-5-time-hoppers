@@ -8,6 +8,7 @@
     </div>
 </div>
 
+{%  if user.is_authenticated  %}
 <div class="container mb-2">
     <div class="row">
         <div class="col">
@@ -19,26 +20,37 @@
     <!-- List of Bookings -->
     <div class="row">
         <div class="col">
+            {% if bookings %}
+            {%  for booking in bookings %}
             <div class="table-responsive rounded"></div>
             <h2>Tour Name: {{  tour_name  }} here</h2>
             <div>
-                <p>Tour Name: {{  tour_name  }}</p>
-                <p>Tour Date: {{  request.session.book_tour_date  }}</p>
-                <p>Departure Time: {{  request.session.departure_time  }}</p>
-                <p>Number of Tickets: {{  request.session.quantity  }}</p>
-                <p>Price: {{  tour.price  }}</p>
-                <p>{{  bookings  }}</p>
-                <p>{{request.session.basket}}</p>
-                <p>{{basket}}</p>
+                <p>Tour Name: {{  tour.tour_name  }}</p>
+                <p>Tour Date: {{  booking.book_tour_date  }}</p>
+                <p>Departure Time: {{  booking.departure_time  }}</p>
+                <p>Number of Tickets: {{  bookingt.quantity  }}</p>
+                <p>Price: {{  booking.price  }}</p>
+            {% endfor %}
 
             </div>
-            <!-- <p class="mb-5">You have no Tour Bookings yet</p>
+            {%  else %}
+            <p class="mb-5">You have no Tour Bookings yet</p>
             <a class="btn btn-primary mb4" href="{% url 'tours-list' %}" aria-label="Go to the Book Tour Section">Book
                 Tour
-            </a> -->
+            </a>
+
+            {% endif %}
 
            
         </div>
     </div>
 </div>
+
+{%  else  %}
+
+<div>
+    <p>Please sign in to make or view bookings</p>
+</div>
+
+{%  endif %}
 {% endblock %}

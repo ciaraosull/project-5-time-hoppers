@@ -1,6 +1,7 @@
 """ Imports for Bookings """
 from django.db import models
 from tours.models import Tour
+from django.contrib.auth.models import User
 
 
 class Booking(models.Model):
@@ -13,6 +14,8 @@ class Booking(models.Model):
         ('20:00', '8pm'),
         ]
 
+    name = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True, related_name='user')
     tour_name = models.ForeignKey(
         Tour, on_delete=models.CASCADE, related_name='bookings')
     book_tour_date = models.DateField()
