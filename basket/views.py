@@ -3,6 +3,7 @@ Imports for Shopping Basket View
 """
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.views.generic import (
     ListView,
@@ -65,10 +66,12 @@ class BookingListView(LoginRequiredMixin, ListView):
         return Booking.objects.filter(name=self.request.user)
 
 
-class BookingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class BookingUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     """ Class to allow logged in users to update bookings """
     model = Booking
     form_class = BookingForm
+    success_url = reverse_lazy('view-basket')
+    success_message = 'Booking Successfully Updated'
 
     def form_valid(self, form):
         """Function to set signed in user as author of updated booking"""

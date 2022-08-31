@@ -23,7 +23,7 @@ class Booking(models.Model):
     tour = models.ForeignKey(
         Tour,
         on_delete=models.CASCADE,
-        related_name='bookings'
+        related_name='bookings',
         )
     book_tour_date = models.DateField()
     departure_time = models.CharField(

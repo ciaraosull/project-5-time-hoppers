@@ -70,6 +70,31 @@ main {
     color: #383636 !important;
 }
 
+.btn-danger {
+    background-color: #fdfcfb !important;
+    color: #fd0909 !important;
+    border-color: #f15c5c !important;
+}
+
+.btn-danger:hover {
+    background-color: #fd0909 !important;
+    color: #fdfcfb !important;
+    border-color: #f15c5c !important;
+}
+
+.btn-primary.update {
+    background-color: #fdfcfb !important;
+    color: #ec7718 !important;
+    border-color: #f19f5c !important;
+}
+
+.btn-primary.update:hover {
+
+    background-color: #ec7718 !important;
+    color: #fdfcfb !important;
+    border-color: #f19f5c !important;
+}
+
 
 /* Custom styling for footer */
 #footer {
