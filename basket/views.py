@@ -66,10 +66,16 @@ class BookingListView(LoginRequiredMixin, ListView):
         return Booking.objects.filter(name=self.request.user)
 
 
-class BookingUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+class BookingUpdateView(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    SuccessMessageMixin,
+    UpdateView
+):
     """ Class to allow logged in users to update bookings """
     model = Booking
     form_class = BookingForm
+    context_object_name = 'bookings'
     success_url = reverse_lazy('view-basket')
     success_message = 'Booking Successfully Updated'
 
@@ -80,7 +86,7 @@ class BookingUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageM
 
     def test_func(self):
         """
-        To over ride test_func to get the booking to be updated
-        and ensure only the user of the booking can update it
+        To set test_func to ensure only the user of the booking can update it
+        and show 403 forbidden if url entered by another user
         """
         return self.request.user == self.get_object().name

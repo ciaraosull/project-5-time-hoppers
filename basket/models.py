@@ -48,7 +48,7 @@ class Booking(models.Model):
 
     def __str__(self):
         """ To return the individual title objects as a string """
-        return f"Booking: {self.tour} on {self.book_tour_date}"
+        return f"Booking: {self.tour}"
 
 
 class Basket(models.Model):

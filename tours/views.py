@@ -135,8 +135,8 @@ class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         """
-        To get the review to be updated
-        and ensure only the author can update it
+        To set test_func to ensure only the author of the review can update it
+        and show 403 forbidden if url entered by another user
         """
         review = self.get_object()
         if self.request.user == review.name:
@@ -160,8 +160,8 @@ class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         """
-        To get the review to be deleted
-        and ensure only the author of the review can delete it
+        To set test_func to ensure only the author of the review can delete it
+        and show 403 forbidden if url entered by another user
         """
         review = self.get_object()
         if self.request.user == review.name:
