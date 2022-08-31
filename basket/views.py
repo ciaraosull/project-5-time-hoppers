@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.views.generic import (
     ListView,
-    FormView,
+    CreateView,
     UpdateView
 )
 from django.urls import reverse_lazy
@@ -15,11 +15,11 @@ from .models import Booking
 from .forms import BookingForm
 
 
-class BookingView(LoginRequiredMixin, FormView):
+class BookingCreateView(LoginRequiredMixin, CreateView):
     """ Booking """
     Model = Booking
     form_class = BookingForm
-    context_object_name = 'booking'
+    context_object_name = 'bookings'
     template_name = 'basket/booking_form.html'
     success_url = reverse_lazy('view-basket')
 
