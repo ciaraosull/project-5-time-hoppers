@@ -1,16 +1,22 @@
 """ URLS for Basket App"""
 from django.urls import path
 from .views import (
-    BasketListView,
+    BookingListView,
     BookingView,
+    BookingUpdateView
 )
 
 
 urlpatterns = [
-    path('', BasketListView.as_view(), name='view-basket'),
+    path('', BookingListView.as_view(), name='view-basket'),
     path(
         '<int:pk>/bookings/',
         BookingView.as_view(),
         name='bookings'
+        ),
+    path(
+        '<int:pk>/bookings/update/',
+        BookingUpdateView.as_view(),
+        name='booking-update'
         ),
 ]

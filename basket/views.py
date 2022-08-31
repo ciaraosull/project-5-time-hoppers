@@ -2,15 +2,16 @@
 Imports for Shopping Basket View
 """
 from django.shortcuts import redirect, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.views.generic import (
     ListView,
     FormView,
+    UpdateView
 )
 from django.urls import reverse_lazy
 from tours.models import Tour
-from .models import Booking, Basket
+from .models import Booking
 from .forms import BookingForm
 
 
@@ -52,7 +53,7 @@ class BookingView(LoginRequiredMixin, FormView):
         return context
 
 
-class BasketListView(LoginRequiredMixin, ListView):
+class BookingListView(LoginRequiredMixin, ListView):
     """Class to show the posts in list view on home page """
     model = Booking
     template_name = 'basket/basket.html'
@@ -64,4 +65,19 @@ class BasketListView(LoginRequiredMixin, ListView):
         return Booking.objects.filter(name=self.request.user)
 
 
+class BookingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """ Class to allow logged in users to update bookings """
+    model = Booking
+    form_class = BookingForm
 
+    def form_valid(self, form):
+        """Function to set signed in user as author of updated booking"""
+        form.instance.name = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        """
+        To over ride test_func to get the booking to be updated
+        and ensure only the user of the booking can update it
+        """
+        return self.request.user == self.get_object().name

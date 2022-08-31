@@ -9,12 +9,14 @@
 </div>
 
 {%  if user.is_authenticated  %}
+
 <div class="container mb-2">
     <div class="row">
         <div class="col">
             <h2 class="mb-4 mt-5">Booking Summary</h2>
         </div>
     </div>
+    {% if bookings %}
 
     <!-- List of Bookings -->
     <div class="table-responsive rounded">
@@ -38,8 +40,7 @@
                 {% for booking in bookings %}
                 <tr>
                     <th scope="row">
-                        <img src="" alt=""
-                            class="img-fluid">
+                        <img src="" alt="" class="img-fluid">
                     </th>
                     <td>
                         <h5><strong>{{  booking.tour.tour_name}}</strong></h5>
@@ -48,25 +49,39 @@
                     <td>{{  booking.book_tour_date}}</td>
                     <td>{{  booking.departure_time}}</td>
                     <td>€ {{  booking.tour.price}}</td>
-                    <td>
-                        <span class="qty">{{  booking.quantity}}</span>
-                        <div class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-sm btn-primary btn-rounded">
-                                <input type="radio" name="options" id="option1">&mdash;
-                            </label>
-                            <label class="btn btn-sm btn-primary btn-rounded">
-                                <input type="radio" name="options" id="option2">+
-                            </label>
-                        </div>
-                    </td>
+                    <td>{{  booking.quantity}}</td>
                     <td>€ ??</td>
                     <td>
-                        <button type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top"
-                            title="Remove item">X
-                        </button>
+                        <!--Delete Booking-->
+                        <a class="btn btn-sm btn-danger" href="#" aria-label="Update">X
+                        </a>
                     </td>
+                    <td>
+                        <!--Update Booking-->
+                        <a class="btn btn-sm btn-primary" href="#" aria-label="Update">Update
+                        </a>
+
+                    </td>
+                    {%  endfor  %}
                 </tr>
-                {%  endfor  %}
+
+
+                <!--Total Price row-->
+                <tr>
+
+                    <td colspan="3"></td>
+                    <td colspan="3"><button type="button" class="btn btn-outline-secondary btn-sm"><i
+                                class="fa fa-angle-left left"></i> Browse More Tours </button></td>
+                    <td>
+                        <h4><strong>Total</strong></h4>
+                    </td>
+                    <td>
+                        <h4><strong>€ ??</strong></h4>
+                    </td>
+                    <td colspan="3"><button type="button" class="btn btn-primary btn-sm">Proceed to Payment <i
+                                class="fa fa-angle-right right"></i></button></td>
+                </tr>
+
             </tbody>
         </table>
     </div>
@@ -74,8 +89,11 @@
     {%  else  %}
 
     <div>
-        <p>No Bookings in Basket</p>
+        <h5 class="mt-5 mb-4">No Bookings in Basket</h5>
     </div>
+    <div><button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-angle-left left"></i> Browse
+            Tours </button></div>
+    {%  endif %}
     {%  endif %}
 
     {% endblock %}
