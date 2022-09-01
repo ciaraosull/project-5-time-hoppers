@@ -71,9 +71,9 @@
                 <!--Total Price row-->
                 <tr>
 
-                    <td colspan="3"></td>
-                    <td colspan="3"><button type="button" class="btn btn-outline-secondary btn-sm"><i
-                                class="fa fa-angle-left left"></i> Browse More Tours </button></td>
+                    <td colspan="2"></td>
+                    <td colspan="3"><a class="btn btn-outline-secondary btn-sm" href="{% url 'tours-list' %}" aria-label="Go to the Tours List Section"><i
+                                class="fa fa-angle-left left"></i> Browse More Tours </a></td>
                     <td>
                         <h4><strong>Total</strong></h4>
                     </td>
@@ -93,8 +93,8 @@
     <div>
         <h5 class="mt-5 mb-4">No Bookings in Basket</h5>
     </div>
-    <div><button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-angle-left left"></i> Browse
-            Tours </button></div>
+    <div><a class="btn btn-outline-secondary btn-sm" href="{% url 'tours-list' %}" aria-label="Go to the Tours List Section"><i
+        class="fa fa-angle-left left"></i> Browse More Tours </a></div>
     {%  endif %}
     {%  endif %}
 

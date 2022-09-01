@@ -95,6 +95,20 @@ main {
     border-color: #f19f5c !important;
 }
 
+.btn-primary.cancel {
+    background-color: #fdfcfb !important;
+    color: #383636 !important;
+}
+
+.btn-outline-secondary.cancel {
+    background-color: #fdfcfb !important;
+    color: #383636 !important;
+}
+
+.btn-outline-secondary.cancel:hover {
+    background-color: #383636 !important;
+    color: #fdfcfb !important;
+}
 
 /* Custom styling for footer */
 #footer {

@@ -11,14 +11,14 @@
                 <fieldset class="form-group d-flex justify-content-center">
                     <legend class="mb-4">
                         <h2>Delete Booking</h2>
-                        <h4>Do you want to delete <em>{{  bookings.tour.tour_name  }}</em>?</h4>
+                        <h4 class="mt-4">Do you want to delete <em>{{  bookings.tour.tour_name  }}</em>?</h4>
                     </legend>
                 </fieldset>
                 <!-- Delete -->
                 <div class="form-group d-flex justify-content-around">
-                    <button class="btn btn-danger btn-lg mt-4" type="submit">Delete</button>
+                    <button class="btn btn-lg btn-danger mt-4" type="submit">Delete</button>
                     <!-- Cancel Deletion & Return Back to Booking Basket Page -->
-                    <a class="btn btn-info btn-lg mt-4" href="{%  url 'view-basket'  %}">Cancel</a>
+                    <a class="btn btn-outline-secondary cancel btn-lg mt-4" href="{%  url 'view-basket'  %}">Cancel</a>
                 </div>
             </form>
         </div>
