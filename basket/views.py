@@ -13,7 +13,7 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 from tours.models import Tour
-from .models import Booking
+from .models import Booking, Basket
 from .forms import BookingForm
 
 
@@ -64,6 +64,7 @@ class BookingListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         """Only show Bookings by User """
+        # return Booking.objects.aggregate(Sum('total_price'))['grand_total__sum']
         return Booking.objects.filter(name=self.request.user)
 
 

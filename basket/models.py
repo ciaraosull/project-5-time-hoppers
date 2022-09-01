@@ -48,8 +48,8 @@ class Booking(models.Model):
 
     def total_price(self):
         """ To get the total price of each booking """
-        total_price = self.quantity * self.tour.price
-        return total_price
+        total = self.quantity * self.tour.price
+        return total
 
     def __str__(self):
         """ To return the individual title objects as a string """
@@ -74,3 +74,9 @@ class Basket(models.Model):
     def __str__(self):
         """ To return the individual title objects as a string """
         return f"Basket: {self.booking_items} added on {self.date_added}"
+
+    # def grand_total(self):
+    #     total = 0
+    #     for booking_items in self.tour.all():
+    #         total += booking_items.get_total_price()
+    #     return total

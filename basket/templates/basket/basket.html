@@ -46,12 +46,12 @@
                         <h5><strong>{{  booking.tour.tour_name}}</strong></h5>
                         <p class="text-muted">{{  booking.tour.tour_duration}}</p>
                     </td>
-                    <td>{{  booking.book_tour_date}}</td>
-                    <td>{{  booking.departure_time}}</td>
-                    <td>€ {{  booking.tour.price}}</td>
-                    <td>{{  booking.quantity}}</td>
-                    <td>€ {{ booking.total_price}}</td>
-                    <td>€ {{ booking.grand_total}}</td>
+                    <td>{{  booking.book_tour_date }}</td>
+                    <td>{{  booking.departure_time }}</td>
+                    <td>€ {{  booking.tour.price }}</td>
+                    <td>{{  booking.quantity }}</td>
+                    <td>€ {{ booking.total_price }}</td>
+                    <td>€ {{  object.grand_total }}</td>
                     <td>
                         <!--Delete Booking-->
                         <a class="btn btn-sm btn-danger" href="{%  url 'bookings-delete' booking.id  %}"
