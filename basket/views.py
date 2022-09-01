@@ -8,7 +8,8 @@ from django.contrib import messages
 from django.views.generic import (
     ListView,
     CreateView,
-    UpdateView
+    UpdateView,
+    DeleteView
 )
 from django.urls import reverse_lazy
 from tours.models import Tour
@@ -87,6 +88,28 @@ class BookingUpdateView(
     def test_func(self):
         """
         To set test_func to ensure only the user of the booking can update it
+        and show 403 forbidden if url entered by another user
+        """
+        return self.request.user == self.get_object().name
+
+
+class BookingDeleteView(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    SuccessMessageMixin,
+    DeleteView
+):
+    """
+    Allow user who created booking to delete it.
+    """
+    model = Booking
+    context_object_name = 'bookings'
+    success_url = reverse_lazy('view-basket')
+    success_message = 'Booking Successfully Deleted'
+
+    def test_func(self):
+        """
+        To set test_func to ensure only the author of the booking can delete it
         and show 403 forbidden if url entered by another user
         """
         return self.request.user == self.get_object().name
