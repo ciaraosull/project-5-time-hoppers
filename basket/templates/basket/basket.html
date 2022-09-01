@@ -50,7 +50,8 @@
                     <td>{{  booking.departure_time}}</td>
                     <td>€ {{  booking.tour.price}}</td>
                     <td>{{  booking.quantity}}</td>
-                    <td>€ ??</td>
+                    <td>€ {{ booking.total_price}}</td>
+                    <td>€ {{ booking.grand_total}}</td>
                     <td>
                         <!--Delete Booking-->
                         <a class="btn btn-sm btn-danger" href="{%  url 'bookings-delete' booking.id  %}"
@@ -78,7 +79,7 @@
                         <h4><strong>Total</strong></h4>
                     </td>
                     <td>
-                        <h4><strong>€ ??</strong></h4>
+                        <h4><strong>€ {{ booking.grand_total}} Test</strong></h4>
                     </td>
                     <td colspan="3"><button type="button" class="btn btn-primary btn-sm">Proceed to Payment <i
                                 class="fa fa-angle-right right"></i></button></td>

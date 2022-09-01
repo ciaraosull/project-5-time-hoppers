@@ -52,7 +52,7 @@ class Tour(models.Model):
         )
     price = models.DecimalField(
         max_digits=6,
-        decimal_places=2
+        decimal_places=0
         )
     image_url = models.URLField(
         null=True,

@@ -46,6 +46,11 @@ class Booking(models.Model):
         """ To display the booking by created on in desending order """
         ordering = ['-date_added']
 
+    def total_price(self):
+        """ To get the total price of each booking """
+        total_price = self.quantity * self.tour.price
+        return total_price
+
     def __str__(self):
         """ To return the individual title objects as a string """
         return f"Booking: {self.tour}"
