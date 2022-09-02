@@ -12,8 +12,9 @@ from django.views.generic import (
     DeleteView
 )
 from django.urls import reverse_lazy
+from django.utils import timezone
 from tours.models import Tour
-from .models import Booking, Basket
+from .models import Booking, BookingItem, Basket
 from .forms import BookingForm
 
 
@@ -23,7 +24,7 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
     form_class = BookingForm
     context_object_name = 'bookings'
     template_name = 'basket/booking_form.html'
-    success_url = reverse_lazy('view-basket')
+    success_url = reverse_lazy('tours-list')
 
     def form_valid(self, form):
         """ Save booking for chosen tour name & show success message """
@@ -32,9 +33,9 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         booking_form = BookingForm(data=self.request.POST)
 
         if booking_form.is_valid():
-            booking_form.instance.name = self.request.user
+            booking_form.instance.user = self.request.user
             booking_form.instance.tour = tour
-            booking_form.name = self.request.user
+            booking_form.user = self.request.user
             booking = booking_form.save(commit=False)
             booking_form.tour = tour
             booking.save()
@@ -65,7 +66,7 @@ class BookingListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         """Only show Bookings by User """
         # return Booking.objects.aggregate(Sum('total_price'))['grand_total__sum']
-        return Booking.objects.filter(name=self.request.user)
+        return Booking.objects.filter(user=self.request.user)
 
 
 class BookingUpdateView(
@@ -83,7 +84,7 @@ class BookingUpdateView(
 
     def form_valid(self, form):
         """Function to set signed in user as author of updated booking"""
-        form.instance.name = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
 
     def test_func(self):
@@ -91,7 +92,7 @@ class BookingUpdateView(
         To set test_func to ensure only the user of the booking can update it
         and show 403 forbidden if url entered by another user
         """
-        return self.request.user == self.get_object().name
+        return self.request.user == self.get_object().user
 
 
 class BookingDeleteView(
@@ -113,4 +114,33 @@ class BookingDeleteView(
         To set test_func to ensure only the author of the booking can delete it
         and show 403 forbidden if url entered by another user
         """
-        return self.request.user == self.get_object().name
+        return self.request.user == self.get_object().user
+
+
+# def add_to_basket(request, pk):
+#     """Take the booking, create a booking item and assign to the basket"""
+#     booking = get_object_or_404(Booking, pk=pk)
+#     print('test1')
+#     booking_item, created = BookingItem.objects.get_or_create(
+#         booking=booking,
+#         user=request.user,
+#         booked=False
+#     )
+#     basket_qs = Basket.objects.filter(user=request.user, booked=False)
+#     if basket_qs. exists():
+#         basket = basket_qs[0]
+#         print('test2')
+#         if basket.booking_items.filter(booking__pk=booking.pk).exists():
+#             booking_item.quantity += 1
+#             booking_item.save()
+#             print('test3')
+#         else:
+#             basket.booking_items.add(booking_item)
+#             print('test4')
+#     else:
+#         date_added = timezone.now()
+#         basket = Basket.objects.create(
+#             user=request.user, date_added=date_added)
+#         basket.booking_items.add()
+#         print('test 5')
+#     return redirect('view-basket', pk=pk)

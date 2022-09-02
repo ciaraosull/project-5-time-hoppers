@@ -14,10 +14,8 @@ class Booking(models.Model):
         ('20:00', '8pm'),
         ]
 
-    name = models.ForeignKey(
+    user = models.ForeignKey(
         User, on_delete=models.CASCADE,
-        null=True,
-        blank=True,
         related_name='user'
         )
     tour = models.ForeignKey(
@@ -40,7 +38,6 @@ class Booking(models.Model):
         blank=True
         )
     date_added = models.DateTimeField(auto_now_add=True)
-    booked = models.BooleanField(default=False)
 
     class Meta:
         """ To display the booking by created on in desending order """
@@ -53,17 +50,32 @@ class Booking(models.Model):
 
     def __str__(self):
         """ To return the individual title objects as a string """
-        return f"Booking: {self.tour}"
+        return f"Booking: {self.tour.tour_name}"
+
+
+class BookingItem(models.Model):
+    """ Model for Booking """
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        )
+
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
+    booked = models.BooleanField(default=False)
+    quantity = models.IntegerField(default=1)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        """ To return the individual title objects as a string """
+        return f"{self.quantity} for {self.booking.tour.tour_name}"
 
 
 class Basket(models.Model):
     """ Model for Basket to contain Booking Items """
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE,
-        null=True,
-        blank=True,
+        User, on_delete=models.CASCADE
         )
-    booking_items = models.ManyToManyField(Booking)
+    booking_items = models.ManyToManyField(
+        Booking, related_name='booking_items')
     date_added = models.DateTimeField(auto_now_add=True)
     booked = models.BooleanField(default=False)
 
