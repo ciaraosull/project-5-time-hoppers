@@ -40,17 +40,17 @@
                 {%  for item in basket_items  %}
                 <tr>
                     <th scope="row">
-                        <img src="" alt="" class="img-fluid">
+                        <img src="{{  item.tour.image  }}" alt="" class="img-fluid rounded">
                     </th>
                     <td>
-                        <h5><strong>{{ item.tour.name  }}</strong></h5> <!--item.item_id?-->
+                        <h5><strong>{{ item.tour.tour_name }}</strong></h5>
                         <p class="text-muted"></p>
                     </td>
                     <td></td> <!--item.tour_date?-->
                     <td></td> <!--item.departure_time?-->
                     <td>{{ item.quantity  }}</td>
                     <td>€ {{ item.tour.price  }}</td>
-                    <td>Basket Total: € {{ total|floatformat:2 }}</td>
+                    <td>€ {{ total|floatformat:2 }}</td>
                     <td>
                         <!--Delete Booking-->
                         <a class="btn btn-sm btn-danger" href=""
@@ -77,10 +77,10 @@
                             aria-label="Go to the Tours List Section"><i class="fa fa-angle-left left"></i> Browse More
                             Tours </a></td>
                     <td>
-                        <h4><strong>Total</strong></h4>
+                        <h4><strong>Grand Total</strong></h4>
                     </td>
                     <td>
-                        <h4><strong>€ ?</strong></h4>
+                        <h4><strong>€ {{ total|floatformat:2 }}</strong></h4>
                     </td>
                     
                     <td colspan="3"><a href="" class="btn btn-primary btn-sm">Checkout<i
