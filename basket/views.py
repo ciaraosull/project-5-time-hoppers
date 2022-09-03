@@ -9,7 +9,8 @@ from django.views.generic import (
     ListView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    View
 )
 from django.urls import reverse_lazy
 from django.utils import timezone
@@ -117,30 +118,73 @@ class BookingDeleteView(
         return self.request.user == self.get_object().user
 
 
-# def add_to_basket(request, pk):
-#     """Take the booking, create a booking item and assign to the basket"""
-#     booking = get_object_or_404(Booking, pk=pk)
-#     print('test1')
-#     booking_item, created = BookingItem.objects.get_or_create(
-#         booking=booking,
-#         user=request.user,
-#         booked=False
-#     )
-#     basket_qs = Basket.objects.filter(user=request.user, booked=False)
-#     if basket_qs. exists():
-#         basket = basket_qs[0]
-#         print('test2')
-#         if basket.booking_items.filter(booking__pk=booking.pk).exists():
-#             booking_item.quantity += 1
-#             booking_item.save()
-#             print('test3')
+def add_to_basket(request, pk):
+    """Take the booking, create a booking item and assign to the basket"""
+    booking = get_object_or_404(Booking, pk=pk)
+    print('test1')
+    booking_item, created = BookingItem.objects.get_or_create(
+        booking=booking,
+        user=request.user,
+        booked=False
+    )
+    basket_qs = Basket.objects.filter(user=request.user, booked=False)
+    if basket_qs. exists():
+        basket = basket_qs[0]
+        print('test2')
+        if basket.booking_items.filter(booking__pk=booking.pk).exists():
+            booking_item.quantity += 1
+            booking_item.save()
+            print('test3')
+        else:
+            basket.booking_items.add(booking_item)
+            print('test4')
+    else:
+        date_added = timezone.now()
+        basket = Basket.objects.create(
+            user=request.user, date_added=date_added)
+        basket.booking_items.add()
+        print('test 5')
+    return redirect('order')
+
+
+class OrderDetailView(View):
+    """
+    To show the order containing all
+    the bookings made by the user before payment
+    """
+    template_name = "order.html"
+
+
+
+# def add_to_bag(request, item_id):
+#     """ Add a quantity of the specified product to the shopping bag """
+
+#     booking = get_object_or_404(Booking, pk=item_id)
+#     quantity = int(request.POST.get('quantity'))
+#     redirect_url = request.POST.get('redirect_url')
+#     size = None
+#     if 'product_size' in request.POST:
+#         size = request.POST['product_size']
+#     bag = request.session.get('bag', {})
+
+#     if size:
+#         if item_id in list(bag.keys()):
+#             if size in bag[item_id]['items_by_size'].keys():
+#                 bag[item_id]['items_by_size'][size] += quantity
+#                 messages.success(request, f'Updated size {size.upper()} {product.name} quantity to {bag[item_id]["items_by_size"][size]}')
+#             else:
+#                 bag[item_id]['items_by_size'][size] = quantity
+#                 messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
 #         else:
-#             basket.booking_items.add(booking_item)
-#             print('test4')
+#             bag[item_id] = {'items_by_size': {size: quantity}}
+#             messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
 #     else:
-#         date_added = timezone.now()
-#         basket = Basket.objects.create(
-#             user=request.user, date_added=date_added)
-#         basket.booking_items.add()
-#         print('test 5')
-#     return redirect('view-basket', pk=pk)
+#         if item_id in list(bag.keys()):
+#             bag[item_id] += quantity
+#             messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
+#         else:
+#             bag[item_id] = quantity
+#             messages.success(request, f'Added {product.name} to your bag')
+
+#     request.session['bag'] = bag
+#     return redirect(redirect_url)

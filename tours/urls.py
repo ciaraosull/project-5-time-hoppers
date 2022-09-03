@@ -7,6 +7,8 @@ from .views import (
     ReviewUpdateView
 )
 
+from . import views
+
 urlpatterns = [
     path('', TourListView.as_view(), name='tours-list'),
     path('<int:pk>/', TourDetailView.as_view(), name='tour-detail'),
@@ -20,4 +22,5 @@ urlpatterns = [
         ReviewDeleteView.as_view(),
         name='review-delete'
         ),
+    path('<tour_id>', views.tour_booking_detail, name='tour_booking_detail'),
 ]

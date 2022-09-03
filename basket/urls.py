@@ -5,7 +5,8 @@ from .views import (
     BookingCreateView,
     # add_to_basket,
     BookingUpdateView,
-    BookingDeleteView
+    BookingDeleteView,
+    OrderDetailView
 )
 
 # from . import views
@@ -33,5 +34,10 @@ urlpatterns = [
         '<int:pk>/bookings/delete/',
         BookingDeleteView.as_view(),
         name='bookings-delete'
+        ),
+    path(
+        'order/<int:pk>/',
+        OrderDetailView.as_view(),
+        name='order'
         ),
 ]

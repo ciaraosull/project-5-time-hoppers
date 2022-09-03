@@ -1,7 +1,7 @@
 """
 Imports for Tours View
 """
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, render
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -175,3 +175,15 @@ class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
                 self.request, 'Your Review Was Successfully Deleted'
                 )
         return reverse_lazy('tour-detail', kwargs={'pk': tour.pk})
+
+
+def tour_booking_detail(request, tour_id):
+    """ A view to show individual tour details for user booking """
+
+    tour = get_object_or_404(Tour, pk=tour_id)
+
+    context = {
+        'tour': tour,
+    }
+
+    return render(request, 'tours/tour_booking_detail.html', context)

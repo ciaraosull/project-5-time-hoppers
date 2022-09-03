@@ -13,19 +13,21 @@
 <div class="container mb-2">
     <div class="row">
         <div class="col">
-            <h2 class="mb-4 mt-5">Booking Summary</h2>
+            <h2 class="mb-4 mt-5">Booking Review</h2>
+            <p>Please review your bookings, edit, delete or add as necessary before proceeding to order</p>
         </div>
     </div>
-    {% if bookings %}
+    {% if basket_items %}
 
-    <!-- List of Bookings -->
+    <!-- List of All Booked Tours for the User -->
     <div class="table-responsive rounded">
         <table class="table product-table">
+            
             <!--Table head-->
             <thead>
                 <tr>
                     <th></th>
-                    <th>Tour</th>
+                    <th>Tour {{  item.tour.name  }}</th>
                     <th>Date</th>
                     <th>Dept</th>
                     <th>Price</th>
@@ -36,27 +38,20 @@
             </thead>
 
             <!--Table body-->
-
-           
             <tbody>
-                {% for booking in bookings %}
-                
-                <div>
-                    
-                </div>
-                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                {%  for item in basket_items  %}
                 <tr>
                     <th scope="row">
                         <img src="" alt="" class="img-fluid">
                     </th>
                     <td>
-                        <h5><strong>{{  booking.tour.tour_name}}</strong></h5>
+                        <h5><strong>{{  booking.tour.tour_name}}</strong></h5> <!--item.item_id?-->
                         <p class="text-muted">{{  booking.tour.tour_duration}}</p>
                     </td>
-                    <td>{{  booking.book_tour_date }}</td>
-                    <td>{{  booking.departure_time }}</td>
-                    <td>€ {{  booking.tour.price }}</td>
-                    <td>{{  booking.quantity }}</td>
+                    <td>{{  booking.book_tour_date }}</td> <!--item.tour_date?-->
+                    <td>{{  booking.departure_time }}</td> <!--item.departure_time?-->
+                    <td>€ {{  booking.tour.price }}</td> <!--item.price?-->
+                    <td>{{  booking.quantity }}</td> <!--item.quantity?-->
                     <td>€ {{ booking.total_price }}</td>
                     <td>
                         <!--Delete Booking-->
@@ -89,7 +84,8 @@
                     <td>
                         <h4><strong>€ {{ booking.grand_total}} ?</strong></h4>
                     </td>
-                    <td colspan="3"><a href="" class="btn btn-primary btn-sm">Payment<i
+                    
+                    <td colspan="3"><a href="" class="btn btn-primary btn-sm">Checkout<i
                                 class="fa fa-angle-right right"></i></a>
                     </td>
                 </tr>
@@ -100,7 +96,7 @@
     </div>
 
     {%  else  %}
-
+    <!--If User's basket is empty-->
     <div>
         <h5 class="mt-5 mb-4">No Bookings in Basket</h5>
     </div>
