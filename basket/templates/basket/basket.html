@@ -20,7 +20,7 @@
     <!-- List of All Booked Tours for the User -->
     <div class="table-responsive rounded">
         <table class="table product-table">
-            
+
             <!--Table head-->
             <thead>
                 <tr>
@@ -46,21 +46,58 @@
                         <h5><strong>{{ item.tour.tour_name }}</strong></h5>
                         <p class="text-muted"></p>
                     </td>
-                    <td></td> <!--item.tour_date?-->
-                    <td>Times: {%  if item.tour.has_departure_times  %}{{  item.departure_time  }}{%  else %}N/A{% endif %}</td>
-                    <td>{{ item.quantity  }}</td>
+                    <td></td>
+                    <!--item.tour_date?-->
+                    <td>Times:
+                        {%  if item.tour.has_departure_times  %}{{  item.departure_time  }}{%  else %}N/A{% endif %}
+                    </td>
+                    <td>
+                        <form class="form update-form" method="POST" action="">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty btn btn-sm btn-black rounded-0"
+                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                            <span>
+                                                <i class="fas fa-minus fa-sm"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control form-control-sm qty_input" type="number" name="quantity"
+                                        value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
+                                        id="id_qty_{{ item.item_id }}">
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-sm btn-black rounded-0"
+                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                            <span>
+                                                <i class="fas fa-plus fa-sm"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    {% if item.product.has_departure_times %}
+                                    <input type="hidden" name="product_departure_time"
+                                        value="{{ item.departure_time }}">
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </form>
+                        <a class="update-link text-info"><small>Update</small></a>
+                        <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"
+                            data-size="{{ item.departure_time }}"><small>Remove</small></a>
+                    </td>
                     <td>€ {{ item.tour.price  }}</td>
                     <td>€ {{ total|floatformat:2 }}</td>
                     <td>
                         <!--Delete Booking-->
-                        <a class="btn btn-sm btn-danger" href=""
-                            aria-label="Delete Booking"><i class="fa-solid fa-trash-can"></i>
+                        <a class="btn btn-sm btn-danger" href="" aria-label="Delete Booking"><i
+                                class="fa-solid fa-trash-can"></i>
                         </a>
                     </td>
                     <td>
                         <!--Update Booking-->
-                        <a class="btn btn-sm btn-primary update" href=""
-                            aria-label="Update Booking"><i class="fa-solid fa-pencil"></i>
+                        <a class="btn btn-sm btn-primary update" href="" aria-label="Update Booking"><i
+                                class="fa-solid fa-pencil"></i>
                         </a>
 
                     </td>
@@ -82,7 +119,7 @@
                     <td>
                         <h4><strong>€ {{ total|floatformat:2 }}</strong></h4>
                     </td>
-                    
+
                     <td colspan="3"><a href="" class="btn btn-primary btn-sm">Checkout<i
                                 class="fa fa-angle-right right"></i></a>
                     </td>
@@ -102,6 +139,37 @@
             aria-label="Go to the Tours List Section"><i class="fa fa-angle-left left"></i> Browse More Tours </a></div>
 
     {%  endif %}
+</div>
 
+{% endblock %}
 
-    {% endblock %}
+{% block postloadjs %}
+{{  block.super  }}
+{%  include 'tours/includes/quantity_input_script.html'  %}
+
+<script type="text/javascript">
+    // Update quantity on click
+    $('.update-link').click(function (e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function (e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var size = $(this).data('departure_time');
+        var url = `/basket/remove/${itemId}`;
+        var data = {
+            'csrfmiddlewaretoken': csrfToken,
+            'departure_time': departure_time
+        };
+
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            });
+    })
+</script>
+
+{%  endblock  %}

@@ -29,7 +29,7 @@ def basket_contents(request):
                 tour_count += quantity
                 basket_items.append({
                     'item_id': item_id,
-                    'quantity': item_data,
+                    'quantity': quantity,
                     'tour': tour,
                     'departure_time': departure_time,
                 })
