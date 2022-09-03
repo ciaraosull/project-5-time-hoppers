@@ -34,10 +34,13 @@ def basket_contents(request):
                     'departure_time': departure_time,
                 })
 
+    grand_total = total
+
     context = {
         'basket_items': basket_items,
         'total': total,
         'tour_count': tour_count,
+        'grand_total': grand_total
     }
 
     return context

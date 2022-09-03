@@ -52,7 +52,8 @@ class Tour(models.Model):
         )
 
     has_departure_times = models.BooleanField(
-        default=False,
+        default=True,
+        blank=True,
         null=True,
         )
 

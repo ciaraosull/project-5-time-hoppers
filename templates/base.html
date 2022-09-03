@@ -30,9 +30,8 @@
     <!-- JS -->
     {% block corejs %}
     <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
@@ -174,13 +173,13 @@
 
         <!-- Shopping Basket -->
         <div class="pb-2 pt-2">
-            <a class="{% if total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
                 href="{% url 'view-basket' %}">
                 <div class="nav-icons text-center">
                     <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                     <p class="my-0">
-                        {% if total %}
-                        €{{ total|floatformat:2 }}
+                        {% if grand_total %}
+                        €{{ grand_total|floatformat:2 }}
                         {% else %}
                         €0.00
                         {% endif %}
