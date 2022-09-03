@@ -71,19 +71,12 @@
                                 </p>
 
                                 <!-- Booking form for the tour-->
-                                <form class="form" action="{%  url, 'add_to_basket' tour.id  %}" method="POST">
+                                <form class="form" action="{% url 'add_to_basket' tour.id %}" method="POST">
                                     {% csrf_token %}
                                     <div class="form-row">
                                         <div class="col-12">
-                                            <p><strong>Departure Time:</strong></p>
-                                            <select class="form-control rounded-0 w-50" name="tour_departure_time"
-                                                id='id_tour_departure_time'>
-                                                <option value="9">9am</option>
-                                                <option value="11">11am</option>
-                                                <option value="13" selected>1pm</option>
-                                                <option value="15">3pm</option>
-                                                <option value="18">6pm</option>
-                                            </select>
+                                            <!-- Time Slots & Dates Here-->
+
                                         </div>
                                         <div class="col-12">
                                             <p class="mt-3"><strong>Quantity of Tickets:</strong></p>
