@@ -13,7 +13,7 @@
 <div class="container mb-2">
     <div class="row">
         <div class="col">
-            <h2 class="mb-4 mt-5">Booking Review</h2>
+            <h2 class="mb-4 mt-5">Tour Bookings Basket</h2>
             <p>Please review your bookings, edit, delete or add as necessary before proceeding to order</p>
         </div>
     </div>
@@ -55,13 +55,13 @@
                     <td>€ {{ booking.total_price }}</td>
                     <td>
                         <!--Delete Booking-->
-                        <a class="btn btn-sm btn-danger" href="{%  url 'bookings-delete' booking.id  %}"
+                        <a class="btn btn-sm btn-danger" href=""
                             aria-label="Delete Booking"><i class="fa-solid fa-trash-can"></i>
                         </a>
                     </td>
                     <td>
                         <!--Update Booking-->
-                        <a class="btn btn-sm btn-primary update" href="{% url 'bookings-update' booking.id %}"
+                        <a class="btn btn-sm btn-primary update" href=""
                             aria-label="Update Booking"><i class="fa-solid fa-pencil"></i>
                         </a>
 
