@@ -28,8 +28,8 @@
                     <th>Tour</th>
                     <th>Date</th>
                     <th>Dept</th>
-                    <th>Price</th>
                     <th>QTY</th>
+                    <th>Price</th>
                     <th>Total</th>
                     <th></th>
                 </tr>
@@ -47,7 +47,7 @@
                         <p class="text-muted"></p>
                     </td>
                     <td></td> <!--item.tour_date?-->
-                    <td></td> <!--item.departure_time?-->
+                    <td>Times: {%  if item.tour_departure_times  %}{{  item.departure_times|upper  }}{%  else %}N/A{% endif %}</td>
                     <td>{{ item.quantity  }}</td>
                     <td>€ {{ item.tour.price  }}</td>
                     <td>€ {{ total|floatformat:2 }}</td>
