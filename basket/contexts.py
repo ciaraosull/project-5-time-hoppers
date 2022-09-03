@@ -24,14 +24,14 @@ def basket_contents(request):
 
         else:
             tour = get_object_or_404(Tour, pk=item_id)
-            for departure_times, quantity in item_data['items_by_departure_times'].items():
+            for departure_time, quantity in item_data['items_by_departure_time'].items():
                 total += quantity * tour.price
                 tour_count += quantity
                 basket_items.append({
                     'item_id': item_id,
                     'quantity': item_data,
                     'tour': tour,
-                    'departure_times': departure_times,
+                    'departure_time': departure_time,
                 })
 
     context = {

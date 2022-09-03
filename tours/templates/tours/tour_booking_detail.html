@@ -79,7 +79,7 @@
                                                 {% if t %}
                                                     <div class="col-6">
                                                         <p><strong>Departure Times:</strong></p>
-                                                        <select class="form-control rounded-0 w-50" name="tour_departure_times" id='id_departure_times'>
+                                                        <select class="form-control rounded-0 w-50" name="tour_departure_time" id='id_tour_departure_time'>
                                                             <option value="8">8am</option>
                                                             <option value="10">10am</option>
                                                             <option value="12" selected>12noon</option>
@@ -142,5 +142,8 @@
 
 </div>
 
-
 {%  endblock content  %}
+{% block postloadjs %}
+{{  block.super  }}
+{%  include 'tours/includes/quantity_input_script.html'  %}
+{%  endblock  %}

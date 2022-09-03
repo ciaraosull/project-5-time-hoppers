@@ -13,19 +13,19 @@ def add_to_basket(request, item_id):
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    departure_times = None
-    if 'departure_times' in request.POST:
-        departure_times = request.POST['tour_departure_times']
+    departure_time = None
+    if 'departure_time' in request.POST:
+        departure_time = request.POST['tour_departure_time']
     basket = request.session.get('basket', {})
 
-    if departure_times:
+    if departure_time:
         if item_id in list(basket.keys()):
-            if departure_times in basket[item_id]['items_by_departure_times'].keys():
-                basket[item_id]['items_by_departure_times'][departure_times] += quantity
+            if departure_time in basket[item_id]['items_by_departure_time'].keys():
+                basket[item_id]['items_by_departure_time'][departure_time] += quantity
             else:
-                basket[item_id]['items_by_departure_times'][departure_times] = quantity
+                basket[item_id]['items_by_departure_time'][departure_time] = quantity
         else:
-            basket[item_id] = {'items_by_departure_times': {departure_times: quantity}}
+            basket[item_id] = {'items_by_departure_time': {departure_time: quantity}}
     else:
 
         if item_id in list(basket.keys()):
