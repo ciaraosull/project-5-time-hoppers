@@ -74,70 +74,76 @@
                                 <form class="form" action="{% url 'add_to_basket' tour.id %}" method="POST">
                                     {% csrf_token %}
                                     <div class="form-row">
-                                                {% with tour.has_departure_times as s %}
-                                                {% if s %}
-                                                    <div class="col-6">
-                                                        <p><strong>Departure Times:</strong></p>
-                                                        <select class="form-control rounded-0 w-50" name="tour_departure_time" id='id_tour_departure_time'>
-                                                            <option value="8:00">8am</option>
-                                                            <option value="10:00">10am</option>
-                                                            <option value="12:00" selected>12noon</option>
-                                                            <option value="15:00">3pm</option>
-                                                            <option value="16:00">6pm</option>
-                                                        </select>
-                                                    </div>
-                                                {% endif %}
 
+                                        <!-- Departure Date - JS disables past dates-->
+                                        <div class="col-6 mb-5">
+                                            <p><strong>Departure Date:</strong></p>
+                                            <input class="form-control rounded-0 w-50" type="date" id="id_tour_departure_date">
                                         </div>
-                                        <div class="col-6">
-                                            <p class="mt-3"><strong>Quantity of Tickets:</strong></p>
-                                            <div class="form-group w-50">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <button class="decrement-qty btn btn-black rounded-0"
-                                                            data-item_id="{{ tour.id }}"
-                                                            id="decrement-qty_{{ tour.id }}">
-                                                            <span class="icon">
-                                                                <i class="fas fa-minus"></i>
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                    <input class="form-control qty_input" type="number" name="quantity"
-                                                        value="1" min="1" max="99" data-item_id="{{ tour.id }}"
-                                                        id="id_qty_{{ tour.id }}">
-                                                    <div class="input-group-append">
-                                                        <button class="increment-qty btn btn-black rounded-0"
-                                                            data-item_id="{{ tour.id }}"
-                                                            id="increment-qty_{{ tour.id }}">
-                                                            <span class="icon">
-                                                                <i class="fas fa-plus"></i>
-                                                            </span>
-                                                        </button>
-                                                    </div>
+
+                                        <!-- Departure TimeSlots-->
+                                        {% with tour.has_departure_times as s %}
+                                        {% if s %}
+                                        <div class="col-6 mb-5">
+                                            <p><strong>Departure Times:</strong></p>
+                                            <select class="form-control rounded-0 w-25" name="tour_departure_time"
+                                                id='id_tour_departure_time'>
+                                                <option value="8:00">8am</option>
+                                                <option value="10:00">10am</option>
+                                                <option value="12:00" selected>12noon</option>
+                                                <option value="15:00">3pm</option>
+                                                <option value="16:00">6pm</option>
+                                            </select>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <!-- Ticket Quantity-->
+                                    <div class="col-6 mb-5">
+                                        <p class="mt-3"><strong>Quantity of Tickets:</strong></p>
+                                        <div class="form-group w-50">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <button class="decrement-qty btn btn-black rounded-0"
+                                                        data-item_id="{{ tour.id }}" id="decrement-qty_{{ tour.id }}">
+                                                        <span class="icon">
+                                                            <i class="fas fa-minus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                <input class="form-control qty_input" type="number" name="quantity"
+                                                    value="1" min="1" max="99" data-item_id="{{ tour.id }}"
+                                                    id="id_qty_{{ tour.id }}">
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty btn btn-black rounded-0"
+                                                        data-item_id="{{ tour.id }}" id="increment-qty_{{ tour.id }}">
+                                                        <span class="icon">
+                                                            <i class="fas fa-plus"></i>
+                                                        </span>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <!-- Link to View More Tours-->
-                                        <div class="col{% if s %}-6 mt-2{% endif %}">
-                                            <a class="btn btn-outline-secondary btn-sm" href="{% url 'tours-list' %}"
-                                                aria-label="Go to the Tours List Section"><i
-                                                    class="fa fa-angle-left left"></i> Browse More
-                                                Tours </a>
-                                            <input type="submit" class="btn btn-primary btn-sm"
-                                                value="Add to Basket">
-                                        </div>
-                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                                        {%  endwith  %}
                                     </div>
-                                </form>
+
+                                    <!-- Link to View More Tours-->
+                                    <div class="col{% if s %}-6 mt-2{% endif %}">
+                                        <a class="btn btn-outline-secondary btn-sm" href="{% url 'tours-list' %}"
+                                            aria-label="Go to the Tours List Section"><i
+                                                class="fa fa-angle-left left"></i> Browse More
+                                            Tours </a>
+                                        <input type="submit" class="btn btn-primary btn-sm" value="Add to Basket">
+                                    </div>
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                    {%  endwith  %}
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+</div>
+</section>
 
 </div>
 
