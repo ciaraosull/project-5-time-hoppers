@@ -99,14 +99,14 @@
                         <a class="update-link btn btn-sm btn-primary update" aria-label="Update Booking"><i
                                 class="fa-solid fa-pencil"></i><small> Update</small></a>
                         <!--Delete Button-->
-                        <a class="remove-item btn btn-sm btn-danger float-end" aria-label="Delete Booking" id="remove_{{ item.item_id }}"
-                            data-tour_departure_time="{{ item.departure_time }}"><i
-                            class="fa-solid fa-pencil"></i><small> Remove</small></a>
+                        <a class="remove-item btn btn-sm btn-danger float-end" aria-label="Delete Booking"
+                            id="remove_{{ item.item_id }}" data-tour_departure_time="{{ item.departure_time }}"><i
+                                class="fa-solid fa-pencil"></i><small> Remove</small></a>
                     </td>
                     <td>
                         <!--Update Button Beside Quantity-->
-                        <a class="update-link btn btn-sm btn-primary update float-start mb-3" aria-label="Update Booking"><i
-                            class="fa-solid fa-pencil"></i><small> Update</small></a>
+                        <a class="update-link btn btn-sm btn-primary update float-start mb-3"
+                            aria-label="Update Booking"><i class="fa-solid fa-pencil"></i><small> Update</small></a>
                     </td>
                     <!--Price-->
                     <td>
@@ -115,9 +115,9 @@
                     <td>€ {{ item.tour.price| calc_subtotal:item.quantity }}</td>
                     <td>
                         <!--Delete Booking At End of Row For Responsive Design-->
-                        <a class="remove-item btn btn-sm btn-danger float-end" aria-label="Delete Booking" id="remove_{{ item.item_id }}"
-                        data-tour_departure_time="{{ item.departure_time }}"><i
-                        class="fa-solid fa-trash-can"></i></a>
+                        <a class="remove-item btn btn-sm btn-danger float-end" aria-label="Delete Booking"
+                            id="remove_{{ item.item_id }}" data-tour_departure_time="{{ item.departure_time }}"><i
+                                class="fa-solid fa-trash-can"></i></a>
                     </td>
 
                     {%  endfor  %}
@@ -135,12 +135,11 @@
                     <td>
                         <h4><strong>€ {{ grand_total|floatformat:2 }}</strong></h4>
                     </td>
-
+                    <!--Grand Total row-->
                     <td colspan="3"><a href="" class="btn btn-primary btn-sm">Checkout<i
                                 class="fa fa-angle-right right"></i></a>
                     </td>
                 </tr>
-
             </tbody>
         </table>
 

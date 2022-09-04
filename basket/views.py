@@ -13,7 +13,7 @@ def add_to_basket(request, item_id):
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    departure_date = None
+    # departure_date = None
     departure_time = None
     if 'tour_departure_time' in request.POST:
         departure_time = request.POST['tour_departure_time']
