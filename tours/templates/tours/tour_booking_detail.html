@@ -75,16 +75,16 @@
                                     {% csrf_token %}
                                     <div class="form-row">
                                             <!-- Time Slots & Dates Here-->
-                                                {% with tour.has_departure_times as t %}
-                                                {% if t %}
+                                                {% with tour.has_departure_times as s %}
+                                                {% if s %}
                                                     <div class="col-6">
                                                         <p><strong>Departure Times:</strong></p>
                                                         <select class="form-control rounded-0 w-50" name="tour_departure_time" id='id_tour_departure_time'>
-                                                            <option value="8">8am</option>
-                                                            <option value="10">10am</option>
-                                                            <option value="12" selected>12noon</option>
-                                                            <option value="15">3pm</option>
-                                                            <option value="18">6pm</option>
+                                                            <option value="AM">8am</option>
+                                                            <option value="PM">10am</option>
+                                                            <option value="M" selected>12noon</option>
+                                                            <option value="T">3pm</option>
+                                                            <option value="P">6pm</option>
                                                         </select>
                                                     </div>
                                                 {% endif %}
@@ -120,7 +120,7 @@
                                         </div>
 
                                         <!-- Link to View More Tours-->
-                                        <div class="col{% if t %}-6 mt-2{% endif %}">
+                                        <div class="col{% if s %}-6 mt-2{% endif %}">
                                             <a class="btn btn-outline-secondary btn-sm" href="{% url 'tours-list' %}"
                                                 aria-label="Go to the Tours List Section"><i
                                                     class="fa fa-angle-left left"></i> Browse More

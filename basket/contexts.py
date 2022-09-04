@@ -34,13 +34,14 @@ def basket_contents(request):
                     'departure_time': departure_time,
                 })
 
-    grand_total = total
+    delivery = 0
+    grand_total = delivery + total
 
     context = {
         'basket_items': basket_items,
         'total': total,
         'tour_count': tour_count,
-        'grand_total': grand_total
+        'grand_total': grand_total,
     }
 
     return context
