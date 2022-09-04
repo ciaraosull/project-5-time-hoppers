@@ -74,7 +74,6 @@
                                 <form class="form" action="{% url 'add_to_basket' tour.id %}" method="POST">
                                     {% csrf_token %}
                                     <div class="form-row">
-                                            Time Slots & Dates Here
                                                 {% with tour.has_departure_times as s %}
                                                 {% if s %}
                                                     <div class="col-6">

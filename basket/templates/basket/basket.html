@@ -31,6 +31,8 @@
                     <th>Date</th>
                     <th>Dept</th>
                     <th>QTY</th>
+                    <!--Empty Header for Update Button-->
+                    <th></th>
                     <th>Price</th>
                     <th>Total</th>
                     <th></th>
@@ -46,19 +48,25 @@
                         <img src="{{  item.tour.image  }}" alt="" class="img-fluid rounded">
                     </th>
                     <td>
-                         <!-- Tour Name-->
+                        <!-- Tour Name-->
                         <h5><strong>{{ item.tour.tour_name }}</strong></h5>
                         <p class="text-muted"></p>
                     </td>
                     <td></td>
                     <!--Departure Times-->
                     <td>{{ item.departure_time }}</td>
+                    <!--Quantity Update Form-->
                     <td>
                         <form class="form update-form" method="POST" action="{%  url 'adjust_basket' item.item_id %}">
                             {% csrf_token %}
                             <div class="form-group">
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
+
+                                    <!--Input Departure Times-->
+                                    <input type="hidden" name="tour_departure_time" value="{{ item.departure_time }}">
+
+                                    <!--Button to Decrease Hidden on Small screens for reponsive design-->
+                                    <div class="input-group-prepend d-none d-md-block">
                                         <button class="decrement-qty btn btn-sm btn-black rounded-0"
                                             data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                                             <span>
@@ -66,10 +74,13 @@
                                             </span>
                                         </button>
                                     </div>
+                                    <!-- Quantity of Tickets Input-->
                                     <input class="form-control form-control-sm qty_input" type="number" name="quantity"
                                         value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
                                         id="id_qty_{{ item.item_id }}">
-                                    <div class="input-group-append">
+
+                                    <!--Button to Increase Hidden on Small screens for reponsive design-->
+                                    <div class="input-group-append d-none d-md-block">
                                         <button class="increment-qty btn btn-sm btn-black rounded-0"
                                             data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
                                             <span>
@@ -77,34 +88,34 @@
                                             </span>
                                         </button>
                                     </div>
-                                    {% if item.tour.has_departure_times %}
-                                    <input type="hidden" name="tour_departure_time"
-                                        value="{{ item.departure_time }}">
-                                    {% endif %}
                                 </div>
                             </div>
                         </form>
-                        <!--Adjust & Delete Buttons-->
-                        <a class="update-link text-info"><small>Update</small></a>
-                        <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"
-                            data-tour_departure_time="{{ item.departure_time }}"><small>Remove</small></a>
+                        <!--Update Button-->
+                        <a class="update-link btn btn-sm btn-primary update" aria-label="Update Booking"><i
+                                class="fa-solid fa-pencil"></i><small> Update</small></a>
+                        <!--Delete Button-->
+                        <a class="remove-item btn btn-sm btn-danger float-end" aria-label="Delete Booking" id="remove_{{ item.item_id }}"
+                            data-tour_departure_time="{{ item.departure_time }}"><i
+                            class="fa-solid fa-pencil"></i><small> Remove</small></a>
                     </td>
-                     <!--Price-->
-                    <td>€ {{ item.tour.price  }}</td>
+                    <td>
+                        <!--Update Button Beside Quantity-->
+                        <a class="update-link btn btn-sm btn-primary update float-start mb-3" aria-label="Update Booking"><i
+                            class="fa-solid fa-pencil"></i><small> Update</small></a>
+                    </td>
+
+
+                    <!--Price-->
+                    <td>
+                        € {{ item.tour.price  }}</td>
                     <!--Subtotal-->
                     <td>€ {{ item.tour.price| calc_subtotal:item.quantity }}</td>
                     <td>
-                        <!--Delete Booking-->
-                        <a class="btn btn-sm btn-danger" href="{%  url 'remove_from_basket' item.item_id %}" aria-label="Delete Booking"><i
-                                class="fa-solid fa-trash-can"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <!--Update Booking-->
-                        <a class="btn btn-sm btn-primary update" href="" aria-label="Update Booking"><i
-                                class="fa-solid fa-pencil"></i>
-                        </a>
-
+                        <!--Delete Booking At End of Row For Responsive Design-->
+                        <a class="remove-item btn btn-sm btn-danger float-end" aria-label="Delete Booking" id="remove_{{ item.item_id }}"
+                        data-tour_departure_time="{{ item.departure_time }}"><i
+                        class="fa-solid fa-trash-can"></i></a>
                     </td>
 
                     {%  endfor  %}
