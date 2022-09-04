@@ -13,7 +13,6 @@ def add_to_basket(request, item_id):
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    # departure_date = None
     departure_time = None
     if 'tour_departure_time' in request.POST:
         departure_time = request.POST['tour_departure_time']
@@ -28,20 +27,7 @@ def add_to_basket(request, item_id):
         else:
             basket[item_id] = {'items_by_departure_time': {departure_time: quantity}}
 
-    # if 'tour_departure_date' in request.POST:
-    #     departure_date = request.POST['tour_departure_date']
-    # basket = request.session.get('basket', {})
-
-    # if departure_date:
-    #     if item_id in list(basket.keys()):
-    #         if departure_date in basket[item_id]['items_by_departure_date'].keys():
-    #             basket[item_id]['items_by_departure_date'][departure_date] += quantity
-    #         else:
-    #             basket[item_id]['items_by_departure_date'][departure_date] = quantity
-    #     else:
-    #         basket[item_id] = {'items_by_departure_date': {departure_date: quantity}}
     else:
-
         if item_id in list(basket.keys()):
             basket[item_id] += quantity
         else:
