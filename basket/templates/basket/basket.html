@@ -52,9 +52,7 @@
                     </td>
                     <td></td>
                     <!--Departure Times-->
-                    <td>Times:
-                        {{  item.tour.has_departure_times  }}{{ item.departure_time }}
-                    </td>
+                    <td>{{ item.departure_time }}</td>
                     <td>
                         <form class="form update-form" method="POST" action="{%  url 'adjust_basket' item.item_id %}">
                             {% csrf_token %}
@@ -97,7 +95,7 @@
                     <td>€ {{ item.tour.price| calc_subtotal:item.quantity }}</td>
                     <td>
                         <!--Delete Booking-->
-                        <a class="btn btn-sm btn-danger" href="" aria-label="Delete Booking"><i
+                        <a class="btn btn-sm btn-danger" href="{%  url 'remove_from_basket' item.item_id %}" aria-label="Delete Booking"><i
                                 class="fa-solid fa-trash-can"></i>
                         </a>
                     </td>

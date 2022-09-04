@@ -74,17 +74,17 @@
                                 <form class="form" action="{% url 'add_to_basket' tour.id %}" method="POST">
                                     {% csrf_token %}
                                     <div class="form-row">
-                                            <!-- Time Slots & Dates Here-->
+                                            Time Slots & Dates Here
                                                 {% with tour.has_departure_times as s %}
                                                 {% if s %}
                                                     <div class="col-6">
                                                         <p><strong>Departure Times:</strong></p>
                                                         <select class="form-control rounded-0 w-50" name="tour_departure_time" id='id_tour_departure_time'>
-                                                            <option value="AM">8am</option>
-                                                            <option value="PM">10am</option>
-                                                            <option value="M" selected>12noon</option>
-                                                            <option value="T">3pm</option>
-                                                            <option value="P">6pm</option>
+                                                            <option value="8:00">8am</option>
+                                                            <option value="10:00">10am</option>
+                                                            <option value="12:00" selected>12noon</option>
+                                                            <option value="15:00">3pm</option>
+                                                            <option value="16:00">6pm</option>
                                                         </select>
                                                     </div>
                                                 {% endif %}
