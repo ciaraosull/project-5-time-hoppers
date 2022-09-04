@@ -33,8 +33,8 @@
                     <th>QTY</th>
                     <!--Empty Header for Update Button-->
                     <th></th>
-                    <th>Price</th>
-                    <th>Total</th>
+                    <th>Price PerPerson</th>
+                    <th>SubTotal</th>
                     <th></th>
                 </tr>
             </thead>
@@ -50,8 +50,9 @@
                     <td>
                         <!-- Tour Name-->
                         <h5><strong>{{ item.tour.tour_name }}</strong></h5>
-                        <p class="text-muted"></p>
+                        <p class="text-muted">Duration: {{ item.tour.tour_duration }}</p>
                     </td>
+                    <!--Departure Date-->
                     <td></td>
                     <!--Departure Times-->
                     <td>{{ item.departure_time }}</td>
@@ -104,8 +105,6 @@
                         <a class="update-link btn btn-sm btn-primary update float-start mb-3" aria-label="Update Booking"><i
                             class="fa-solid fa-pencil"></i><small> Update</small></a>
                     </td>
-
-
                     <!--Price-->
                     <td>
                         € {{ item.tour.price  }}</td>
