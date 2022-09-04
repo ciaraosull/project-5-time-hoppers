@@ -86,7 +86,7 @@
                                         {% if s %}
                                         <div class="col-6 mb-5">
                                             <p><strong>Departure Times:</strong></p>
-                                            <select class="form-control rounded-0 w-25" name="tour_departure_time"
+                                            <select class="form-control rounded-0 w-50" name="tour_departure_time"
                                                 id='id_tour_departure_time'>
                                                 <option value="8:00">8am</option>
                                                 <option value="10:00">10am</option>
@@ -103,7 +103,7 @@
                                         <div class="form-group w-50">
                                             <div class="input-group">
                                                 <!-- Button to Decrease-->
-                                                <div class="input-group-prepend">
+                                                <div class="input-group-prepend d-none d-md-block">
                                                     <button class="decrement-qty btn btn-black rounded-0"
                                                         data-item_id="{{ tour.id }}" id="decrement-qty_{{ tour.id }}">
                                                         <span class="icon">
@@ -115,7 +115,7 @@
                                                     value="1" min="1" max="99" data-item_id="{{ tour.id }}"
                                                     id="id_qty_{{ tour.id }}">
                                                 <!-- Button to Increase-->
-                                                <div class="input-group-append">
+                                                <div class="input-group-append d-none d-md-block">
                                                     <button class="increment-qty btn btn-black rounded-0"
                                                         data-item_id="{{ tour.id }}" id="increment-qty_{{ tour.id }}">
                                                         <span class="icon">
