@@ -98,10 +98,6 @@
                         <!--Update Button-->
                         <a class="update-link btn btn-sm btn-primary update" aria-label="Update Booking"><i
                                 class="fa-solid fa-pencil"></i><small> Update</small></a>
-                        <!--Delete Button-->
-                        <a class="remove-item btn btn-sm btn-danger float-end" aria-label="Delete Booking"
-                            id="remove_{{ item.item_id }}" data-tour_departure_time="{{ item.departure_time }}"><i
-                                class="fa-solid fa-pencil"></i><small> Remove</small></a>
                     </td>
                     <td>
                         <!--Update Button Beside Quantity-->
@@ -115,6 +111,7 @@
                     <td>€ {{ item.tour.price| calc_subtotal:item.quantity }}</td>
                     <td>
                         <!--Delete Booking At End of Row For Responsive Design-->
+
                         <a class="remove-item btn btn-sm btn-danger float-end" href="" aria-label="Delete Booking"
                             id="remove_{{ item.item_id }}" data-tour_departure_time="{{ item.departure_time }}"><i
                                 class="fa-solid fa-trash-can"></i></a>
@@ -168,6 +165,20 @@
         var form = $(this).prev('.update-form');
         form.submit();
     })
+
+    //  // Remove item and reload on click
+    //  $('.remove-item').click(function(e) {
+    //     var csrfToken = "{{ csrf_token }}";
+    //     var itemId = $(this).attr('id').split('remove_')[1];
+    //     var url = `/basket/remove/${itemId}/`;
+    //     var data = {'csrfmiddlewaretoken': csrfToken};
+
+    //     $.post(url, data)
+    //      .done(function() {
+    //          location.reload();
+    //      });
+    // });
+
 
     // Remove item and reload on click
     $('.remove-item').click(function (e) {

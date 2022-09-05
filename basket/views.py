@@ -1,6 +1,7 @@
 """Views for Basket"""
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
+from tours.models import Tour
 
 
 def view_basket(request):
@@ -64,47 +65,43 @@ def adjust_basket(request, item_id):
     return redirect(reverse('view-basket'))
 
 
-def remove_from_basket(request, item_id):
-    """Remove the item from the basket"""
-    redirect_url = request.POST.get('redirect_url')
-
-    try:
-        departure_time = None
-        if 'tour_departure_time' in request.POST:
-            departure_time = request.POST['tour_departure_time']
-        basket = request.session.get('basket', {})
-
-        if basket:
-            del basket[item_id]['items_by_departure_time'][departure_time]
-            if not basket[item_id]['items_by_departure_time']:
-                basket.pop(item_id)
-        else:
-            basket.pop(item_id)
-
-        request.session['basket'] = basket
-        return redirect(redirect_url)
-        # return HttpResponse(status=200)
-
-    except Exception as e:
-        return HttpResponse(status=500)
-
 # def remove_from_basket(request, item_id):
 #     """Remove the item from the basket"""
+#     redirect_url = request.POST.get('redirect_url')
 
-#     # redirect_url = request.POST.get('redirect_url')
+#     try:
+#         departure_time = None
+#         if 'tour_departure_time' in request.POST:
+#             departure_time = request.POST['tour_departure_time']
+#         basket = request.session.get('basket', {})
 
-#     # get basket instance or create basket if it doesn't exist
-#     basket = request.session.get('basket', {})
+#         if basket:
+#             del basket[item_id]['items_by_departure_time'][departure_time]
+#             if not basket[item_id]['items_by_departure_time']:
+#                 basket.pop(item_id)
+#         else:
+#             basket.pop(item_id)
 
-#     # if tour is in basket
-#     if item_id in list(basket.keys()):
-#         # remove from basket
-#         basket.pop(item_id)
-#         messages.success(request, "Booking has been removed basket.")
-#     else:
-#         # if tour is not in the basket
-#         messages.error(request, "This Booking is not in your basket.")
+#         request.session['basket'] = basket
+#         return redirect(redirect_url)
+#         # return HttpResponse(status=200)
 
-#     # update the basket
-#     request.session['basket'] = basket
-#     return redirect('view-basket')
+#     except Exception as e:
+#         return HttpResponse(status=500)
+
+def remove_from_basket(request, item_id):
+    """Remove the specified product from the bag"""
+
+    try:
+        tour = get_object_or_404(Tour, pk=item_id)
+        basket = request.session.get('basket', {})
+
+        basket.pop(item_id)
+        messages.success(request, f'Removed {tour.tour_name} from your bag')
+
+        request.session['basket'] = basket
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        messages.error(request, f'Error removing booking item: {e}')
+        return HttpResponse(status=500)
