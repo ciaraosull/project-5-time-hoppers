@@ -1,5 +1,6 @@
 """Views for Basket"""
 from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.contrib import messages
 
 
 def view_basket(request):
@@ -86,3 +87,24 @@ def remove_from_basket(request, item_id):
 
     except Exception as e:
         return HttpResponse(status=500)
+
+# def remove_from_basket(request, item_id):
+#     """Remove the item from the basket"""
+
+#     # redirect_url = request.POST.get('redirect_url')
+
+#     # get basket instance or create basket if it doesn't exist
+#     basket = request.session.get('basket', {})
+
+#     # if tour is in basket
+#     if item_id in list(basket.keys()):
+#         # remove from basket
+#         basket.pop(item_id)
+#         messages.success(request, "Booking has been removed basket.")
+#     else:
+#         # if tour is not in the basket
+#         messages.error(request, "This Booking is not in your basket.")
+
+#     # update the basket
+#     request.session['basket'] = basket
+#     return redirect('view-basket')

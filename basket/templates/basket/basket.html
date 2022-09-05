@@ -115,7 +115,7 @@
                     <td>€ {{ item.tour.price| calc_subtotal:item.quantity }}</td>
                     <td>
                         <!--Delete Booking At End of Row For Responsive Design-->
-                        <a class="remove-item btn btn-sm btn-danger float-end" aria-label="Delete Booking"
+                        <a class="remove-item btn btn-sm btn-danger float-end" href="" aria-label="Delete Booking"
                             id="remove_{{ item.item_id }}" data-tour_departure_time="{{ item.departure_time }}"><i
                                 class="fa-solid fa-trash-can"></i></a>
                     </td>
