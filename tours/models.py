@@ -55,6 +55,11 @@ class Tour(models.Model):
         blank=True,
         null=True,
         )
+    has_departure_date = models.BooleanField(
+        default=True,
+        blank=True,
+        null=True,
+        )
     price = models.DecimalField(
         max_digits=6,
         decimal_places=0

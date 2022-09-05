@@ -94,7 +94,14 @@ def remove_from_basket(request, item_id):
 
     try:
         tour = get_object_or_404(Tour, pk=item_id)
+        # departure_time = request.POST['tour_departure_time']
         basket = request.session.get('basket', {})
+
+#        if basket:
+#             del basket[item_id]['items_by_departure_time'][departure_time]
+#             if not basket[item_id]['items_by_departure_time']:
+#                 basket.pop(item_id)
+#           else:
 
         basket.pop(item_id)
         messages.success(request, f'Removed {tour.tour_name} from your bag')

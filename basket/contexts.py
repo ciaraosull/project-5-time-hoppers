@@ -35,6 +35,12 @@ def basket_contents(request):
                     'tour': tour,
                     'departure_time': departure_time,
                 })
+            # for departure_date in item_data['items_by_departure_date'].items():
+            #     basket_items.append({
+            #         'item_id': item_id,
+            #         'tour': tour,
+            #         'departure_date': departure_date,
+            #     })
 
     delivery = 0
     grand_total = delivery + total
