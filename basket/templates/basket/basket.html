@@ -31,8 +31,6 @@
                     <th>Date</th>
                     <th>Time</th>
                     <th>QTY</th>
-                    <!--Empty Header for Update Button-->
-                    <th></th>
                     <th>Price PerPerson</th>
                     <th>SubTotal</th>
                     <th></th>
@@ -96,14 +94,10 @@
                             </div>
                         </form>
                         <!--Update Button-->
-                        <a class="update-link btn btn-sm btn-primary update" aria-label="Update Booking"><i
+                        <a class="update-link btn btn-sm btn-primary update ms-3 mb-2" aria-label="Update Booking"><i
                                 class="fa-solid fa-pencil"></i><small> Update</small></a>
                     </td>
-                    <td>
-                        <!--Update Button Beside Quantity-->
-                        <a class="update-link btn btn-sm btn-primary update float-start mb-3"
-                            aria-label="Update Booking"><i class="fa-solid fa-pencil"></i><small> Update</small></a>
-                    </td>
+
                     <!--Price-->
                     <td>
                         € {{ item.tour.price  }}</td>
@@ -159,7 +153,7 @@
 
 <script type="text/javascript">
     // Update quantity on click
-    $('.update-link').click(function (e) {
+    $('.update-link').click(function(e) {
         var form = $(this).prev('.update-form');
         form.submit();
     })
