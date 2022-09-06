@@ -103,6 +103,7 @@
                         <!--Update Button Beside Quantity-->
                         <a class="update-link btn btn-sm btn-primary update float-start mb-3"
                             aria-label="Update Booking"><i class="fa-solid fa-pencil"></i><small> Update</small></a>
+                            <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-craft_size="{{ item.departure_time }}"><small>Remove</small></a>
                     </td>
                     <!--Price-->
                     <td>
@@ -112,9 +113,11 @@
                     <td>
                         <!--Delete Booking At End of Row For Responsive Design-->
 
-                        <a class="remove-item btn btn-sm btn-danger float-end" href="" aria-label="Delete Booking"
+                        <!-- <a class="remove-item btn btn-sm btn-danger float-end" href="" aria-label="Delete Booking"
                             id="remove_{{ item.departure_time }}" data-tour_departure_time="{{ item.departure_time }}"><i
-                                class="fa-solid fa-trash-can"></i></a>
+                                class="fa-solid fa-trash-can"></i></a> -->
+                        <a class="remove-item btn btn-sm btn-danger float-end" id="remove_{{ item.item_id }}" data-tour_departure_time="{{ item.departure_time }}"><small><i
+                            class="fa-solid fa-trash-can"></i></small></a>
                     </td>
 
                     {%  endfor  %}
@@ -181,20 +184,33 @@
 
 
     // Remove item and reload on click
-    $('.remove-item').click(function (e) {
+    // $('.remove-item').click(function (e) {
+    //     var csrfToken = "{{ csrf_token }}";
+    //     var itemId = $(this).attr('id').split('remove_')[1];
+    //     var departure_time = $(this).data('tour_departure_time');
+    //     var url = `/basket/remove/${itemId}/`;
+    //     var data = {
+    //         'csrfmiddlewaretoken': csrfToken,
+    //         'tour_departure_time': departure_time
+    //     };
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
         var departure_time = $(this).data('tour_departure_time');
         var url = `/basket/remove/${itemId}/`;
-        var data = {
-            'csrfmiddlewaretoken': csrfToken,
-            'tour_departure_time': departure_time
-        };
+
+        var data = {'csrfmiddlewaretoken': csrfToken,  'tour_departure_time': departure_time};
 
         $.post(url, data)
-            .done(function () {
-                location.reload();
-            });
+        .done(function() {
+            location.reload();
+        });
+
+        $.post(url, data)
+        .done(function () {
+            location.reload();
+        });
     })
 </script>
 
