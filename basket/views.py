@@ -15,19 +15,54 @@ def add_to_basket(request, item_id):
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    departure_time = None
-    if 'tour_departure_time' in request.POST:
-        departure_time = request.POST['tour_departure_time']
+    # departure_time = None
+    departure_date = None
+    if 'tour_departure_time' and 'tour_departure_date' in request.POST:
+        # departure_time = request.POST['tour_departure_time']
+        departure_date = request.POST['tour_departure_date']
     basket = request.session.get('basket', {})
 
-    if departure_time:
+    # if departure_time:
+    #     if item_id in list(basket.keys()):
+    #         if departure_time in basket[item_id]['items_by_departure_date'][departure_date]['items_by_departure_time'].keys():
+    #             basket[item_id]['items_by_departure_date'][departure_date]['items_by_departure_time'][departure_time] += quantity
+
+    #             if departure_date in basket[item_id]['items_by_departure_date'].keys():
+    #                 basket[item_id]['items_by_departure_date'][departure_date]['items_by_departure_time'][departure_time] += quantity
+    #         else:
+    #             basket[item_id]['items_by_departure_date'][departure_date]['items_by_departure_time'][departure_time] = quantity
+
+    #     else:
+    #         basket[item_id] = {'items_by_departure_date': {departure_date}} and {'items_by_departure_time': {departure_time: quantity}}
+    #     print(basket) 
+        #  
+        #{'4': {'items_by_departure_time': {'12:00': 1}}}  
+        # {'4': {'items_by_departure_date': {'2022-09-28': 2}}}
+        
+        # {'4': {'items_by_departure_time': {'10:00': 1}}}
+        #{'4': {'items_by_departure_time': {'12:00': 2}}}
+        #{'4': {'items_by_departure_time': {'12:00': 2}}}
+        #{'4': {'items_by_departure_time': {'12:00': 2}}}
+        # {'4': {'items_by_departure_time': {'8:00': 1}}}
+        # I want
+        # {'4': {items_by_departure_date': {'2022-09-28}: {items_by_departure_time': {'12':2}}}}
+
+    # else:
+    #     if item_id in list(basket.keys()):
+    #         basket[item_id] += quantity
+    #     else:
+    #         basket[item_id] = quantity
+
+    if departure_date:
         if item_id in list(basket.keys()):
-            if departure_time in basket[item_id]['items_by_departure_time'].keys():
-                basket[item_id]['items_by_departure_time'][departure_time] += quantity
+            if departure_date in basket[item_id]['items_by_departure_date'].keys():
+                basket[item_id]['items_by_departure_date'][departure_date] += quantity
             else:
-                basket[item_id]['items_by_departure_time'][departure_time] = quantity
+                basket[item_id]['items_by_departure_date'][departure_date] = quantity
         else:
-            basket[item_id] = {'items_by_departure_time': {departure_time: quantity}}
+            basket[item_id] = {'items_by_departure_date': {departure_date: quantity}}
+
+        print(basket) # {'4': {'items_by_departure_date': {'2022-09-13': 1}}}
 
     else:
         if item_id in list(basket.keys()):

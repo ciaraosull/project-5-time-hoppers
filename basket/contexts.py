@@ -23,18 +23,28 @@ def basket_contents(request):
                 'quantity': item_data,
                 'tour': tour,
             })
-
         else:
             tour = get_object_or_404(Tour, pk=item_id)
-            for departure_time, quantity in item_data['items_by_departure_time'].items():
+            # for departure_time, quantity in item_data['items_by_departure_time'].items():
+            #     total += quantity * tour.price
+            #     tour_count += quantity
+            #     basket_items.append({
+            #         'item_id': item_id,
+            #         'quantity': quantity,
+            #         'tour': tour,
+            #         'departure_time': departure_time,
+            #     })
+
+            for departure_date, quantity in item_data['items_by_departure_date'].items():
                 total += quantity * tour.price
                 tour_count += quantity
                 basket_items.append({
                     'item_id': item_id,
                     'quantity': quantity,
                     'tour': tour,
-                    'departure_time': departure_time,
+                    'departure_date': departure_date,
                 })
+
             # for departure_date in item_data['items_by_departure_date'].items():
             #     basket_items.append({
             #         'item_id': item_id,
