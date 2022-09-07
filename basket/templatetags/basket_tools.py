@@ -1,6 +1,5 @@
 """To Calculate the final total"""
 from django import template
-from django.utils import timezone as tz
 
 
 register = template.Library()

@@ -90,7 +90,7 @@ class Tour(models.Model):
 
     def __str__(self):
         """ To return the name objects as a string """
-        return self.tour_name
+        return f"{self.tour_name}"
 
 
 class Review(models.Model):
