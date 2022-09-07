@@ -136,7 +136,8 @@
                                             {%  else  %}
                                             <!-- Default Image -->
                                             <img class="rounded-circle border border-3 shadow p-3 mb-3 bg-body rounded mx-auto d-block mt-3"
-                                                src="" width="100" alt="Default Profile Image">
+                                                src="/media/default-profile-image.png" width="100"
+                                                alt="Default Profile Image">
                                             {%  endif  %}
                                         </div>
                                         <!-- Review Form-->
@@ -191,7 +192,7 @@
                     {%  else  %}
                     <!-- Default Image -->
                     <img class="rounded-circle border border-3 shadow p-3 mb-3 bg-body rounded mx-auto d-block mt-3"
-                        src="" width="100" alt="Default Profile Image">
+                        src="/media/default-profile-image.png" width="100" alt="Default Profile Image">
                     {%  endif  %}
                 </div>
 
@@ -217,44 +218,44 @@
                 <div class="col-md-2"></div>
             </div>
             {% endfor %}
-        </div>
-    </section>
+            <!-- Reviews Pagination -->
+            <div class="paginate container">
+                <div class="d-flex justify-content-end pb-3 me-5 mt-3">
+                    {%  if reviews.has_previous  %}
+                    <a class="btn btn-outline-secondary btn-sm mb4 me-1" href="?page=1">First</a>
+                    <a class="btn btn-outline-secondary btn-sm mb4 me-1"
+                        href="?page={{  reviews.previous_page_number  }}">Previous</a>
+                    {%  endif  %}
 
-    <!-- Reviews Pagination -->
-    <div class="paginate container">
-        <div class="d-flex justify-content-end pb-3 me-5 mt-3">
-            {%  if reviews.has_previous  %}
-            <a class="btn btn-outline-secondary btn-sm mb4 me-1" href="?page=1">First</a>
-            <a class="btn btn-outline-secondary btn-sm mb4 me-1"
-                href="?page={{  reviews.previous_page_number  }}">Previous</a>
-            {%  endif  %}
+                    {%  for num in  reviews.paginator.page_range  %}
+                    {%  if  reviews.number == num  %}
+                    <a class="btn btn-secondary btn-sm mb4 me-1" href="?page={{  num  }}">{{  num  }}</a>
+                    {%  elif num >  reviews.number|add:'-3' and num  <  reviews.number|add:'3'  %}
+                    <a class="btn btn-outline-secondary btn-sm mb4 me-1" href="?page={{  num  }}">{{  num  }}</a>
+                    {%  endif  %}
+                    {%  endfor  %}
 
-            {%  for num in  reviews.paginator.page_range  %}
-            {%  if  reviews.number == num  %}
-            <a class="btn btn-secondary btn-sm mb4 me-1" href="?page={{  num  }}">{{  num  }}</a>
-            {%  elif num >  reviews.number|add:'-3' and num  <  reviews.number|add:'3'  %}
-            <a class="btn btn-outline-secondary btn-sm mb4 me-1" href="?page={{  num  }}">{{  num  }}</a>
-            {%  endif  %}
-            {%  endfor  %}
-
-            {%  if reviews.has_next  %}
-            <a class="btn btn-outline-secondary btn-sm mb4 me-1" href="?page={{  reviews.next_page_number  }}">Next</a>
-            <a class="btn btn-outline-secondary btn-sm mb4 me-1"
-                href="?page={{  reviews.paginator.num_pages  }}">Last</a>
-            {%  endif  %}
-        </div>
-    </div>
-
-    {%  else %}
-    <!-- If No Reviews Invite User to be the First to add a Review -->
-    <section class="container d-flex justify-content-center">
-        <div class="card ps-5 pe-5 mb-3 mt-5 shadow p-3 mb-5 bg-body rounded" style="width: 900px;">
-            <div class="content-item d-flex justify-content-center">
-                <h4>Be the First to Add a Review!</h4>
+                    {%  if reviews.has_next  %}
+                    <a class="btn btn-outline-secondary btn-sm mb4 me-1"
+                        href="?page={{  reviews.next_page_number  }}">Next</a>
+                    <a class="btn btn-outline-secondary btn-sm mb4 me-1"
+                        href="?page={{  reviews.paginator.num_pages  }}">Last</a>
+                    {%  endif  %}
+                </div>
             </div>
+
+            {%  else %}
+            <!-- If No Reviews Invite User to be the First to add a Review -->
+            <section class="container d-flex justify-content-center">
+                <div class="card ps-5 pe-5 mb-3 mt-5 shadow p-3 mb-5 bg-body rounded" style="width: 900px;">
+                    <div class="content-item d-flex justify-content-center">
+                        <h4>Be the First to Add a Review!</h4>
+                    </div>
+                </div>
+            </section>
+            {%  endif  %}
         </div>
     </section>
-    {%  endif  %}
 </div>
 
 
