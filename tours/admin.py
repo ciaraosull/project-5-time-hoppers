@@ -8,13 +8,13 @@ from .models import Tour, Category, Review
 class TourAdmin(SummernoteModelAdmin):
     """ Display Tour Model on Admin Site """
     list_display = (
-        'date_added',
         'tour_name',
         'category',
         'tour_duration',
+        'accessibility_friendly',
         'rating',
         'price',
-        'image'
+        'date_added'
     )
     search_fields = ['tour_name', 'description']
     list_filter = ('date_added', 'price', 'rating')

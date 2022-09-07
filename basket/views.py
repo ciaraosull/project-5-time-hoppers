@@ -13,6 +13,7 @@ def view_basket(request):
 def add_to_basket(request, item_id):
     """ To Add Quantity of tour tickets & other details to the basket """
 
+    tour = get_object_or_404(Tour, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     departure_date = None
@@ -38,6 +39,7 @@ def add_to_basket(request, item_id):
             basket[item_id] = quantity
 
     request.session['basket'] = basket
+    messages.success(request, f'{tour.tour_name} on {departure_date} Successfully Added to your Basket')
     return redirect(redirect_url)
 
 

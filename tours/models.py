@@ -27,6 +27,14 @@ class Category(models.Model):
 
 class Tour(models.Model):
     """ Tour Details"""
+    DEPARTURE_TIME_CHOICES = [
+        ('9:00', '9am'),
+        ('11:00', '11am'),
+        ('13:00', '1pm'),
+        ('15:00', '3pm'),
+        ('20:00', '8pm'),
+        ]
+
     category = models.ForeignKey(
         'Category',
         null=True,
@@ -50,10 +58,10 @@ class Tour(models.Model):
         null=True,
         blank=True
         )
-    has_departure_times = models.BooleanField(
-        default=True,
+    departure_time = models.CharField(
         blank=True,
-        null=True,
+        max_length=5,
+        choices=DEPARTURE_TIME_CHOICES
         )
     has_departure_date = models.BooleanField(
         default=True,
