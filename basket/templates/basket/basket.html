@@ -29,7 +29,6 @@
                     <th></th>
                     <th>Tour</th>
                     <th>Date</th>
-                    <th>Time</th>
                     <th>QTY</th>
                     <th>Price PerPerson</th>
                     <th>SubTotal</th>
@@ -52,8 +51,7 @@
                     </td>
                     <!--Departure Date-->
                     <td>{{ item.departure_date }}</td>
-                    <!--Departure Times-->
-                    <td>{{ item.departure_time }}</td>
+
                     <!--Quantity Update Form-->
                     <td>
                         <form class="form update-form" method="POST" action="{%  url 'adjust_basket' item.item_id %}">
@@ -63,9 +61,6 @@
 
                                     <!--Input Departure Date-->
                                     <input type="hidden" name="tour_departure_date" value="{{ item.departure_date }}">
-
-                                    <!--Input Departure Times-->
-                                    <input type="hidden" name="tour_departure_time" value="{{ item.departure_time }}">
 
                                     <!--Button to Decrease Hidden on Small screens for reponsive design-->
                                     <div class="input-group-prepend d-none d-md-block">
@@ -105,7 +100,7 @@
                     <td>€ {{ item.tour.price| calc_subtotal:item.quantity }}</td>
                     <td>
                         <!--Delete Booking At End of Row For Responsive Design-->
-                        <a class="remove-item btn btn-sm btn-danger float-end" id="remove_{{ item.item_id }}" data-tour_departure_time="{{ item.departure_time }}"><small><i
+                        <a class="remove-item btn btn-sm btn-danger float-end" id="remove_{{ item.item_id }}" data-tour_departure_date="{{ item.departure_date }}"><small><i
                             class="fa-solid fa-trash-can"></i></small></a>
                     </td>
 
@@ -162,10 +157,10 @@
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var departure_time = $(this).data('tour_departure_time');
+        var departure_date = $(this).data('tour_departure_date');
         var url = `/basket/remove/${itemId}/`;
 
-        var data = {'csrfmiddlewaretoken': csrfToken,  'tour_departure_time': departure_time};
+        var data = {'csrfmiddlewaretoken': csrfToken,  'tour_departure_date': departure_date};
 
         $.post(url, data)
         .done(function() {

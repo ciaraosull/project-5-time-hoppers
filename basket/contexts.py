@@ -11,8 +11,6 @@ def basket_contents(request):
     tour_count = 0
     basket = request.session.get('basket', {})
 
-    # departure_date to add?
-
     for item_id, item_data in basket.items():
         if isinstance(item_data, int):
             tour = get_object_or_404(Tour, pk=item_id)
@@ -23,18 +21,9 @@ def basket_contents(request):
                 'quantity': item_data,
                 'tour': tour,
             })
+
         else:
             tour = get_object_or_404(Tour, pk=item_id)
-            # for departure_time, quantity in item_data['items_by_departure_time'].items():
-            #     total += quantity * tour.price
-            #     tour_count += quantity
-            #     basket_items.append({
-            #         'item_id': item_id,
-            #         'quantity': quantity,
-            #         'tour': tour,
-            #         'departure_time': departure_time,
-            #     })
-
             for departure_date, quantity in item_data['items_by_departure_date'].items():
                 total += quantity * tour.price
                 tour_count += quantity
@@ -44,13 +33,6 @@ def basket_contents(request):
                     'tour': tour,
                     'departure_date': departure_date,
                 })
-
-            # for departure_date in item_data['items_by_departure_date'].items():
-            #     basket_items.append({
-            #         'item_id': item_id,
-            #         'tour': tour,
-            #         'departure_date': departure_date,
-            #     })
 
     delivery = 0
     grand_total = delivery + total
