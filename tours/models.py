@@ -28,11 +28,11 @@ class Category(models.Model):
 class Tour(models.Model):
     """ Tour Details"""
     DEPARTURE_TIME_CHOICES = [
-        ('9:00', '9am'),
-        ('11:00', '11am'),
-        ('13:00', '1pm'),
-        ('15:00', '3pm'),
-        ('20:00', '8pm'),
+        ('9am', '9am'),
+        ('11am', '11am'),
+        ('1pm', '1pm'),
+        ('3pm', '3pm'),
+        ('8pm', '8pm'),
         ]
 
     category = models.ForeignKey(

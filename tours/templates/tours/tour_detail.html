@@ -44,9 +44,12 @@
                         </div>
                         <!-- Details of Each Tour-->
                         <div class="text-md-start text-center">
+                            <!-- Tour Title-->
                             <div class="card-body mb-3 mt-3">
                                 <h1>{{  tour.tour_name  }}</h1>
                                 <h2>Tour Details</h2>
+
+                                <!-- Ratings-->
                                 {% if tour.rating %}
                                 <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
                                                 class="fa-regular fa-star"></i>
@@ -59,22 +62,46 @@
                                             Not Rated Yet</strong>
                                     </small></p>
                                 {% endif %}
+
+                                <!-- Reviews-->
                                 <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
                                                 class="fa-regular fa-comment"></i>
                                             Review{{ tour.reviews.count|pluralize }}: </strong>
                                         <i>{{ tour.reviews.count }}</i>
                                     </small></p>
+
+                                <!-- Accessibility-->
+                                {% if tour.accessibility_friendly == True %}
+                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                                class="fa-regular fa-circle-check"></i>
+                                            Accessibility Friendly </strong></small></p>
+                                {% else %}
+                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                                class="fa-regular fa-circle-xmark"></i>
+                                            Not Accessibility Friendly </strong></small></p>
+                                {% endif %}
+
+                                <!-- Departure Time-->
+                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                                class="fa-regular fa-clock"></i></i> Departs at:
+                                            <i>{{ tour.departure_time }}</i>
+                                        </strong></small></p>
+
+                                <!-- Price-->
                                 <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
                                                 class="fa-solid fa-euro-sign"></i>
                                             <i>{{ tour.price }}</i> per person
                                         </strong></small></p>
+
+                                <!-- Description-->
                                 <p class="card-text text-start p-2">
                                     {{  tour.description | safe  }}
                                 </p>
 
                                 <!-- Link to take user to booking form for the tour-->
                                 <div class="book-tour-button text-center mt-3">
-                                    <a class="btn btn-primary mb4" href="{% url 'tour_booking_detail' tour.id %}" aria-label="Go to booking form for this tour">Book Tour</a>
+                                    <a class="btn btn-primary mb4" href="{% url 'tour_booking_detail' tour.id %}"
+                                        aria-label="Go to booking form for this tour">Book Tour</a>
                                 </div>
                             </div>
                         </div>
