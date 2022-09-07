@@ -116,20 +116,20 @@
 
                             <!-- Ratings-->
                             {% if tour.rating %}
-                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                            <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
                                             class="fa-regular fa-star"></i>
                                         Rating: </strong>
                                     <i>{{ tour.rating }}</i>
                                 </small></p>
                             {% else %}
-                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                            <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
                                             class="fa-regular fa-star"></i>
                                         Not Rated Yet</strong>
                                 </small></p>
                             {% endif %}
 
                             <!-- Reviews-->
-                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                            <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
                                             class="fa-regular fa-comment"></i>
                                         Review{{ tour.reviews.count|pluralize }}: </strong>
                                     <i>{{ tour.reviews.count }}</i>
@@ -138,31 +138,31 @@
 
                             <!-- Accessibility-->
                             {% if tour.accessibility_friendly == True %}
-                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                            <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
                                             class="fa-regular fa-circle-check"></i>
                                         Accessibility Friendly </strong></small></p>
                             {% else %}
-                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                            <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
                                             class="fa-regular fa-circle-xmark"></i>
                                         Not Accessibility Friendly </strong></small></p>
                             {% endif %}
 
                             <!-- Departure Time-->
-                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                            <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
                                             class="fa-regular fa-clock"></i></i> Departs at:
                                         <i>{{ tour.departure_time }}</i>
                                     </strong></small></p>
 
 
                             <!-- Price-->
-                            <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                            <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
                                             class="fa-solid fa-euro-sign"></i>
                                         <i>{{ tour.price }}</i> per person
                                     </strong></small>
                             </p>
 
                             <!-- Tour Description Snippet-->
-                            <p class="card-text">{{  tour.description | striptags | slice:100 | safe  }}.......</p>
+                            <p class="card-text mt-2">{{  tour.description | striptags | slice:100 | safe  }}.......</p>
                         </div>
                     </div>
                 </div>

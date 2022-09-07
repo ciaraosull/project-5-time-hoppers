@@ -41,95 +41,129 @@
 
                         </div>
                         <!-- Details of Each Tour-->
-                        <div class="text-md-start text-center">
+                        <div class="text-center">
                             <div class="card-body mb-3 mt-3">
-                                <h1>Book Your Time Travel Tour to:</h1>
+                                <h1>Book Your Time Travel Tour:</h1>
+                                <!-- Tour Title-->
                                 <h2>{{  tour.tour_name  }}</h2>
+
+                                <!-- Ratings-->
                                 {% if tour.rating %}
-                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                <p class="card-text list-inline-item p-2 mb-0"><small class="text-muted"><strong><i
                                                 class="fa-regular fa-star"></i>
                                             Rating: </strong>
                                         <i>{{ tour.rating }}</i>
                                     </small></p>
                                 {% else %}
-                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+                                <p class="card-text list-inline-item p-2 mb-0"><small class="text-muted"><strong><i
                                                 class="fa-regular fa-star"></i>
                                             Not Rated Yet</strong>
                                     </small></p>
                                 {% endif %}
-                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+
+                                <!-- Reviews-->
+                                <p class="card-text list-inline-item p-2 mb-0"><small class="text-muted"><strong><i
                                                 class="fa-regular fa-comment"></i>
                                             Review{{ tour.reviews.count|pluralize }}: </strong>
                                         <i>{{ tour.reviews.count }}</i>
                                     </small></p>
-                                <p class="card-text list-inline-item p-2"><small class="text-muted"><strong><i
+
+                                <!-- Accessibility-->
+                                {% if tour.accessibility_friendly == True %}
+                                <p class="card-text list-inline-item p-2 mb-0"><small class="text-muted"><strong><i
+                                                class="fa-regular fa-circle-check"></i>
+                                            Accessibility Friendly </strong></small></p>
+                                {% else %}
+                                <p class="card-text list-inline-item p-2 mb-0"><small class="text-muted"><strong><i
+                                                class="fa-regular fa-circle-xmark"></i>
+                                            Not Accessibility Friendly </strong></small></p>
+                                {% endif %}
+
+                                <!-- Departure Time-->
+                                <p class="card-text list-inline-item p-2 mb-0"><small class="text-muted"><strong><i
+                                                class="fa-regular fa-clock"></i></i> Departs at:
+                                            <i>{{ tour.departure_time }}</i>
+                                        </strong></small></p>
+
+                                <!-- Price-->
+                                <p class="card-text list-inline-item p-2 mb-0"><small class="text-muted"><strong><i
                                                 class="fa-solid fa-euro-sign"></i>
                                             <i>{{ tour.price }}</i> per person
                                         </strong></small></p>
-                                <p class="card-text text-start p-2">
-                                    {{  tour.description | safe  }}
-                                </p>
 
-                                <!-- Booking form for the tour-->
-                                <form class="form" action="{% url 'add_to_basket' tour.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <div class="form-row">
+                                <div class="row">
+                                    <div class="col-md-6 offset-md-3">
+                                        <!-- Booking form for the tour-->
+                                        <form class="form" action="{% url 'add_to_basket' tour.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <div class="form-row">
 
-                                        <!-- Departure Date - JS disables past dates-->
-                                        <div class="col-6 mb-5">
-                                            <p><strong>Departure Date:</strong></p>
-                                            <input class="form-control rounded-0 w-50" type="date"
-                                                id="id_tour_departure_date" name="tour_departure_date" required>
-                                        </div>
-
-                                    <!-- Ticket Quantity-->
-                                    <div class="col-6 mb-5">
-                                        <p class="mt-3"><strong>Quantity of Tickets:</strong></p>
-                                        <div class="form-group w-50">
-                                            <div class="input-group">
-                                                <!-- Button to Decrease-->
-                                                <div class="input-group-prepend d-none d-md-block">
-                                                    <button class="decrement-qty btn btn-black rounded-0"
-                                                        data-item_id="{{ tour.id }}" id="decrement-qty_{{ tour.id }}">
-                                                        <span class="icon">
-                                                            <i class="fas fa-minus"></i>
-                                                        </span>
-                                                    </button>
+                                                <!-- Departure Date - JS disables past dates-->
+                                                <div class="col-6 offset-3 mb-5 mt-3">
+                                                    <p><strong>Departure Date:</strong></p>
+                                                    <input class="form-control rounded-0 w-100 sm-w-50" type="date"
+                                                        id="id_tour_departure_date" name="tour_departure_date" required>
                                                 </div>
-                                                <input class="form-control qty_input" type="number" name="quantity"
-                                                    value="1" min="1" max="99" data-item_id="{{ tour.id }}"
-                                                    id="id_qty_{{ tour.id }}" required>
-                                                <!-- Button to Increase-->
-                                                <div class="input-group-append d-none d-md-block">
-                                                    <button class="increment-qty btn btn-black rounded-0"
-                                                        data-item_id="{{ tour.id }}" id="increment-qty_{{ tour.id }}">
-                                                        <span class="icon">
-                                                            <i class="fas fa-plus"></i>
-                                                        </span>
-                                                    </button>
+
+                                                <!-- Ticket Quantity Section-->
+                                                <div class="col-6 offset-3 mb-5">
+                                                    <p class="mt-3"><strong>Quantity of Tickets:</strong></p>
+                                                    <div class="form-group w-100">
+                                                        <div class="input-group">
+
+                                                            <!-- Button to Decrease-->
+                                                            <div class="input-group-prepend d-none d-md-block">
+                                                                <button class="decrement-qty btn btn-black rounded-0"
+                                                                    data-item_id="{{ tour.id }}"
+                                                                    id="decrement-qty_{{ tour.id }}">
+                                                                    <span class="icon">
+                                                                        <i class="fas fa-minus"></i>
+                                                                    </span>
+                                                                </button>
+                                                            </div>
+                                                            <!-- Ticket Quantity Input-->
+                                                            <input class="form-control qty_input" type="number"
+                                                                name="quantity" value="1" min="1" max="99"
+                                                                data-item_id="{{ tour.id }}" id="id_qty_{{ tour.id }}"
+                                                                required>
+
+                                                            <!-- Button to Increase-->
+                                                            <div class="input-group-append d-none d-md-block">
+                                                                <button class="increment-qty btn btn-black rounded-0"
+                                                                    data-item_id="{{ tour.id }}"
+                                                                    id="increment-qty_{{ tour.id }}">
+                                                                    <span class="icon">
+                                                                        <i class="fas fa-plus"></i>
+                                                                    </span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
+
+                                                <!-- Link to View More Tours-->
+                                                <div>
+                                                    <a class="float-start btn btn-outline-secondary btn-sm mt-2 mb-2 me-2"
+                                                        href="{% url 'tours-list' %}"
+                                                        aria-label="Go to the Tours List Section"><i
+                                                            class="fa fa-angle-left left"></i> Browse More
+                                                        Tours </a>
+                                                    <!-- Add To Basket-->
+                                                    <input type="submit" class="floaat-end btn btn-primary btn-sm mt-2 mb-2"
+                                                        value="Add to Basket">
+                                                </div>
+                                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
-
-                                    <!-- Link to View More Tours-->
-                                    <div class="col-6 mt-2">
-                                        <a class="btn btn-outline-secondary btn-sm" href="{% url 'tours-list' %}"
-                                            aria-label="Go to the Tours List Section"><i
-                                                class="fa fa-angle-left left"></i> Browse More
-                                            Tours </a>
-                                        <input type="submit" class="btn btn-primary btn-sm" value="Add to Basket">
-                                    </div>
-                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                </div>
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-</div>
-</section>
+    </section>
 
 </div>
 
