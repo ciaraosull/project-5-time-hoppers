@@ -1,5 +1,5 @@
 """Views for Basket"""
-from django.shortcuts import(
+from django.shortcuts import (
     render,
     redirect,
     reverse,
@@ -45,13 +45,14 @@ def add_to_basket(request, item_id):
             basket[item_id] = quantity
 
     request.session['basket'] = basket
-    messages.success(request, f'{tour.tour_name} on {departure_date} Successfully Added to your Basket')
+    messages.success(request, f'{tour.tour_name} on {departure_date} Added to your Basket')
     return redirect(redirect_url)
 
 
 def adjust_basket(request, item_id):
     """Edit the items in basket"""
 
+    tour = get_object_or_404(Tour, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     departure_date = None
     if 'tour_departure_date' in request.POST:
@@ -72,6 +73,7 @@ def adjust_basket(request, item_id):
             basket.pop(item_id)
 
     request.session['basket'] = basket
+    messages.success(request, f'{tour.tour_name} on {departure_date} Updated')
     return redirect(reverse('view-basket'))
 
 
