@@ -219,11 +219,28 @@ main {
     color: #ec7718 !important;
 }
 
-/*Toasts */
+.order-sign-up {
+    
+    color: #ec7718 !important;
+}
+
+.order-sign-up:hover {
+    
+    color: #383636 !important;
+
+}
+
+/*Messages */
 .message-container {
     z-index: 999;
     position: absolute;
     right: 15px;
     top: 115px;
-
 }
+
+/*Order Form */
+.order-form .container {
+    color: #4c4c4c;
+    padding: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
+  }

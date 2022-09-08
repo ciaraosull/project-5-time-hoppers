@@ -8,15 +8,17 @@
 <section class="order-form my-4 mx-4">
     <div class="container pt-4">
 
-        <!--Title-->
+        <!--Order Form Title-->
         <div class="row">
-            <div class="col-12">
-                <h1>TimeHoppers TimeTravelling Order Form</h1>
-                <span>Pleae fill out the form below to complete your booking</span>
+            <div class="col-12 col-lg-6">
+                <h1>TimeHoppers Order Form</h1>
+                <span>Please fill out the form below to complete your booking</span>
                 <hr class="mt-1">
             </div>
+            <div class="col-12 col-lg-6">
+            </div>
             <!--Order Form Container-->
-            <div class="col-12">
+            <div class="col-12 col-lg-6">
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
                     <fieldset class="rounded px-3 mb-5">
@@ -36,7 +38,7 @@
                         {{ order_form.street_address2 | as_crispy_field }}
                         {{ order_form.county | as_crispy_field }}
 
-                        <!--Option to svae to profile-->
+                        <!--Option to svev to profile-->
                         <div class="form-check form-check-inline float-right mr-0">
                             {% if user.is_authenticated %}
                             <label class="form-check-label" for="id-save-info">Save this delivery information to my
@@ -45,14 +47,14 @@
                                 checked>
                             {% else %}
                             <label class="form-check-label" for="id-save-info">
-                                <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
-                                <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                <a class="order-sign-up" href="{% url 'account_signup' %}">Create an account</a> or
+                                <a class="order-sign-up" href="{% url 'account_login' %}">Login</a> to save this information
                             </label>
                             {% endif %}
                         </div>
                     </fieldset>
 
-                    <!--Payment Infor-->
+                    <!--Payment Info-->
                     <fieldset class="px-3">
                         <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
 
@@ -65,14 +67,14 @@
 
                     <!--Submit Button-->
                     <div class="submit-button text-right mt-5 mb-2">
-                        <a href="{% url 'view_bag' %}" class="btn btn-outline-black rounded-0">
+                        <a href="{% url 'view-basket' %}" class="btn btn-outline-secondary">
                             <span class="icon">
                                 <i class="fas fa-chevron-left"></i>
                             </span>
-                            <span class="font-weight-bold">Adjust Bag</span>
+                            <span class="font-weight-bold">Adjust Basket</span>
                         </a>
-                        <button id="submit-button" class="btn btn-black rounded-0">
-                            <span class="font-weight-bold">Complete Order</span>
+                        <button id="submit-button" class="btn btn-primary">
+                            <span class="font-weight-bold">Complete Booking</span>
                             <span class="icon">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -81,7 +83,7 @@
                             <span class="icon">
                                 <i class="fas fa-exclamation-circle"></i>
                             </span>
-                            <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+                            <span>Your card will be charged <strong>€ {{ grand_total|floatformat:2 }}</strong></span>
                         </p>
                     </div>
                 </form>

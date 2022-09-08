@@ -9,7 +9,7 @@ def checkout(request):
     """To create a view for the checkout &
     redirect users if checkout typed into url
     """
-    basket = request.session.get('bag', {})
+    basket = request.session.get('basket', {})
     if not basket:
         messages.error(request, "Your Basket is Empty")
         return redirect(reverse('tours-list'))
