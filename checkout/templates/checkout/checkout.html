@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load basket_tools %}
 
 {% block content %}
 
@@ -9,27 +10,29 @@
     <div class="container pt-4">
 
         <!--Order Form Title-->
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12 col-lg-6">
                 <h1>TimeHoppers Order Form</h1>
                 <span>Please fill out the form below to complete your booking</span>
                 <hr class="mt-1">
             </div>
-            <div class="col-12 col-lg-6">
-            </div>
-            <!--Order Form Container-->
+        </div>
+
+        <!--Order Form Container-->
+        <div class="row justify-content-center">
             <div class="col-12 col-lg-6">
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
                     <fieldset class="rounded px-3 mb-5">
                         <!--User Details-->
-                        <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                        <legend class="fieldset-label small px-2 w-auto"><strong>Your Details</strong></legend>
                         {{ order_form.full_name | as_crispy_field }}
                         {{ order_form.email | as_crispy_field }}
                     </fieldset>
                     <!--User Address Info-->
                     <fieldset class="rounded px-3 mb-5">
-                        <legend class="fieldset-label small text-black px-2 w-auto">Contact Information</legend>
+                        <legend class="fieldset-label small px-2 w-auto"><strong>Your Contact Information</strong>
+                        </legend>
                         {{ order_form.phone_number | as_crispy_field }}
                         {{ order_form.street_address1 | as_crispy_field }}
                         {{ order_form.street_address2 | as_crispy_field }}
@@ -47,43 +50,95 @@
                                 checked>
                             {% else %}
                             <label class="form-check-label" for="id-save-info">
-                                <a class="order-sign-up" href="{% url 'account_signup' %}?next={{request.path}}">Create an account</a> or
-                                <a class="order-sign-up" href="{% url 'account_login' %}?next={{request.path}}">Login</a> to save this information
+                                <a class="order-sign-up" href="{% url 'account_signup' %}?next={{request.path}}">Create
+                                    an
+                                    account</a> or
+                                <a class="order-sign-up"
+                                    href="{% url 'account_login' %}?next={{request.path}}">Login</a> to
+                                save this information
                             </label>
                             {% endif %}
                         </div>
                     </fieldset>
 
-                    <!--Payment Info-->
-                    <fieldset class="px-3">
-                        <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                    <!--Order Summary-->
+                    <div class="form-style col-12 pb-3 pt-3 pe-2">
+                        <div class="row pb-2">
+                            <div class="col-7 offset-1">
+                                <p class="text-orange mb-1 mt-0">Booking Summary</p>
+                            </div>
+                            <div class="col-3 float-end">
+                                <p class="text-orange mb-1 mt-0">Subtotal</p>
+                            </div>
+                            <hr class="my-0">
+                        </div>
+                        {% for item in basket_items %}
+                        <div class="row">
+                            <div class="col-1 mb-1">
+                                <a href="{% url 'tour-detail' item.tour.id %}">
+                                </a>
+                            </div>
+                            <div class="col-7">
+                                <p class="my-0"><strong>{{ item.tour.tour_name }}</strong></p>
+                                <p class="my-0 small">Dept Date:
+                                    {{ item.departure_date }}</p>
+                                <p class="my-0 small">Dept Time:
+                                    {{ item.tour.departure_time }}</p>
 
-                        <!-- A Stripe card element here -->
+                                <p class="my-0 small text-muted-white mb-2">No. of Tickets: {{ item.quantity }}</p>
+                            </div>
+                            <div class="col-3 text-right">
+                                <p class="my-0 small text-muted-white">
+                                    €{{ item.tour.price | calc_subtotal:item.quantity }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <hr class="my-0">
+                        <div class="row text-orange text-right">
+                            <div class="col-7 offset-1">
+                                <p class="my-0">Order Total:</p>
+                            </div>
+                            <div class="col-3">
+                                <p class="my-0">€{{ total | floatformat:2 }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Payment Info-->
+                    <fieldset class="px-3 mt-4">
+                        <legend class="fieldset-label small text-black px-2 w-auto"><strong>Payment</strong></legend>
+
+                        <!-- Stripe card element here -->
                         <div class="mb-3" id="card-element"></div>
 
-                        <!-- Used to display form errors -->
+                        <!-- To display form errors -->
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     </fieldset>
 
-                    <!--Submit Button-->
-                    <div class="submit-button text-right mt-5 mb-2">
-                        <a href="{% url 'view-basket' %}" class="btn btn-outline-secondary">
+                    <!--Link Back to Basket-->
+                    <div class="submit-button mt-5 mb-2 d-flex justify-content-between">
+                        <a href="{% url 'view-basket' %}" class="btn btn-outline-secondary me-4">
                             <span class="icon">
                                 <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="font-weight-bold">Adjust Basket</span>
                         </a>
+                        <!--Submit Button-->
                         <button id="submit-button" class="btn btn-primary">
                             <span class="font-weight-bold">Complete Booking</span>
                             <span class="icon">
                                 <i class="fas fa-lock"></i>
                             </span>
                         </button>
-                        <p class="small text-danger my-0">
+                    </div>
+                    <!--Total Charged to Card Info-->
+                    <div class="float-end">
+                        <p class="small text-orange my-0">
                             <span class="icon">
                                 <i class="fas fa-exclamation-circle"></i>
                             </span>
-                            <span>Your card will be charged <strong>€ {{ grand_total|floatformat:2 }}</strong></span>
+                            <span>Your card will be charged <strong>€
+                                    {{ grand_total|floatformat:2 }}</strong></span>
                         </p>
                     </div>
                 </form>

@@ -230,6 +230,10 @@ main {
 
 }
 
+.text-orange {
+    color: #ec7718 !important;
+}
+
 /*Messages */
 .message-container {
     z-index: 999;
