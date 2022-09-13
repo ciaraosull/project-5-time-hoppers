@@ -45,7 +45,7 @@ class Order(models.Model):
     grand_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
 
-    def _generate_booking_number(self):
+    def _generate_order_number(self):
         """
         Generate random, unique booking number using UUID
         """
@@ -56,7 +56,7 @@ class Order(models.Model):
         Update grand total each time a booking item is added
         """
         self.order_total = self.lineitems.aggregate(
-            Sum('lineitem_total'))['lineitem_total__sum']
+            Sum('lineitem_total'))['lineitem_total__sum'] or 0
         self.grand_total = self.order_total
         self.save()
 
@@ -85,7 +85,7 @@ class OrderLineItem(models.Model):
     tour = models.ForeignKey(
         Tour, null=False, blank=False, on_delete=models.CASCADE)
 
-    departure_date = models.CharField(max_length=10, null=True, blank=True) # dd-mm-yyyy
+    tour_departure_date = models.CharField(max_length=10, null=True, blank=True) # dd-mm-yyyy
 
     quantity = models.IntegerField(null=False, blank=False, default=0)
 

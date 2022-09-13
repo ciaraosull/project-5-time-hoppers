@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+
+<!--Booking Order Form-->
+<section class="order-form my-4 mx-4">
+    <div class="container pt-4">
+
+        <!--Order Form Title-->
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6">
+                <h1>Thank You!</h1>
+                <h2>Your Order was Successful</h2>
+                <p>A confirmation email will be sent to <strong>{{  order.email  }}</strong></p>
+                <span>Please see the summary of your order below.</span>
+                <hr class="mt-1">
+            </div>
+        </div>
+
+        <!--Order Form Container-->
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6">
+
+                <!--Order Summary-->
+                <div class="form-style col-12 pb-3 pt-3 pe-2">
+                    <div class="row pb-2">
+                        <div class="col-7 offset-1">
+                            <p class="text-orange mb-1 mt-0">Booking Summary</p>
+                        </div>
+                        <div class="col-3 float-end">
+                            <p class="text-orange mb-1 mt-0">Subtotal</p>
+                        </div>
+                        <hr class="my-0">
+                    </div>
+                    <div class="row">
+                        <div class="col-1 mb-1">
+                        </div>
+                        <div class="col-7">
+                            <p class="my-0"><strong>Tour Name</strong></p>
+                            <p class="my-0 small">Dept Date:</p>
+                            <p class="my-0 small">Dept Time:</p>
+
+                            <p class="my-0 small text-muted-white mb-2">No. of Tickets:</p>
+                        </div>
+                        <div class="col-3 text-right">
+                            <p class="my-0 small text-muted-white">
+                                €Total</p>
+                        </div>
+                    </div>
+                    <hr class="my-0">
+                    <div class="row text-orange text-right">
+                        <div class="col-7 offset-1">
+                            <p class="my-0">Order Total:</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="my-0">€</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Link Back to Tours-->
+                <div class="submit-button mt-5 mb-2 d-flex justify-content-between">
+                    <a href="{% url 'tours-list' %}" class="btn btn-outline-secondary me-4">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="font-weight-bold">View Tours</span>
+                    </a>
+                    <!--Link to Profile if /user Signed in-->
+                    <button id="submit-button" class="btn btn-primary">
+                        <span class="font-weight-bold">View Profile</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{%  endblock  %}
