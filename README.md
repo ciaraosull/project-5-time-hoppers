@@ -15,7 +15,9 @@ View the live project [Here]( https://time-hoppers.herokuapp.com/)
 
 
 
-https://user-images.githubusercontent.com/93194443/182218911-91ba261e-89c1-4cfd-a8af-3c9852ba2528.mp4
+https://user-images.githubusercontent.com/93194443/190273954-525a4cc1-5582-4610-8571-46d338987220.mp4
+
+
 
 
 
