@@ -1,8 +1,9 @@
 """Views to show the Profile Page"""
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserUpdateForm, ProfileUpdateForm
+from .models import Profile
 
 
 @login_required
@@ -13,6 +14,8 @@ def profile(request):
     pre-populate with the users details,
     if both valid then save
     """
+    user_profile = get_object_or_404(Profile, user=request.user)
+
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
         profile_form = ProfileUpdateForm(
@@ -29,8 +32,10 @@ def profile(request):
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)
 
+    orders = user_profile.orders.all()
     context = {
         'user_form': user_form,
-        'profile_form': profile_form
+        'profile_form': profile_form,
+        'orders': orders
     }
     return render(request, 'profiles/profile-page.html', context)
