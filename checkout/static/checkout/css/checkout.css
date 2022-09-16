@@ -3,6 +3,7 @@
 .stripe-style-input {
   box-sizing: border-box;
   height: 40px;
+  padding-top: 10px;
   border: 1px solid transparent;
   border-radius: 5px;
   background-color: white;
