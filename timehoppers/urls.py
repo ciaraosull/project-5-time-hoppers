@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from profiles import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin-site'),
     path('accounts/', include('allauth.urls'), name='admin'),
+    path('profile/', user_views.profile, name='profile'),
     path('summernote/', include('django_summernote.urls')),
     path('', include('home.urls'), name='home'),
     path('tours/', include('tours.urls'), name='tours-list'),

@@ -43,10 +43,6 @@
             <tbody>
                 {%  for item in basket_items  %}
                 <tr>
-                    <!--Image-->
-                    <th scope="row">
-                        <img src="{{  item.tour.image  }}" alt="" class="img-fluid rounded">
-                    </th>
                     <td>
                         <!-- Tour Name-->
                         <h5><strong>{{ item.tour.tour_name }}</strong></h5>
@@ -103,8 +99,9 @@
                     <td>€ {{ item.tour.price| calc_subtotal:item.quantity }}</td>
                     <td>
                         <!--Delete Booking At End of Row For Responsive Design-->
-                        <a class="remove-item btn btn-sm btn-danger float-end" id="remove_{{ item.item_id }}" data-tour_departure_date="{{ item.departure_date }}"><small><i
-                            class="fa-solid fa-trash-can"></i></small></a>
+                        <a class="remove-item btn btn-sm btn-danger float-end" id="remove_{{ item.item_id }}"
+                            data-tour_departure_date="{{ item.departure_date }}"><small><i
+                                    class="fa-solid fa-trash-can"></i></small></a>
                     </td>
 
                     {%  endfor  %}
@@ -151,29 +148,32 @@
 
 <script type="text/javascript">
     // Update quantity on click
-    $('.update-link').click(function(e) {
+    $('.update-link').click(function (e) {
         var form = $(this).prev('.update-form');
         form.submit();
     })
 
     // Remove from basket and reload on click
-    $('.remove-item').click(function(e) {
+    $('.remove-item').click(function (e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
         var departure_date = $(this).data('tour_departure_date');
         var url = `/basket/remove/${itemId}/`;
 
-        var data = {'csrfmiddlewaretoken': csrfToken,  'tour_departure_date': departure_date};
+        var data = {
+            'csrfmiddlewaretoken': csrfToken,
+            'tour_departure_date': departure_date
+        };
 
         $.post(url, data)
-        .done(function() {
-            location.reload();
-        });
+            .done(function () {
+                location.reload();
+            });
 
         $.post(url, data)
-        .done(function () {
-            location.reload();
-        });
+            .done(function () {
+                location.reload();
+            });
     })
 </script>
 
