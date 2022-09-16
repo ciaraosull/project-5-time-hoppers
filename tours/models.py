@@ -1,7 +1,7 @@
 """ Imports for Tours """
 from django.db import models
 from django.contrib.auth.models import User
-
+from cloudinary.models import CloudinaryField
 
 class Category(models.Model):
     """ Categorise for User to Filter Tours"""
@@ -76,10 +76,8 @@ class Tour(models.Model):
         null=True,
         blank=True
         )
-    image = models.ImageField(
-        null=True,
-        blank=True
-        )
+    image = CloudinaryField('image', null=True, blank=True)
+
     date_added = models.DateTimeField(
         auto_now_add=True
         )

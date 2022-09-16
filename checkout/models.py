@@ -89,7 +89,8 @@ class OrderLineItem(models.Model):
     tour = models.ForeignKey(
         Tour, null=False, blank=False, on_delete=models.CASCADE)
 
-    tour_departure_date = models.CharField(max_length=10, null=True, blank=True) # dd-mm-yyyy
+    tour_departure_date = models.CharField(
+        max_length=10, null=True, blank=True)  # dd-mm-yyyy
 
     quantity = models.IntegerField(null=False, blank=False, default=0)
 
