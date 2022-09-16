@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from checkout.models import Order
 from .forms import UserUpdateForm, ProfileUpdateForm
 from .models import Profile
 
@@ -15,6 +16,7 @@ def profile(request):
     if both valid then save
     """
     user_profile = get_object_or_404(Profile, user=request.user)
+    order = Order.objects.all()
 
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
@@ -36,6 +38,7 @@ def profile(request):
     context = {
         'user_form': user_form,
         'profile_form': profile_form,
-        'orders': orders
+        'orders': orders,
+        'order': order,
     }
     return render(request, 'profiles/profile-page.html', context)
