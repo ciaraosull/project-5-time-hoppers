@@ -29,13 +29,13 @@
             <!--Table head-->
             <thead>
                 <tr>
-                    <th></th>
                     <th>Tour</th>
                     <th>Date</th>
                     <th>QTY</th>
                     <th>Price PerPerson</th>
                     <th>SubTotal</th>
                     <th></th>
+                    
                 </tr>
             </thead>
 
@@ -99,7 +99,7 @@
                     <td>€ {{ item.tour.price| calc_subtotal:item.quantity }}</td>
                     <td>
                         <!--Delete Booking At End of Row For Responsive Design-->
-                        <a class="remove-item btn btn-sm btn-danger float-end" id="remove_{{ item.item_id }}"
+                        <a class="remove-item btn btn-sm btn-danger float-start" id="remove_{{ item.item_id }}"
                             data-tour_departure_date="{{ item.departure_date }}"><small><i
                                     class="fa-solid fa-trash-can"></i></small></a>
                     </td>
@@ -109,8 +109,8 @@
 
                 <!--Grand Total row-->
                 <tr>
-                    <td colspan="2"></td>
-                    <td colspan="3"><a class="btn btn-outline-secondary btn-sm" href="{% url 'tours-list' %}"
+                    <td colspan="1"></td>
+                    <td colspan="2"><a class="btn btn-outline-secondary btn-sm" href="{% url 'tours-list' %}"
                             aria-label="Go to the Tours List Section"><i class="fa fa-angle-left left"></i> Browse More
                             Tours </a></td>
                     <td>
