@@ -18,6 +18,7 @@ def profile(request):
     profile = get_object_or_404(Profile, user=request.user)
     order = Order.objects.all()
 
+    # Users name & email pre-populated in profile page from registration
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
         profile_form = ProfileUpdateForm(

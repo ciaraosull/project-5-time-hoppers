@@ -23,7 +23,7 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ('profile_image', 'default_phone_number',
                   'default_street_address1', 'default_street_address2',
-                  'default_town_or_city', 'default_postcode',)
+                  'default_town_or_city', 'default_county', 'default_postcode',)
 
     def __init__(self, *args, **kwargs):
         """
@@ -37,6 +37,7 @@ class ProfileUpdateForm(forms.ModelForm):
             'default_town_or_city': 'Town or City',
             'default_street_address1': 'Street Address 1',
             'default_street_address2': 'Street Address 2',
+            'default_county': 'County or State',
         }
 
         self.fields['default_phone_number'].widget.attrs['autofocus'] = True
