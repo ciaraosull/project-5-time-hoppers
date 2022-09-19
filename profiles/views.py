@@ -15,7 +15,7 @@ def profile(request):
     pre-populate with the users details,
     if both valid then save
     """
-    user_profile = get_object_or_404(Profile, user=request.user)
+    profile = get_object_or_404(Profile, user=request.user)
     order = Order.objects.all()
 
     if request.method == 'POST':
@@ -34,7 +34,7 @@ def profile(request):
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)
 
-    orders = user_profile.orders.all()
+    orders = profile.orders.all()
     context = {
         'user_form': user_form,
         'profile_form': profile_form,
