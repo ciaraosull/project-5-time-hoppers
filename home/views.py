@@ -26,4 +26,5 @@ def subscribe(request):
     context = {
         'form': form,
     }
+    messages.success(request, 'Subscription not Successful')
     return render(request, 'home/index.html', context)
