@@ -233,18 +233,21 @@
                 <div class="col-md-6">
                     <h5 class="text-white mb-2">SUBSCRIBE TO OUR NEWSLETTER</h5>
                     <form action="{% url 'subscribe' %}" method="POST">
-                        {%  csrf_token  %}
-                        {{ form }}
-                        <!-- <div class="form-group">
-                            <label for="exampleInputEmail1"></label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-white">We'll never share your email with
-                                anyone</small>
-                        </div> -->
+                        <div class="row d-flex justify-content-center">
+                            {% csrf_token %}
 
-                        <div class="d-flex justify-content-start pt-2">
-                            <input class="btn btn-primary" type="submit" value="Subscribe">
+                            <div class="form-group">
+                                <input id="email" name="email" type="email" class="form-control"
+                                    placeholder="Email address" />
+                                <small id="emailHelp" class="form-text text-white">We'll never share your email with
+                                    anyone</small>
+                            </div>
+
+                            <div class="d-flex justify-content-start pt-2">
+                                <button type="submit" class="btn btn-primary"> Subscribe
+                                    <i class="fa fa-arrow-circle-right fa-lg"></i>
+                                </button>
+                            </div>
                         </div>
                     </form>
 
@@ -256,7 +259,8 @@
                             aria-label="Go to facebook profile"><i
                                 class="fa-brands fa-square-facebook fa-2xl"></i></a><a class="social-icons"
                             href="https://www.linkedin.com/in/ciara-o-sullivan-2834378b" target="_blank"
-                            aria-label="Go to linkedin profile"><i class="fa-brands fa-linkedin fa-2xl"></i></a></div>
+                            aria-label="Go to linkedin profile"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+                        </div>
                 </div>
             </div>
         </div>
