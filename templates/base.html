@@ -111,6 +111,11 @@
                                 class="{%  if url_name == 'admin-site'  %}active {%  endif  %}nav-link"
                                 aria-label="Admin Page">Admin Site</a></li>
 
+                        <li nav-item-active><a href="{%  url 'newsletter'  %}"
+                            class="{%  if url_name == 'newsletter'  %}active {%  endif  %}nav-link"
+                            aria-label="Newsletter">Newsletters</a></li>
+
+
                         {% endif %}
 
                         <!-- My Account Drop-down menu if user logged out -->

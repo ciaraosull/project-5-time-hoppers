@@ -1,7 +1,7 @@
 """Views for Subscibers form & Newsletter"""
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import SubsciberForm
+from .forms import SubsciberForm, NewsletterForm
 
 
 def subscribe(request):
@@ -18,3 +18,12 @@ def subscribe(request):
         'form': form,
     }
     return render(request, 'home/index.html', context)
+
+
+def newsletter(request):
+    """Newsletter Form View"""
+    form = NewsletterForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'newsletters/newsletter.html', context)
