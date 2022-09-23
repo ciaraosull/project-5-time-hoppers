@@ -184,6 +184,18 @@ main {
     font-size: 3rem;
 }
 
+.landing-button {
+    background-color: #fdfcfb !important;
+    color: #ec7718 !important;
+    border-color: #f19f5c !important;
+}
+
+.landing-button:hover {
+    background-color: #ec7718 !important;
+    color: #fdfcfb !important;
+    border-color: #f19f5c !important;
+}
+
 .landing-text {
     height: 50vh;
     display: flex;
