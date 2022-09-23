@@ -32,7 +32,7 @@ function addZero(n) {
     return (parseInt(n, 10) < 10 ? '0' : '') + n;
 }
 
-// Set Background
+// Set Background depending on time of day
 function setBgImage() {
     let today = new Date(),
       hour = today.getHours();
@@ -52,8 +52,7 @@ function setBgImage() {
     } else {
       // Evening
       document.body.style.backgroundImage = "url('https://res.cloudinary.com/ciara0s1980/image/upload/v1663962553/image6_j8i8lf.png')";
-      
-      document.body.style.color = 'white';
+
     }
   }
 

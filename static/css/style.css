@@ -185,6 +185,7 @@ main {
 }
 
 .landing-button {
+    text-shadow: none;
     background-color: #fdfcfb !important;
     color: #ec7718 !important;
     border-color: #f19f5c !important;
@@ -202,6 +203,8 @@ main {
     justify-content: center;
     margin: 30px 50px;
     flex-direction: column;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 /* Custom styling for Tour List View Page */
