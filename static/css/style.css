@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     border: none;
     box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
 }
 
 /* Styling for flexbox sticky footer */
@@ -177,6 +180,10 @@ main {
 }
 
 /* Custom styling for Home Page */
+#time, #date {
+    font-size: 2rem;
+}
+
 .landing-text {
     height: 50vh;
     display: flex;
