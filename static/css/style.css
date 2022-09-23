@@ -181,7 +181,7 @@ main {
 
 /* Custom styling for Home Page */
 #time, #date {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .landing-text {
@@ -254,4 +254,11 @@ main {
     color: #4c4c4c;
     padding: 20px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
+  }
+
+/* Media Queries */
+@media (max-width: 700px) {
+    #time {
+      font-size: 2rem;
+    }
   }

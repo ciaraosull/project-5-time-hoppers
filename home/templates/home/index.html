@@ -10,12 +10,19 @@
         <div class="landing-text text-center mt-2">
             <h1>Welcome to Time Hoppers</h1>
             <h2>Tour a Moment in Time</h2>
-            <time id="time">12:00 PM</time>
+            <time id="time">12:30:01 PM</time>
             <div class="book-tour-button text-center mt-3">
                 <a class="btn btn-primary mb4" href="{% url 'tours-list' %}" aria-label="Go to the Book Tour Section">Book Tour</a>
             </div>
         </div>
     </div>
 </section>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+
+<script src="{% static 'js/landing_page.js' %}"></script>
 
 {% endblock %}
