@@ -145,18 +145,18 @@ main {
 }
 
 
-/* Custom styling for footer */
-#footer {
+/* Custom styling for contact section & footer */
+#contact {
     background-color: #383636;
     position: relative;
     flex-shrink: 0;
 }
 
-#footer a {
+#contact a {
     text-decoration: none;
 }
 
-#footer a:hover {
+#contact a:hover {
     letter-spacing: 1px;
     color: #ec7718 !important;
 }
@@ -166,11 +166,11 @@ main {
     color: #f5f5f5;
 }
 
-.footer-icons {
+.contact-icons {
     color: #f5f5f5;
 }
 
-.footer-icons a {
+.contact-icons a {
     color: #f5f5f5;
 }
 
@@ -184,11 +184,29 @@ main {
     font-size: 3rem;
 }
 
+.background-image {
+    /* animates zoom effect on loading page */
+    animation-name: background-zoom;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+
+/* creates the level of zoom for image */
+@keyframes background-zoom {
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(1.5);
+    }
+}
+
+
 .landing-button {
     text-shadow: none;
     background-color: #fdfcfb !important;
-    color: #ec7718 !important;
-    border-color: #f19f5c !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
 }
 
 .landing-button:hover {
@@ -205,6 +223,61 @@ main {
     flex-direction: column;
     color: white;
     text-shadow: 2px 2px 4px #000000;
+}
+
+.landing-text h1 {
+    animation: fadeIn 2s;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -o-animation: fadeIn 1s;
+    -ms-animation: fadeIn 1s;
+}
+
+
+.landing-text h2 {
+    animation: fadeIn 2s;
+    -webkit-animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s;
+    -ms-animation: fadeIn 2s;
+}
+
+.book-tour-button {
+    animation: fadeIn 3s;
+    -webkit-animation: fadeIn 3s;
+    -moz-animation: fadeIn 3s;
+    -o-animation: fadeIn 3s;
+    -ms-animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    60% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+    0% {opacity: 0;}
+    60% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    60% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@-o-keyframes fadeIn {
+    0% {opacity: 0;}
+    60% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@-ms-keyframes fadeIn {
+    0% {opacity: 0;}
+    60% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
 /* Custom styling for Tour List View Page */

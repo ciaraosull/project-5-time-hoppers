@@ -54,7 +54,8 @@ function setBgImage() {
       document.body.style.backgroundImage = "url('https://res.cloudinary.com/ciara0s1980/image/upload/v1663962553/image6_j8i8lf.png')";
 
     }
-  }
+}
+
 
 // Run
 showTime();
