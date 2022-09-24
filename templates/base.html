@@ -112,8 +112,8 @@
                                 aria-label="Admin Page">Admin Site</a></li>
 
                         <li nav-item-active><a href="{%  url 'newsletter'  %}"
-                            class="{%  if url_name == 'newsletter'  %}active {%  endif  %}nav-link"
-                            aria-label="Newsletter">Newsletters</a></li>
+                                class="{%  if url_name == 'newsletter'  %}active {%  endif  %}nav-link"
+                                aria-label="Newsletter">Newsletters</a></li>
 
 
                         {% endif %}
@@ -216,27 +216,27 @@
 
     <!--Footer Section-->
 
-    <footer id="footer">
-        <div class="container py-7 px-md-5 pt-2">
-            <div class="row g-0 p-3">
+    {% with request.resolver_match.url_name as url_name %}
+    <footer id="footer" class="{%  if url_name == 'home' %}d-none {%  endif  %}">
+        <div class="container py-7 px-md-5">
+            <div class="row g-0 p-2">
                 <!--Logo & Contact Details-->
-                <div class="col-md-6 mb-5 mb-md-0">
-                    <div class="mb-4 d-inline-block"><a
-                            class="navbar-brand pt-0 fs-3 text-white d-flex align-items-center"
+                <div class="col-md-6 mb-md-0">
+                    <div class="d-inline-block"><a class="navbar-brand pt-0 fs-3 text-white d-flex align-items-center"
                             href="{% url 'home' %}">TimeHoppers</a>
                     </div>
-                    <div class="footer-icons col-12 col-md-10 text-300 mb-3"><i class="fas fa-map-marker-alt"></i><a
+                    <div class="footer-icons col-12 col-md-10 text-300 mb-1"><i class="fas fa-map-marker-alt"></i><a
                             class="nav-link text-300 d-inline" href="https://goo.gl/maps/caaQJohk6GHRxHWa9">
                             123 Fake Street</a></div>
-                    <div class="footer-icons col-12 col-md-10 text-300 mb-3"><i class="fas fa-phone"></i><a
+                    <div class="footer-icons col-12 col-md-10 text-300 mb-1"><i class="fas fa-phone"></i><a
                             class="nav-link text-300 d-inline" href="tel:+353123345678">+353 123 345678</a></div>
-                    <div class="footer-icons col-12 col-md-10 text-300 mb-3"><i class="fas fa-envelope"></i><a
+                    <div class="footer-icons col-12 col-md-10 text-300 mb-1"><i class="fas fa-envelope"></i><a
                             class="nav-link text-300 d-inline" href="mailto:fakeemail@gmail.com">fakeemail@gmail.com</a>
                     </div>
                 </div>
                 <!--Newsletter Form-->
                 <div class="col-md-6">
-                    <h5 class="text-white mb-2">SUBSCRIBE TO OUR NEWSLETTER</h5>
+                    <h5 class="text-white mb-2 mt-1">SUBSCRIBE TO OUR NEWSLETTER</h5>
                     <form action="{% url 'subscribe' %}" method="POST">
                         <div class="row d-flex justify-content-center">
                             {% csrf_token %}
@@ -244,8 +244,8 @@
                             <div class="form-group">
                                 <input id="email" name="email" type="email" class="form-control"
                                     placeholder="Email address" />
-                                <small id="emailHelp" class="form-text text-white">We'll never share your email with
-                                    anyone</small>
+                                <small id="emailHelp" class="form-text text-white">We'll never share your
+                                    email</small>
                             </div>
 
                             <div class="d-flex justify-content-start pt-2">
@@ -265,11 +265,12 @@
                                 class="fa-brands fa-square-facebook fa-2xl"></i></a><a class="social-icons"
                             href="https://www.linkedin.com/in/ciara-o-sullivan-2834378b" target="_blank"
                             aria-label="Go to linkedin profile"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
+    {%  endwith  %}
 
     <!-- Copyright Section-->
     <section id="copyright">
