@@ -2,7 +2,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.conf import settings
-from django.core.mail import send_mail
+from django.core import mail
+from django.utils.html import strip_tags
 from .forms import SubsciberForm, NewsletterForm
 
 
@@ -29,13 +30,17 @@ def newsletter(request):
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
-            send_mail(
-                'Test Title',
-                'Test Body',
-                settings.DEFAULT_FROM_EMAIL,
-                ['ciaraosull@gmail.com'],
-                fail_silently=False,  # if email saved is incorrect
-            )
+            title = form.cleaned_data.get('title')
+            message = form.cleaned_data.get('message')
+
+            subject = title
+            html_message = message
+            plain_message = strip_tags(html_message)
+            from_email = settings.DEFAULT_FROM_EMAIL
+            to_email = 'to@example.com'
+
+            mail.send_mail(subject, plain_message, from_email, [to_email])
+
             messages.success(request, 'Newsletter Sent Successfully')
             return redirect('newsletter')
     else:
