@@ -1,8 +1,7 @@
 """Views for Subscibers form & Newsletter"""
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.conf import settings
-from django.core import mail
+from django.core.mail import EmailMessage
 from django.utils.html import strip_tags
 from .forms import SubsciberForm, NewsletterForm
 
@@ -32,14 +31,20 @@ def newsletter(request):
             form.save()
             title = form.cleaned_data.get('title')
             message = form.cleaned_data.get('message')
+            summernote_message = message
+            plain_message = strip_tags(summernote_message)  # strip html tags
+            from_email = ''  # using gmail in settings.py
+            to_email = 'ciaraosull@gmail.com'
+            bcc_email = 'bcc@example.com'
 
-            subject = title
-            html_message = message
-            plain_message = strip_tags(html_message)
-            from_email = settings.DEFAULT_FROM_EMAIL
-            to_email = 'to@example.com'
-
-            mail.send_mail(subject, plain_message, from_email, [to_email])
+            email = EmailMessage(
+                title,
+                plain_message,
+                from_email,
+                [to_email],
+                [bcc_email],
+            )
+            email.send(fail_silently=False)
 
             messages.success(request, 'Newsletter Sent Successfully')
             return redirect('newsletter')
