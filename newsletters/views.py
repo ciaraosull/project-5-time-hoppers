@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.utils.html import strip_tags
+from django_pandas.io import read_frame
+from . models import Subscriber
 from .forms import SubsciberForm, NewsletterForm
 
 
@@ -23,7 +25,10 @@ def subscribe(request):
 
 
 def newsletter(request):
-    """Newsletter Form View"""
+    """Newsletter Form View & Email to Subscribers"""
+    emails = Subscriber.objects.all()
+    data_frame = read_frame(emails, fieldnames=['email'])
+    mail_list = data_frame['email'].values.tolist()
 
     if request.method == 'POST':
         form = NewsletterForm(request.POST)
@@ -34,8 +39,8 @@ def newsletter(request):
             summernote_message = message
             plain_message = strip_tags(summernote_message)  # strip html tags
             from_email = ''  # using gmail in settings.py
-            to_email = 'ciaraosull@gmail.com'
-            bcc_email = 'bcc@example.com'
+            to_email = mail_list
+            bcc_email = mail_list
 
             email = EmailMessage(
                 title,
