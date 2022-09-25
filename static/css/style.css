@@ -177,6 +177,7 @@ main {
 #copyright {
     background-color: #000000;
     color: #f5f5f5;
+    position: relative;
 }
 
 /* Custom styling for Home Page */

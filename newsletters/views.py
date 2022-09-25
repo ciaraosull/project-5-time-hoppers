@@ -1,6 +1,7 @@
 """Views for Subscibers form & Newsletter"""
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMessage
 from django.utils.html import strip_tags
 from django_pandas.io import read_frame
@@ -24,8 +25,13 @@ def subscribe(request):
     return render(request, 'home/index.html', context)
 
 
+@login_required
 def newsletter(request):
     """Newsletter Form View & Email to Subscribers"""
+    if not request.user.is_superuser:
+        messages.error(request, 'Admin Access Only to Newsletter')
+        return redirect(reverse('home'))
+
     emails = Subscriber.objects.all()
     data_frame = read_frame(emails, fieldnames=['email'])
     mail_list = data_frame['email'].values.tolist()
