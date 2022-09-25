@@ -185,7 +185,7 @@ main {
     font-size: 3rem;
 }
 
-.background-image {
+.background-zoom {
     /* animates zoom effect on loading page */
     animation-name: background-zoom;
     animation-duration: 5s;
