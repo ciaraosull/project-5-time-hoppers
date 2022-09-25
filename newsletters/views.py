@@ -13,10 +13,17 @@ def subscribe(request):
     """Subscribers Form View"""
     if request.method == 'POST':
         form = SubsciberForm(request.POST)
+        email = request.POST.get('email', None)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Subscription Successful')
-            return redirect('/')
+            subscribe_user = Subscriber.objects.filter(email=email).first()
+            if subscribe_user:
+                messages.error(
+                    request, f"{email} email address is already subscriber.")
+                return redirect(request.META.get("HTTP_REFERER", "/"))
+            else:
+                form.save()
+                messages.success(request, 'Subscription Successful')
+                return redirect(request.META.get("HTTP_REFERER", "/"))
     else:
         form = SubsciberForm()
     context = {
