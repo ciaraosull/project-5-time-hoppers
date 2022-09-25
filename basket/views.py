@@ -31,12 +31,18 @@ def add_to_basket(request, item_id):
 
     if departure_date:
         if item_id in list(basket.keys()):
-            if departure_date in basket[item_id]['items_by_departure_date'].keys():
-                basket[item_id]['items_by_departure_date'][departure_date] += quantity
+            if departure_date in basket[item_id][
+                    'items_by_departure_date'].keys():
+                basket[item_id][
+                    'items_by_departure_date'][departure_date] += quantity
             else:
-                basket[item_id]['items_by_departure_date'][departure_date] = quantity
+                basket[item_id][
+                    'items_by_departure_date'][departure_date] = quantity
         else:
-            basket[item_id] = {'items_by_departure_date': {departure_date: quantity}}
+            basket[
+                item_id] = {
+                    'items_by_departure_date': {departure_date: quantity}
+                    }
 
     else:
         if item_id in list(basket.keys()):
@@ -45,7 +51,8 @@ def add_to_basket(request, item_id):
             basket[item_id] = quantity
 
     request.session['basket'] = basket
-    messages.success(request, f'{tour.tour_name} on {departure_date} Added to your Basket')
+    messages.success(
+        request, f'{tour.tour_name} on {departure_date} Added to Basket')
     return redirect(redirect_url)
 
 
@@ -61,7 +68,8 @@ def adjust_basket(request, item_id):
 
     if departure_date:
         if quantity > 0:
-            basket[item_id]['items_by_departure_date'][departure_date] = quantity
+            basket[
+                item_id]['items_by_departure_date'][departure_date] = quantity
         else:
             del basket[item_id]['items_by_departure_date'][departure_date]
             if not basket[item_id]['items_by_departure_date']:
@@ -91,10 +99,12 @@ def remove_from_basket(request, item_id):
             del basket[item_id]['items_by_departure_date'][departure_date]
             if not basket[item_id]['items_by_departure_date']:
                 basket.pop(item_id)
-            messages.success(request, f'Removed {tour.tour_name} on {departure_date} from your basket')
+            messages.success(
+                request, f'Removed {tour.tour_name} on {departure_date}')
         else:
             basket.pop(item_id)
-            messages.success(request, f'Removed {tour.tour_name} tours from your basket')
+            messages.success(
+                request, f'Removed {tour.tour_name} tours from basket')
 
         request.session['basket'] = basket
         return HttpResponse(status=200)

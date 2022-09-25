@@ -1,6 +1,12 @@
 """Views for Checkout Page"""
 import json
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render,
+    redirect,
+    reverse,
+    get_object_or_404,
+    HttpResponse
+)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -75,7 +81,8 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for departure_date, quantity in item_data['items_by_departure_date'].items():
+                        for departure_date, quantity in item_data[
+                                'items_by_departure_date'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 tour=tour,
@@ -92,7 +99,8 @@ def checkout(request):
                     return redirect(reverse('view-basket'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(
+                reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
@@ -167,7 +175,8 @@ def checkout_success(request, order_number):
                 'default_street_address2': order.street_address2,
                 'default_county': order.county,
             }
-            user_profile_form = ProfileUpdateForm(profile_data, instance=profile)
+            user_profile_form = ProfileUpdateForm(
+                profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
 

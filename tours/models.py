@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
+
 class Category(models.Model):
     """ Categorise for User to Filter Tours"""
     name = models.CharField(max_length=250)

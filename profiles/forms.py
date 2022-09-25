@@ -23,7 +23,8 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ('profile_image', 'default_phone_number',
                   'default_street_address1', 'default_street_address2',
-                  'default_town_or_city', 'default_county', 'default_postcode',)
+                  'default_town_or_city',
+                  'default_county', 'default_postcode',)
 
     def __init__(self, *args, **kwargs):
         """

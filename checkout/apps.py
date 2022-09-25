@@ -1,3 +1,4 @@
+"""Imports for configuring attributes of app"""
 from django.apps import AppConfig
 
 

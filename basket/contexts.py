@@ -24,7 +24,8 @@ def basket_contents(request):
 
         else:
             tour = get_object_or_404(Tour, pk=item_id)
-            for departure_date, quantity in item_data['items_by_departure_date'].items():
+            for departure_date, quantity in item_data[
+                    'items_by_departure_date'].items():
                 total += quantity * tour.price
                 tour_count += quantity
                 basket_items.append({
