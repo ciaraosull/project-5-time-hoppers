@@ -1,5 +1,6 @@
 """Views for Subscibers form & Newsletter"""
 from django.shortcuts import render, redirect, reverse
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMessage
@@ -51,7 +52,7 @@ def newsletter(request):
             message = form.cleaned_data.get('message')
             summernote_message = message
             plain_message = strip_tags(summernote_message)  # strip html tags
-            from_email = ''  # using gmail in settings.py
+            from_email = settings.EMAIL_HOST_USER,
             to_email = mail_list
             bcc_email = mail_list
 
