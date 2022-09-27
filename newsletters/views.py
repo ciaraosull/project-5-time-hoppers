@@ -58,7 +58,8 @@ def newsletter(request):
                 subject,
                 body,
                 settings.EMAIL_HOST_USER,
-                [to_email]
+                [to_email],
+                fail_silently=False
             )
 
             messages.success(request, 'Newsletter Sent Successfully')
