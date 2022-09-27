@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, reverse
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.utils.html import strip_tags
 from django_pandas.io import read_frame
 from . models import Subscriber
@@ -48,19 +48,22 @@ def newsletter(request):
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
-            subject = form.cleaned_data.get('title')
+            title = form.cleaned_data.get('title')
             message = form.cleaned_data.get('message')
             summernote_message = message
-            body = strip_tags(summernote_message)  # strip html tags
+            plain_message = strip_tags(summernote_message)  # strip html tags
+            from_email = settings.EMAIL_HOST_USER  # using gmail in settings.py
             to_email = mail_list
+            bcc_email = mail_list
 
-            send_mail(
-                subject,
-                body,
-                settings.EMAIL_HOST_USER,
+            email = EmailMessage(
+                title,
+                plain_message,
+                from_email,
                 [to_email],
-                fail_silently=False
+                [bcc_email],
             )
+            email.send(fail_silently=False)
 
             messages.success(request, 'Newsletter Sent Successfully')
             return redirect('newsletter')
@@ -71,3 +74,22 @@ def newsletter(request):
         'form': form,
     }
     return render(request, 'newsletters/newsletter.html', context)
+
+
+# if request.method == 'POST':
+#         form = NewsletterForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             subject = form.cleaned_data.get('title')
+#             message = form.cleaned_data.get('message')
+#             summernote_message = message
+#             body = strip_tags(summernote_message)  # strip html tags
+#             to_email = mail_list
+
+#             send_mail(
+#                 subject,
+#                 body,
+#                 settings.DEFAULT_FROM_EMAIL,
+#                 [to_email],
+#                 fail_silently=False
+#             )
