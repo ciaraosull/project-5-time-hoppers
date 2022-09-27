@@ -52,16 +52,14 @@ def newsletter(request):
             message = form.cleaned_data.get('message')
             summernote_message = message
             plain_message = strip_tags(summernote_message)  # strip html tags
-            from_email = settings.EMAIL_HOST_USER,
+            from_email = settings.EMAIL_HOST_USER
             to_email = mail_list
-            bcc_email = mail_list
 
             email = EmailMessage(
                 title,
                 plain_message,
                 from_email,
                 [to_email],
-                [bcc_email],
             )
             email.send(fail_silently=False)
 
