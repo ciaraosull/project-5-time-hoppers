@@ -93,3 +93,4 @@ def newsletter(request):
 #                 [to_email],
 #                 fail_silently=False
 #             )
+# Try just use send_mail instead of EmailMessage and check in dev before deploying
