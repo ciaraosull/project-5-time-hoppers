@@ -57,7 +57,7 @@ def newsletter(request):
             send_mail(
                 subject,
                 body,
-                settings.DEFAULT_FROM_EMAIL,
+                settings.EMAIL_HOST_USER,
                 [to_email],
                 fail_silently=False
             )
