@@ -1,9 +1,10 @@
 """Views for Subscibers form & Newsletter"""
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
-from django.utils.html import strip_tags
+# from django.utils.html import strip_tags
 from django_pandas.io import read_frame
 from . models import Subscriber
 from .forms import SubsciberForm, NewsletterForm
