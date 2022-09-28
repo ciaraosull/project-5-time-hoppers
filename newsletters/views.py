@@ -3,7 +3,9 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.core.mail import send_mass_mail
+# from django.core.mail import send_mail
 # from django.utils.html import strip_tags
 from django_pandas.io import read_frame
 from . models import Subscriber
@@ -41,6 +43,7 @@ def newsletter(request):
         return redirect(reverse('home'))
 
     emails = Subscriber.objects.all()
+    email_host = settings.settings.DEFAULT_FROM_EMAIL
     data_frame = read_frame(emails, fieldnames=['email'])
     mail_list = data_frame['email'].values.tolist()
 
@@ -48,18 +51,16 @@ def newsletter(request):
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
-            subject = form.cleaned_data.get('title')
-            body = form.cleaned_data.get('message')
+            title = form.cleaned_data.get('title')
+            message = form.cleaned_data.get('message')
             # summernote_message = message
             # body = strip_tags(summernote_message)  # strip html tags
-            to_email = mail_list
-
-            send_mail(
-                subject,
-                body,
-                settings.EMAIL_HOST_USER,
-                [to_email],
-            )
+            body = render_to_string(
+                'newsletters/newsletter_emails/newsletter_body.txt',
+                {'message': message})
+            email = [(title, body, email_host, [recipient])
+                     for recipient in mail_list]
+            send_mass_mail(email)
 
             messages.success(request, 'Newsletter Sent Successfully')
             return redirect('newsletter')
