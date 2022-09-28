@@ -56,7 +56,7 @@ def newsletter(request):
             send_mail(
                 subject,
                 body,
-                '',
+                'timehopperstours@gmail.com',
                 [to_email],
                 fail_silently=False,
             )
