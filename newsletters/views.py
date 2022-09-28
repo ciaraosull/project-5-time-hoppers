@@ -1,6 +1,5 @@
 """Views for Subscibers form & Newsletter"""
 from django.shortcuts import render, redirect, reverse
-from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
@@ -57,9 +56,9 @@ def newsletter(request):
             send_mail(
                 subject,
                 body,
-                settings.DEFAULT_FROM_EMAIL,
+                '',
                 [to_email],
-                fail_silently=False
+                fail_silently=False,
             )
 
             messages.success(request, 'Newsletter Sent Successfully')
