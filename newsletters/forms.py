@@ -1,6 +1,5 @@
 """Forms for Newsletters & Subscribers"""
 from django import forms
-from django_summernote.widgets import SummernoteWidget
 from .models import Subscriber, Newsletter
 
 
@@ -27,7 +26,3 @@ class NewsletterForm(forms.ModelForm):
             'title',
             'message',
             ]
-
-        widgets = {
-            'message': SummernoteWidget(),
-            }

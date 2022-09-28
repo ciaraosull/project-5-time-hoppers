@@ -12,8 +12,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 @admin.register(Newsletter)
-class NewsletterAdmin(SummernoteModelAdmin):
+class NewsletterAdmin(admin.ModelAdmin):
     """ Class admin site newsletter """
     list_display = ('title', 'date_posted')
     list_filter = ('date_posted', 'title')
-    summernote_fields = ('message')
