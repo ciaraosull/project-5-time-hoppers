@@ -48,17 +48,16 @@ def newsletter(request):
         if form.is_valid():
             form.save()
             subject = form.cleaned_data.get('title')
-            message = form.cleaned_data.get('message')
-            summernote_message = message
-            body = strip_tags(summernote_message)  # strip html tags
+            body = form.cleaned_data.get('message')
+            # summernote_message = message
+            # body = strip_tags(summernote_message)  # strip html tags
             to_email = mail_list
 
             send_mail(
                 subject,
                 body,
-                'timehopperstours@gmail.com',
+                settings.EMAIL_HOST_USER,
                 [to_email],
-                fail_silently=False,
             )
 
             messages.success(request, 'Newsletter Sent Successfully')
