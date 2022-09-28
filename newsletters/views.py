@@ -43,7 +43,7 @@ def newsletter(request):
         return redirect(reverse('home'))
 
     emails = Subscriber.objects.all()
-    email_host = settings.settings.DEFAULT_FROM_EMAIL
+    email_host = settings.DEFAULT_FROM_EMAIL
     data_frame = read_frame(emails, fieldnames=['email'])
     mail_list = data_frame['email'].values.tolist()
 
