@@ -10,7 +10,8 @@
         <h3 class="pt-3 pb-3">We are a TimeTravelling Tour Guide Company!</h3>
         <p>Fancy a different type of holiday?</p>
         <p>Then browse our tours and see where the moment takes you.</p>
-        <p>You can book as a guest or register for an account to keep track of your booking history and post reviews.</p>
+        <p>You can book as a guest or register for an account to keep track of your booking history and post reviews.
+        </p>
         <p>Once your online payment is successful, we will email you your order number</p>
         <p>Make sure to hav this ready on the day you time travel.</p>
     </div>
@@ -20,23 +21,23 @@
 <section>
     <div class="pt-3 pb-3 position-relative">
         <div class="container px-md-5">
-            <div class="row me-3">
+            <div class="row">
                 <h3 class="text-orange pt-3 pb-3">Meet Our Staff</h3>
                 {%  for staffmember in staffmembers  %}
-                <div class="col-lg-4 col-md-5 col-12 card m-3 shadow p-2 bg-body rounded">
+                <div class="col-lg-3 col-md-4 col-12 card m-4 shadow p-2 bg-body rounded">
                     <div class="card-group">
                         <div class="card">
 
                             <!-- Staff Image -->
                             {%  if staffmember.profile_image.url  %}
                             <img class="card-img-top rounded-circle" src="{{ staffmember.profile_image.url  }}"
-                                width="200px" alt="Tour Image">
+                                max-width="100px" max-height="100px" alt="Tour Image">
 
                             {%  else  %}
                             <!-- Default Image -->
-                            <img class="card-img-top rounded-circle"
+                            <img class="rounded-circle border border-3 shadow p-3 mb-3 bg-body rounded mx-auto d-block mt-3"
                                 src="https://res.cloudinary.com/ciara0s1980/image/upload/v1663335273/default-profile-image.png"
-                                width="200px" alt="Tour Image"></a>
+                                width="100px" alt="Tour Image"></a>
 
                             {%  endif  %}
 
@@ -47,15 +48,14 @@
 
                                 <!-- Tour Works On-->
                                 <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
-                                                class="fa-regular fa-star"></i>
-                                            Tour Guide For: </strong>
+                                                class="text-orange fa-regular fa-star"></i>
+                                            Guide: </strong>
                                         <i>{{ staffmember.tour }}</i>
                                     </small></p>
 
                                 <!-- Date Started-->
-                                <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
-                                                class="fa-regular fa-comment"></i>
-                                            TimeTravvelling Since: </strong>
+                                <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i class="text-orange fa-regular fa-calendar-days"></i>
+                                            TimeTravelling Since: </strong>
                                         <i>{{ staffmember.date_started }}</i>
                                     </small>
                                 </p>
@@ -63,7 +63,7 @@
                                 <!-- Multi-Ligual-->
                                 {% if staffmember.multi_lingual == True %}
                                 <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
-                                                class="fa-regular fa-circle-check"></i>
+                                                class="text-orange fa-regular fa-circle-check"></i>
                                             Multi-Lingual </strong></small></p>
                                 {% else %}
                                 <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
@@ -71,20 +71,29 @@
                                             Not Multi-Lingual </strong></small></p>
                                 {% endif %}
 
+                                <!-- Faviourite Era-->
+                                <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
+                                                class="text-orange fa-regular fa-heart"></i>
+                                            Favourite Era: </strong>
+                                        <i>{{ staffmember.faviourite_era }}</i>
+                                    </small>
+                                </p>
+
                                 <!-- Staff Member Blurb-->
                                 <p class="card-text mt-2"> Meet {{ staffmember.full_name }} who will guide you on your
                                     time travel adventure {{  staffmember.tour }}!</p>
-                                <p class="card-text mt-2"><a class="text-decoration-none"
-                                        href="{% url 'tour-detail' tour.id %}" target="_blank"
+                                <p class="card-text mt-2"><a class="text-orange text-decoration-none"
+                                        href="{{  staffmember.social_media_link  }}" target="_blank"
                                         aria-label="Go to Contact Detail">Click Here For Contact Link
                                     </a></p>
                             </div>
                         </div>
                     </div>
                 </div>
+                {%  endfor  %}
             </div>
         </div>
-        {%  endfor  %}
+        
     </div>
 </section>
 

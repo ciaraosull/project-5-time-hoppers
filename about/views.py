@@ -9,5 +9,5 @@ class AboutUsListView(ListView):
     """Class to show the Staff in list view on About Us Page """
     model = StaffMember
     template_name = 'about/about_us.html'
-    context_object_name = 'staff'
+    context_object_name = 'staffmembers'
     ordering = ['-date_added']
