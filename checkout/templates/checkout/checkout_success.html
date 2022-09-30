@@ -19,7 +19,7 @@
                 <h1>Thank You <em>{{  order.full_name  }}</em></h1>
                 <h2>Your Order was Successful</h2>
                 <h4 class="mt-4 mb-2">Your Order Number is:</h4>
-                <h5 class="mb-4">{{  order.order_number  }}</h5>
+                <p class="mb-4"><small>{{  order.order_number  }}</small></p>
                 <p>A confirmation email with your tickets will be sent to <strong>{{  order.email  }}</strong></p>
                 <span>Please see the summary of your order below.</span>
                 <hr class="mt-1">
@@ -31,23 +31,23 @@
             <div class="col-12 col-lg-6">
 
                 <!--Order Summary-->
-                <div class="form-style col-12 pb-3 pt-3 pe-2">
-                    <div class="row pb-2">
-                        <div class="col-7 offset-1">
+                <div class="form-style col-12 pb-3 pt-3">
+                    <div class="order-summary row pb-2">
+                        <div class="order-summary col-7 offset-1">
                             <p class="text-orange mb-1 mt-0">Booking Summary</p>
                         </div>
-                        <div class="col-4 float-end">
+                        <div class="order-summary col-4 float-end">
                             <p class="text-orange mb-1 mt-0">Subtotal</p>
                         </div>
                         <hr class="my-0">
                     </div>
                     {% for item in order.lineitems.all %}
                     <div class="row">
-                        <div class="col-1 mb-1">
+                        <div class="order-summary col-1 mb-1">
                             <a href="{% url 'tour-detail' item.tour.id %}">
                             </a>
                         </div>
-                        <div class="col-7">
+                        <div class="order-summary col-7">
                             <p class="my-0"><strong>{{ item.tour.tour_name }}</strong></p>
                             <p class="my-0 small">Dept Date:
                                 {{ item.tour_departure_date }}</p>
@@ -56,9 +56,9 @@
 
                             <p class="my-0 small text-muted-white mb-2">No. of Tickets: {{ item.quantity }}</p>
                         </div>
-                        <div class="col-3 text-right">
+                        <div class="order-summary col-3 text-right">
                             <p class="my-0 small text-muted-white">
-                                @ € {{ item.tour.price }} each</p>
+                                @ €{{ item.tour.price|floatformat:0 }} each</p>
                         </div>
                     </div>
                     {% endfor %}
@@ -68,7 +68,7 @@
                             <p class="my-0">Order Total:</p>
                         </div>
                         <div class="col-3">
-                            <p class="my-0">€ {{ order.grand_total }}</p>
+                            <p class="my-0">€{{ order.grand_total|floatformat:0 }}</p>
                         </div>
                     </div>
                 </div>

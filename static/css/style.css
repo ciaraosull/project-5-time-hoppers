@@ -24,7 +24,7 @@ body {
 }
 
 main {
-    margin-top: 90px;
+    margin-top: 70px;
     flex: 1 0 auto;
 }
 
@@ -353,7 +353,7 @@ main {
   }
 
 
-  @media (max-width: 991px) {
+  @media (max-width: 990px) {
     .nav-link {
         padding: 0.1rem;
     }
@@ -380,5 +380,31 @@ main {
         padding-bottom: 0 !important;
         padding-left: 1rem !important;
         padding-right: 1rem !important;
+    }
+
+    .review-login {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .tour-detail {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .date-picker {
+        width: 70% !important;
+        margin-left: 15%;
+    }
+
+    .quantity-picker {
+        width: 50% !important;
+        margin-left: 20%;
+    }
+
+    .order-summary {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        font-size: 0.8rem;
     }
 }
