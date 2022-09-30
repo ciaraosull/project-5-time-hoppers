@@ -351,3 +351,34 @@ main {
       font-size: 2rem;
     }
   }
+
+
+  @media (max-width: 991px) {
+    .nav-link {
+        padding: 0.1rem;
+    }
+
+    .nav-link i.fa-lg {
+        font-size: 1rem;
+    }
+
+    .search-mob {
+        font-size: 0.8em !important;
+    }
+
+    .navbar-toggler {
+        padding: .6rem .6rem;
+        font-size: 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .navbar {
+        padding-top: 1rem !important;
+        padding-bottom: 0 !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}

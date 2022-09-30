@@ -57,10 +57,10 @@
 
 <body class="d-flex flex-column min-vh-100">
     <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-md navbar-light p-5 pe-5">
+    <nav class="navbar fixed-top navbar-expand-md navbar-light p-5 pe-5 pt-5">
 
         <!-- Hamburger Menu for Small Screens-->
-        <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler mb-3"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation bar"><span
                 class="navbar-toggler-icon"></span>
         </button>
@@ -96,7 +96,7 @@
                     <!-- My Account Drop-down menu if user logged in -->
                     {%  if user.is_authenticated  %}
 
-                    <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <ul class="dropdown-menu dropdown-menu p-3" aria-labelledby="navbarDropdownMenuLink">
                         <li nav-item-active><a href="{%  url 'profile'  %}"
                                 class="{%  if url_name == 'profile'  %}active {%  endif  %}nav-link"
                                 aria-label="Profile Page">Profile</a></li>
@@ -119,7 +119,7 @@
 
                         <!-- My Account Drop-down menu if user logged out -->
                         {%  else  %}
-                        <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <ul class="dropdown-menu dropdown-menu p-3" aria-labelledby="navbarDropdownMenuLink">
                             <li nav-item-active><a href="{%  url 'account_login'  %}"
                                     class="{%  if url_name == 'account_login'  %}active {%  endif  %}nav-link"
                                     aria-label="Go to Log In Page">Login</a></li>
@@ -157,7 +157,7 @@
                 aria-haspopup="true" aria-expanded="false">
                 <div class="nav-icons text-center">
                     <div><i class="fas fa-search fa-lg"></i></div>
-                    <p class="my-0">Search</p>
+                    <p class="search-mob my-0">Search</p>
                 </div>
             </a>
             <div class="dropdown-menu w-100 p-3 my-0" aria-labelledby="mobile-search">
@@ -183,7 +183,7 @@
                 href="{% url 'view-basket' %}">
                 <div class="nav-icons text-center">
                     <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                    <p class="my-0">
+                    <p class="search-mob my-0">
                         {% if grand_total %}
                         €{{ grand_total|floatformat:2 }}
                         {% else %}
