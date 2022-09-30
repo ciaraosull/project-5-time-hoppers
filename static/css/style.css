@@ -281,6 +281,7 @@ main {
     100% {opacity: 1;}
 }
 
+
 /* Custom styling for Tour List View Page */
 .card-text {
     font-size: 1.25rem !important;
@@ -351,7 +352,6 @@ main {
       font-size: 2rem;
     }
   }
-
 
   @media (max-width: 990px) {
     .nav-link {
