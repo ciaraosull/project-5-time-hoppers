@@ -331,14 +331,6 @@ main {
     color: #ec7718 !important;
 }
 
-/*Messages */
-.message-container {
-    z-index: 999;
-    position: absolute;
-    right: 15px;
-    top: 115px;
-}
-
 /*Order Form */
 .order-form .container {
     color: #4c4c4c;
@@ -402,7 +394,7 @@ main {
         font-size: 1rem;
     }
 
-    * {
+    * p {
         font-size: 0.9rem !important;
     }
 
@@ -410,6 +402,7 @@ main {
         padding-top: 1rem !important;
         padding-bottom: 0 !important;
         padding-left: 1rem !important;
+        padding-right: 1rem !important;
     }
 
     .review-login {

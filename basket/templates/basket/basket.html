@@ -16,14 +16,15 @@
 <div class="container mb-2">
     <div class="row">
         <div class="col">
-            <h2 class="text-orange mb-4 mt-5">Tour Bookings Basket</h2>
-            <p>Please review your bookings, edit, delete or add as necessary before proceeding to order</p>
+            <h1 class="text-orange mb-4 mt-4">Tour Bookings Basket</h1>
+            <p class="text-center">Please review your bookings, edit, delete or add as necessary before proceeding to checkout</p>
         </div>
     </div>
     {% if basket_items %}
 
     <!-- List of All Booked Tours for the User -->
-    <div class="table-responsive rounded">
+    {% include "basket/basket_mobile.html" %}
+    <div class="table-responsive rounded d-none d-md-block">
         <table class="table product-table">
 
             <!--Table head-->
@@ -132,9 +133,9 @@
     {%  else  %}
     <!--If User's basket is empty-->
     <div>
-        <h5 class="mt-5 mb-4">No Bookings in Basket</h5>
+        <h5 class="mt-5 mb-3">No Bookings in Basket</h5>
     </div>
-    <div><a class="btn btn-outline-secondary btn-sm" href="{% url 'tours-list' %}"
+    <div><a class="btn btn-outline-secondary btn-sm mb-4" href="{% url 'tours-list' %}"
             aria-label="Go to the Tours List Section"><i class="fa fa-angle-left left"></i> Browse More Tours </a></div>
 
     {%  endif %}

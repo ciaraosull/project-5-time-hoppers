@@ -1,0 +1,86 @@
+<div class="row row ps-3 pe-4">
+    <div class="col">
+        {% if basket_items %}
+        <div class="d-block d-md-none">
+            <div class="row">
+                <div class="col">
+                    <h4 class="mb-4"><strong>Grand Total: € {{ grand_total|floatformat:0 }}</strong></h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-around mb-4">
+                        <a class="btn btn-outline-secondary btn-sm" href="{% url 'tours-list' %}"
+                            aria-label="Go to the Tours List Section"><i class="fa fa-angle-left left"></i> Browse More
+                            Tours </a>
+                        <a href="{%  url 'checkout'  %}" class="btn btn-primary btn-sm">Checkout<i
+                                class="fa fa-angle-right right"></i></a>
+                    </div>
+                    <p class="mb-4">A summary of your booking is below:</p>
+                    <hr>
+                </div>
+            </div>
+            {% for item in basket_items %}
+            <div class="row">
+                <div class="col-12 col-sm-6 mb-2">
+                    <h5><strong>{{ item.tour.tour_name }}</strong></h5>
+                    <p class="mb-1">Duration: {{ item.tour.tour_duration }}</p>
+                    <p class="mb-1">Departure Date: {{ item.departure_date}}</p>
+                </div>
+                <div class="col-12 col-sm-6 order-sm-last">
+                    <p class="mb-1">Price Each: € {{ item.tour.price }}</p>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <form class="form update-form" method="POST" action="{%  url 'adjust_basket' item.item_id %}">
+                        {% csrf_token %}
+                        <div class="form-group form-group"> 
+                            <div class="input-group w-75 ms-5 ps-5">
+
+                                <!--Input Departure Date-->
+                                <input type="hidden" name="tour_departure_date" value="{{ item.departure_date }}">
+
+                                <!--Button to Decrease Hidden on Small screens for reponsive design-->
+                                <div class="input-group-prepend">
+                                    <button class="decrement-qty btn btn-sm btn-black rounded-0"
+                                        data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                        <span>
+                                            <i class="fas fa-minus fa-sm"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                                <!-- Quantity of Tickets Input-->
+                                <input class="form-control form-control-sm qty_input" type="number" name="quantity"
+                                    value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
+                                    id="id_qty_{{ item.item_id }}">
+
+                                <!--Button to Increase Hidden on Small screens for reponsive design-->
+                                <div class="input-group-append">
+                                    <button class="increment-qty btn btn-sm btn-black rounded-0"
+                                        data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                        <span>
+                                            <i class="fas fa-plus fa-sm"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!--Update Button-->
+                    <a class="update-link btn btn-sm btn-primary update ms-3 mb-2" aria-label="Update Booking"><i
+                            class="fa-solid fa-pencil"></i><small> Update</small></a>
+
+                    <!--Delete Booking At End of Row For Responsive Design-->
+                    <a class="remove-item btn btn-sm btn-danger float-end" id="remove_{{ item.item_id }}"
+                        data-tour_departure_date="{{ item.departure_date }}"><i class="fa-solid fa-trash-can"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {%  endif  %}
+    </div>
+</div>
