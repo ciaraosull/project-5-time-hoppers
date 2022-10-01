@@ -101,7 +101,7 @@
                                 class="{%  if url_name == 'profile'  %}active {%  endif  %}nav-link"
                                 aria-label="Profile Page">Profile</a></li>
 
-                        <li><a href="{%  url 'account_logout'  %}"
+                        <li><a href="{%  url 'account_logout'  %}?next={{request.path}}"
                                 class="{%  if url_name == 'account_logout'  %}active {%  endif  %}nav-link"
                                 aria-label="Logout">Logout</a></li>
 
@@ -120,11 +120,11 @@
                         <!-- My Account Drop-down menu if user logged out -->
                         {%  else  %}
                         <ul class="dropdown-menu dropdown-menu p-3" aria-labelledby="navbarDropdownMenuLink">
-                            <li nav-item-active><a href="{%  url 'account_login'  %}"
+                            <li nav-item-active><a href="{%  url 'account_login'  %}?next={{request.path}}"
                                     class="{%  if url_name == 'account_login'  %}active {%  endif  %}nav-link"
                                     aria-label="Go to Log In Page">Login</a></li>
 
-                            <li><a href="{%  url 'account_signup'  %}"
+                            <li><a href="{%  url 'account_signup'  %}?next={{request.path}}"
                                     class="{%  if url_name == 'account_signup'  %}active {%  endif  %}nav-link"
                                     aria-label="Go to Register Page">Register</a></li>
                         </ul>
