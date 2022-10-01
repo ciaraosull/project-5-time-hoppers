@@ -364,11 +364,14 @@ main {
 }
 
 .staff-image {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 250px;
     text-align: center;
 }
 
+.card-text p {
+    font-size: 0.8rem;
+}
 
 /* Media Queries */
 @media (max-width: 700px) {
@@ -399,11 +402,14 @@ main {
         font-size: 1rem;
     }
 
+    * {
+        font-size: 0.9rem !important;
+    }
+
     .navbar {
         padding-top: 1rem !important;
         padding-bottom: 0 !important;
         padding-left: 1rem !important;
-        padding-right: 1rem !important;
     }
 
     .review-login {

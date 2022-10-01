@@ -47,20 +47,20 @@
 
                             {%  endif  %}
 
-                            <div class="card-body">
+                            <div class="card-text card-body">
                                 <!-- Staff Name-->
                                 <h4 class="card-title">{{  staffmember.full_name  }}
                                     </a></h4>
 
                                 <!-- Tour Works On-->
-                                <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
+                                <p class="list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
                                                 class="text-orange fa-regular fa-star"></i>
                                             Guide: </strong>
                                         <i>{{ staffmember.tour }}</i>
                                     </small></p>
 
                                 <!-- Date Started-->
-                                <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
+                                <p class="list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
                                                 class="text-orange fa-regular fa-calendar-days"></i>
                                             TimeTravelling Since: </strong>
                                         <i>{{ staffmember.date_started }}</i>
@@ -69,17 +69,17 @@
 
                                 <!-- Multi-Ligual-->
                                 {% if staffmember.multi_lingual == True %}
-                                <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
+                                <p class="list-inline-item p-0 mb-0 me-0"><small class="text-muted"><strong><i
                                                 class="text-orange fa-regular fa-circle-check"></i>
                                             Multi-Lingual </strong></small></p>
                                 {% else %}
-                                <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
+                                <p class="list-inline-item p-0 mb-0 me-0"><small class="text-muted"><strong><i
                                                 class="fa-regular fa-circle-xmark"></i>
                                             Not Multi-Lingual </strong></small></p>
                                 {% endif %}
 
                                 <!-- Faviourite Era-->
-                                <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
+                                <p class="list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
                                                 class="text-orange fa-regular fa-heart"></i>
                                             Favourite Era: </strong>
                                         <i>{{ staffmember.faviourite_era }}</i>
@@ -87,7 +87,7 @@
                                 </p>
 
                                 <!-- Staff Member Contact-->
-                                <p class="card-text mt-2"><a class="text-orange text-decoration-none"
+                                <p class="mt-2"><a class="text-orange text-decoration-none"
                                         href="{{  staffmember.social_media_link  }}" target="_blank"
                                         aria-label="Go to Contact Detail">Click Here For Contact Link
                                     </a></p>
