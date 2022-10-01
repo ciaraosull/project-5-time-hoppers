@@ -4,38 +4,44 @@
 {%  block content  %}
 
 
-<div class="row g-0 mt-5">
-    <div class="col-md-8 offset-md-1 text-center text-md-start p-3">
+<div class="row pt-5">
+    <div class="col-md-8 offset-md-2 text-center text-md-start p-3">
         <h1 class="text-orange m-2">About Us</h1>
         <h3 class="pt-3 pb-3">We are a TimeTravelling Tour Guide Company!</h3>
-        <p>Fancy a different type of holiday?</p>
-        <p>Then browse our tours and see where the moment takes you.</p>
-        <p>You can book as a guest or register for an account to keep track of your booking history and post reviews.
-        </p>
-        <p>Once your online payment is successful, we will email you your order number</p>
-        <p>Make sure to hav this ready on the day you time travel.</p>
     </div>
+    <div class="about-us-heading about-us-banner">
+        <div class="col-md-8 offset-md-2">
+            <p>Fancy a different type of holiday?</p>
+            <p>Then browse our tours and see where the moment takes you.</p>
+            <p>You can book as a guest or register for an account to keep track of your booking history and post
+                reviews.
+            </p>
+            <p>Once your online payment is successful, we will email you your order number</p>
+            <p>Make sure to hav this ready on the day you time travel.</p>
+        </div>
+    </div>
+
 </div>
 
 <!-- List of Staff Members -->
 <section>
-    <div class="pt-3 pb-3 position-relative">
-        <div class="container px-md-5">
+    <div class="row pt-3 pb-3 staff-banner">
+        <div class="col-md-8 offset-md-3">
             <div class="row">
-                <h3 class="text-orange pt-3 pb-3">Meet Our Staff</h3>
+                <h3 class="pt-3 pb-3">Meet Our Staff</h3>
                 {%  for staffmember in staffmembers  %}
-                <div class="col-lg-3 col-md-4 col-12 card m-4 shadow p-2 bg-body rounded">
+                <div class="col-lg-3 col-md-4 col-12 card m-2 shadow p-2 bg-body rounded">
                     <div class="card-group">
-                        <div class="card">
+                        <div class="card align-items-center">
 
                             <!-- Staff Image -->
                             {%  if staffmember.profile_image.url  %}
-                            <img class="card-img-top rounded-circle" src="{{ staffmember.profile_image.url  }}"
+                            <img class="staff-image card-img-top rounded-circle pt-2" src="{{ staffmember.profile_image.url  }}"
                                 max-width="100px" max-height="100px" alt="Tour Image">
 
                             {%  else  %}
                             <!-- Default Image -->
-                            <img class="rounded-circle border border-3 shadow p-3 mb-3 bg-body rounded mx-auto d-block mt-3"
+                            <img class="staff-image card-img-top rounded-circle pt-2"
                                 src="https://res.cloudinary.com/ciara0s1980/image/upload/v1663335273/default-profile-image.png"
                                 width="100px" alt="Tour Image"></a>
 
@@ -54,7 +60,8 @@
                                     </small></p>
 
                                 <!-- Date Started-->
-                                <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i class="text-orange fa-regular fa-calendar-days"></i>
+                                <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
+                                                class="text-orange fa-regular fa-calendar-days"></i>
                                             TimeTravelling Since: </strong>
                                         <i>{{ staffmember.date_started }}</i>
                                     </small>
@@ -79,9 +86,7 @@
                                     </small>
                                 </p>
 
-                                <!-- Staff Member Blurb-->
-                                <p class="card-text mt-2"> Meet {{ staffmember.full_name }} who will guide you on your
-                                    time travel adventure {{  staffmember.tour }}!</p>
+                                <!-- Staff Member Contact-->
                                 <p class="card-text mt-2"><a class="text-orange text-decoration-none"
                                         href="{{  staffmember.social_media_link  }}" target="_blank"
                                         aria-label="Go to Contact Detail">Click Here For Contact Link
@@ -93,7 +98,7 @@
                 {%  endfor  %}
             </div>
         </div>
-        
+
     </div>
 </section>
 
