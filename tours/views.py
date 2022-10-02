@@ -8,13 +8,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
+    CreateView,
     DetailView,
     UpdateView,
     DeleteView
 )
 from django.core.paginator import Paginator
 from .models import Tour, Review
-from .forms import ReviewForm
+from .forms import ReviewForm, TourForm
 
 
 class TourListView(ListView):
@@ -118,6 +119,17 @@ class TourDetailView(DetailView):
         context['paginator'] = paginator
         context['review_form'] = ReviewForm()
         return context
+
+
+class TourCreateView(LoginRequiredMixin, CreateView):
+    """ Class to allow logged in admon users to create tours """
+    model = Tour
+    form_class = TourForm
+
+    def form_valid(self, form):
+        """Function to set signed in user as author of form to post"""
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
