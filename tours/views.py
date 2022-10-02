@@ -127,9 +127,24 @@ class TourCreateView(LoginRequiredMixin, CreateView):
     form_class = TourForm
 
     def form_valid(self, form):
-        """Function to set signed in user as author of form to post"""
+        """Function to set signed in user as author of form to tours"""
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class TourUpdateView(LoginRequiredMixin, UpdateView):
+    """ Class to allow logged in users to update tours """
+    model = Tour
+    form_class = TourForm
+
+
+class TourDeleteView(LoginRequiredMixin, DeleteView):
+    """
+    Class to allow the user of the tour post to delete it
+    and then redirect back to tours-list page
+    """
+    model = Tour
+    success_url = '/tours/'
 
 
 class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

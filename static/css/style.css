@@ -368,6 +368,7 @@ main {
 .message-container {
     z-index: 99999999999;
     position: fixed;
+    right: 15px;
 }
 
 /* Media Queries */
