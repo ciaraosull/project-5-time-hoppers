@@ -1,5 +1,6 @@
 """Form for Reviews"""
 from django import forms
+from django_summernote.widgets import SummernoteWidget
 from .models import Review, Tour
 
 
@@ -24,6 +25,10 @@ class TourForm(forms.ModelForm):
             'image_url',
             'image',
         )
+
+        widgets = {
+            'description': SummernoteWidget(),
+            }
 
 
 class ReviewForm(forms.ModelForm):

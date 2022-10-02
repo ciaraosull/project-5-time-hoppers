@@ -1,6 +1,7 @@
 """ Imports for Tours """
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 from cloudinary.models import CloudinaryField
 
 
@@ -90,6 +91,10 @@ class Tour(models.Model):
     def __str__(self):
         """ To return the name objects as a string """
         return f"{self.tour_name}"
+
+    def get_absolute_url(self):
+        """Find url after admin posts new tour"""
+        return reverse('tour-detail', kwargs={'pk': self.pk})
 
 
 class Review(models.Model):
