@@ -21,7 +21,7 @@ class StaffMember(models.Model):
         )
     date_started = models.DateField()
     faviourite_era = models.TextField()
-    social_media_link = models.URLField(max_length=200, blank=True)
+    contact_email = models.EmailField(max_length=254, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
