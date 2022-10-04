@@ -83,22 +83,21 @@
                     <a href="{% url 'about-us' %}" class="{%  if url_name == 'about-us' %}active {%  endif  %}nav-link"
                         aria-label="Go to About Us Page">About</a>
                 </li>
-                <li class="nav-item-active">
+                <li class="nav-item">
                     <a href="{% url 'tours-list' %}"
                         class="{%  if url_name == 'tours-list' %}active {%  endif  %}nav-link"
                         aria-label="Go to Tour List Page">Tours</a>
                 </li>
 
-                <li class="nav-item-active dropdown">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         My Account
                     </a>
                     <!-- My Account Drop-down menu if user logged in -->
-                    {%  if user.is_authenticated  %}
-
                     <ul class="dropdown-menu dropdown-menu p-3" aria-labelledby="navbarDropdownMenuLink">
-                        <li nav-item-active><a href="{%  url 'profile'  %}"
+                        {%  if user.is_authenticated  %}
+                        <li nav-item><a href="{%  url 'profile'  %}"
                                 class="{%  if url_name == 'profile'  %}active {%  endif  %}nav-link"
                                 aria-label="Profile Page">Profile</a></li>
 
@@ -107,34 +106,32 @@
                                 aria-label="Logout">Logout</a></li>
 
                         {% if request.user.is_superuser %}
-                        <li nav-item-active><a href="{%  url 'admin:index'  %}"
+                        <li nav-item><a href="{%  url 'admin:index'  %}"
                                 class="{%  if url_name == 'admin-site'  %}active {%  endif  %}nav-link"
                                 aria-label="Admin Page">Admin Site</a></li>
 
-                        <li nav-item-active><a href="{%  url 'newsletter'  %}"
+                        <li nav-item><a href="{%  url 'newsletter'  %}"
                                 class="{%  if url_name == 'newsletter'  %}active {%  endif  %}nav-link"
                                 aria-label="Newsletter">Newsletters</a></li>
 
-                        <li nav-item-active>
+                        <li nav-item>
                             <a href="{%  url 'tour-form'  %}"
                                 class="{%  if url_name == 'tour-form'  %}active {%  endif  %}nav-link"
                                 aria-label="Add New Tour">Add Tour</a>
                         </li>
-
-
                         {% endif %}
-
                         <!-- My Account Drop-down menu if user logged out -->
                         {%  else  %}
-                        <ul class="dropdown-menu dropdown-menu p-3" aria-labelledby="navbarDropdownMenuLink">
-                            <li nav-item-active><a href="{%  url 'account_login'  %}?next={{request.path}}"
-                                    class="{%  if url_name == 'account_login'  %}active {%  endif  %}nav-link"
-                                    aria-label="Go to Log In Page">Login</a></li>
+                        <li><a href="{%  url 'account_login'  %}?next={{request.path}}"
+                                class="{%  if url_name == 'account_login'  %}active {%  endif  %}nav-link"
+                                aria-label="Go to Log In Page">Login</a>
+                        </li>
 
-                            <li><a href="{%  url 'account_signup'  %}?next={{request.path}}"
-                                    class="{%  if url_name == 'account_signup'  %}active {%  endif  %}nav-link"
-                                    aria-label="Go to Register Page">Register</a></li>
-                        </ul>
+                        <li><a href="{%  url 'account_signup'  %}?next={{request.path}}"
+                                class="{%  if url_name == 'account_signup'  %}active {%  endif  %}nav-link"
+                                aria-label="Go to Register Page">Register</a>
+                        </li>
+                    </ul>
                 </li>
                 {% endif %}
             </ul>
@@ -159,7 +156,7 @@
         </div>
 
         <!-- Search Icon for Small Screens-->
-        <li class="list-inline-item">
+        <div class="list-inline-item">
             <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <div class="nav-icons text-center">
@@ -170,7 +167,7 @@
             <div class="dropdown-menu w-100 p-3 my-0" aria-labelledby="mobile-search">
                 <form class="form" method="GET" action="{% url 'tours-list' %}">
                     <div class="input-group w-100">
-                        <input class="form-control border border-black rounded-0" type="search" id="form1" name="q"
+                        <input class="form-control border border-black rounded-0" type="search" id="form2" name="q"
                             placeholder="Search">
                         <div class="input-group-append">
                             <button class="form-control fbtn btn-primary" type="submit">
@@ -182,7 +179,7 @@
                     </div>
                 </form>
             </div>
-        </li>
+        </div>
 
         <!-- Shopping Basket -->
         <div class="pb-2 pt-2">
@@ -249,7 +246,7 @@
 
                             <div class="form-group">
                                 <input id="email" name="email" type="email" class="form-control"
-                                    placeholder="Email address" />
+                                    placeholder="Email address">
                                 <small id="emailHelp" class="form-text text-white">We'll never share your
                                     email</small>
                             </div>
@@ -295,12 +292,12 @@
 
     {% block postloadjs %}
     {{ block.super }}
-    <script type="text/javascript">
-    // Django messages timeout function
-    let message_flash = document.getElementById("message-flash");
-    setTimeout(function(){
-        message_flash.style = "display: none";
-    }, 2000);
+    <script>
+        // Django messages timeout function
+        let message_flash = document.getElementById("message-flash");
+        setTimeout(function () {
+            message_flash.style = "display: none";
+        }, 2000);
     </script>
 
     {% endblock %}
