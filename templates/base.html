@@ -207,7 +207,7 @@
         <div class="message-container float-end d-flex justify-content-center mt-2">
             {%  if messages  %}
             {%  for message in messages  %}
-            <div class="alert alert-{{  message.tags  }}">
+            <div id="message-container" class="alert alert-{{  message.tags  }}">
                 {{  message  }}
             </div>
             {%  endfor  %}
@@ -294,6 +294,15 @@
     </footer>
 
     {% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+    // Django messages timeout function
+    let message_ele = document.getElementById("message-container");
+    setTimeout(function(){
+        message_ele.style.display = "none";
+    }, 2000);
+    </script>
+
     {% endblock %}
 
 </body>
