@@ -26,16 +26,16 @@
                 Sort By
             </button>
             <ul class="dropdown-menu">
-                <a href="{% url 'tours-list' %}?sort=price&direction=ascending" class="dropdown-item" aria-label="#">By
+                <a href="{% url 'tours-list' %}?sort=price&direction=ascending" class="dropdown-item" aria-label="Sort by Price Ascending">By
                     Price: <small>Low to High</small></a>
-                <a href="{% url 'tours-list' %}?sort=price&direction=desending" class="dropdown-item" aria-label="#">By
+                <a href="{% url 'tours-list' %}?sort=price&direction=desending" class="dropdown-item" aria-label="Sort by Price Decending">By
                     Price: <small>High to Low</small></a>
-                <a href="{% url 'tours-list' %}?sort=rating&direction=desending" class="dropdown-item" aria-label="#">By
+                <a href="{% url 'tours-list' %}?sort=rating&direction=desending" class="dropdown-item" aria-label="Sort by Rating Ascending">By
                     Highest Rating</a>
                 <a href="{% url 'tours-list' %}?sort=tour_name&direction=ascending" class="dropdown-item"
-                    aria-label="#">By Name: <small>A-Z</small></a>
+                    aria-label="Sort By Name A-Z">By Name: <small>A-Z</small></a>
                 <a href="{% url 'tours-list' %}?sort=tour_name&direction=desending" class="dropdown-item"
-                    aria-label="#">By Name: <small>Z-A</small></a>
+                    aria-label="ort By Name Z-A">By Name: <small>Z-A</small></a>
                 <a href="{% url 'tours-list' %}?sort=date_added&direction=desending" class="dropdown-item"
                     aria-label="Sort By Most Recent">Most Recent</a>
             </ul>
