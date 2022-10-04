@@ -207,7 +207,7 @@
         <div class="message-container float-end d-flex justify-content-center mt-2">
             {%  if messages  %}
             {%  for message in messages  %}
-            <div id="message-container" class="alert alert-{{  message.tags  }}">
+            <div id="message-flash" class="alert alert-{{  message.tags  }}">
                 {{  message  }}
             </div>
             {%  endfor  %}
@@ -297,9 +297,9 @@
     {{ block.super }}
     <script type="text/javascript">
     // Django messages timeout function
-    let message_ele = document.getElementById("message-container");
+    let message_flash = document.getElementById("message-flash");
     setTimeout(function(){
-        message_ele.style.display = "none";
+        message_flash.style = "display: none";
     }, 2000);
     </script>
 
