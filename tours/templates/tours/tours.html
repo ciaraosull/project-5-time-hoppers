@@ -25,7 +25,7 @@
                 aria-expanded="false">
                 Sort By
             </button>
-            <ul class="dropdown-menu">
+            <div class="dropdown-menu">
                 <a href="{% url 'tours-list' %}?sort=price&direction=ascending" class="dropdown-item" aria-label="Sort by Price Ascending">By
                     Price: <small>Low to High</small></a>
                 <a href="{% url 'tours-list' %}?sort=price&direction=desending" class="dropdown-item" aria-label="Sort by Price Decending">By
@@ -38,7 +38,7 @@
                     aria-label="ort By Name Z-A">By Name: <small>Z-A</small></a>
                 <a href="{% url 'tours-list' %}?sort=date_added&direction=desending" class="dropdown-item"
                     aria-label="Sort By Most Recent">Most Recent</a>
-            </ul>
+                </div>
         </div>
 
         <!-- Special Offers Filter Menu -->
@@ -47,12 +47,12 @@
                 aria-expanded="false">
                 Filter By
             </button>
-            <ul class="dropdown-menu">
+            <div class="dropdown-menu">
                 <a href="{% url 'tours-list' %}?category=80s_tours" class="dropdown-item"
                     aria-label="List 80s Tours">1980s Tours</a>
                 <a href="{% url 'tours-list' %}?category=70s_tours" class="dropdown-item"
                     aria-label="List 70s Tours">1970s Tours</a>
-            </ul>
+            </div>
         </div>
 
         <!-- Special Offers Filter Menu -->
@@ -61,12 +61,12 @@
                 aria-expanded="false">
                 Special Offers
             </button>
-            <ul class="dropdown-menu">
+            <div class="dropdown-menu">
                 <a href="{% url 'tours-list' %}?category=group_discounts" class="dropdown-item"
                     aria-label="List Group Discounts">Group Discounts</a>
                 <a href="{% url 'tours-list' %}?category=last_minute_deals" class="dropdown-item"
                     aria-label="List Last Minute Deals">Last Minute Deals</a>
-            </ul>
+            </div>
         </div>
     </div>
 </div>
@@ -97,13 +97,13 @@
                         {%  if tour.image_url  %}
                         <a class="text-decoration-none" href="{% url 'tour-detail' tour.id %}"
                             aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
-                                src="{{tour.image_url }}" width="200px" alt="Tour Image"></a>
+                                src="{{tour.image_url }}" alt="Tour Image"></a>
 
                         {%  else  %}
                         <!-- Default Image -->
                         <a class="text-decoration-none" href="{% url 'tour-detail' tour.id %}"
                             aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
-                                src="https://res.cloudinary.com/ciara0s1980/image/upload/v1663335543/temp-image.png" width="200px" alt="Tour Image"></a>
+                                src="https://res.cloudinary.com/ciara0s1980/image/upload/v1663335543/temp-image.png" alt="Tour Image"></a>
 
                         {%  endif  %}
 
@@ -149,7 +149,7 @@
 
                             <!-- Departure Time-->
                             <p class="card-text list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
-                                            class="fa-regular fa-clock"></i></i> Departs at:
+                                            class="fa-regular fa-clock"></i> Departs at:
                                         <i>{{ tour.departure_time }}</i>
                                     </strong></small></p>
 
@@ -180,7 +180,7 @@
 
 
 <!-- Tours List Pagination -->
-<section class="paginate d-flex justify-content-center mb-4 mt-3">
+<div class="paginate d-flex justify-content-center mb-4 mt-3">
     {%  if is_paginated  %}
 
     {%  if page_obj.has_previous  %}
@@ -205,7 +205,7 @@
     {%  endif  %}
 
     {%  endif  %}
-</section>
+</div>
 
 
 {% endblock %}
