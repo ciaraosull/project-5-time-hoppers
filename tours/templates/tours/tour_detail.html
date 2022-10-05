@@ -10,17 +10,16 @@
 <div class="">
 
     <!-- Background Image -->
-    <section id="hero-image">
+    <div id="hero-image">
         {%  if tour.image_url  %}
 
-        <img class="d-none d-lg-block" src="{{tour.image_url }}" alt="Tour Image" width="100%" height="100%">
+        <img class="tour-detail-image d-none d-lg-block" src="{{tour.image_url }}" alt="Tour Image">
         {%  else  %}
         <!-- Default Image -->
-        <img class="d-none d-lg-block"
-            src="https://res.cloudinary.com/ciara0s1980/image/upload/v1663335543/temp-image.png" alt="Default Image"
-            width="100%" height="100%">
+        <img class="tour-detail-image d-none d-lg-block"
+            src="https://res.cloudinary.com/ciara0s1980/image/upload/v1663335543/temp-image.png" alt="Default Image">
         {%  endif  %}
-    </section>
+    </div>
 
     <!-- Tours Detail -->
     <section class="pt-5 pb-3 col-md-7 offset-md-2 text-center text-md-start">
@@ -33,14 +32,13 @@
                             {%  if tour.image_url  %}
                             <a class="d-lg-none text-decoration-none" href="{% url 'tour-detail' tour.id %}"
                                 aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
-                                    src="{{tour.image_url }}" width="200px" alt="Tour Image"></a>
+                                    src="{{tour.image_url }}" alt="Tour Image"></a>
 
                             {%  else  %}
                             <!-- Default Image -->
                             <a class="d-lg-none text-decoration-none" href="{% url 'tour-detail' tour.id %}"
                                 aria-label="Go to Tour Detail"><img class="card-img-top rounded-circle"
-                                    src="https://res.cloudinary.com/ciara0s1980/image/upload/v1663335543/temp-image.png"
-                                    width="200px" alt="Tour Image"></a>
+                                    src="https://res.cloudinary.com/ciara0s1980/image/upload/v1663335543/temp-image.png" alt="Tour Image"></a>
 
                             {%  endif  %}
 
@@ -98,7 +96,7 @@
 
                                 <!-- Departure Time-->
                                 <p class="card-text list-inline-item p-2 mb-0"><small class="text-muted"><strong><i
-                                                class="fa-regular fa-clock"></i></i> Departs at:
+                                                class="fa-regular fa-clock"></i> Departs at:
                                             <i>{{ tour.departure_time }}</i>
                                         </strong></small></p>
 
