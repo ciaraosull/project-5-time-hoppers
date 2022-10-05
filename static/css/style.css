@@ -35,9 +35,14 @@ main {
     padding-bottom: 5px !important;
 }
 
-.nav-link.active {
-    color: #ec7718 !important;
+.navbar-light .navbar-nav .nav-link {
+    color: #000000 !important;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+    color: #f58d38 !important;
     border-bottom: 1px solid;
+    font-weight: bold !important;
 }
 
 .nav-icons {

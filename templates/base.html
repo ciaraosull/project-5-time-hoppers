@@ -71,7 +71,7 @@
         </a>
 
         <!-- Nav Links -->
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-center text-black" id="navbarNav">
 
             {% with request.resolver_match.url_name as url_name %}
             <ul class="navbar-nav">
@@ -292,14 +292,7 @@
 
     {% block postloadjs %}
     {{ block.super }}
-    <script>
-        // Django messages timeout function
-        let message_flash = document.getElementById("message-flash");
-        setTimeout(function () {
-            message_flash.style = "display: none";
-        }, 2000);
-    </script>
-
+    <script src="{% static 'js/base_page.js' %}"></script>
     {% endblock %}
 
 </body>
