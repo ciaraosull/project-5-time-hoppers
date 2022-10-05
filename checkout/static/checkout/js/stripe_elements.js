@@ -122,5 +122,5 @@ form.addEventListener('submit', function(ev) {
         // just reload the page, the error will be from the view
         // User not charged
         location.reload();
-    })
+    });
 });
