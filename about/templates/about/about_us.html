@@ -36,21 +36,20 @@
 
                             <!-- Staff Image -->
                             {%  if staffmember.profile_image.url  %}
-                            <img class="staff-image card-img-top rounded-circle pt-2" src="{{ staffmember.profile_image.url  }}"
-                                max-width="100px" max-height="100px" alt="Tour Image">
+                            <img class="staff-image card-img-top rounded-circle pt-2"
+                                src="{{ staffmember.profile_image.url  }}" alt="Tour Image">
 
                             {%  else  %}
                             <!-- Default Image -->
                             <img class="staff-image card-img-top rounded-circle pt-2"
                                 src="https://res.cloudinary.com/ciara0s1980/image/upload/v1663335273/default-profile-image.png"
-                                width="100px" alt="Tour Image"></a>
+                                alt="Tour Image">
 
                             {%  endif  %}
 
                             <div class="card-text card-body">
                                 <!-- Staff Name-->
-                                <h4 class="card-title">{{  staffmember.full_name  }}
-                                    </a></h4>
+                                <h4 class="card-title">{{  staffmember.full_name  }}</h4>
 
                                 <!-- Tour Works On-->
                                 <p class="list-inline-item p-1 mb-0"><small class="text-muted"><strong><i
@@ -87,7 +86,8 @@
                                 </p>
 
                                 <!-- Staff Member Contact-->
-                                <p class="mt-2 text-orange"><i class="fas fa-envelope"></i> Contact: {{  staffmember.contact_email  }}
+                                <p class="mt-2 text-orange"><i class="fas fa-envelope"></i> Contact:
+                                    {{  staffmember.contact_email  }}
                                 </p>
                             </div>
                         </div>
