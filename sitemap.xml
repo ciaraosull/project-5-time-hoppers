@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://time-hoppers.herokuapp.com/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/about-us/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/basket/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=/about-us/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=/about-us/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=/tours/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=/tours/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/?sort=price&amp;direction=ascending</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/?sort=price&amp;direction=desending</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/?sort=rating&amp;direction=desending</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/?sort=tour_name&amp;direction=ascending</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/?sort=tour_name&amp;direction=desending</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/?sort=date_added&amp;direction=desending</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/?category=80s_tours</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/?category=70s_tours</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/?category=group_discounts</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/?category=last_minute_deals</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/5/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=/accounts/login/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=/accounts/login/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=/accounts/signup/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=/accounts/signup/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=/basket/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=/basket/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=%2Fabout-us%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=%2Fabout-us%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=%2Ftours%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=%2Ftours%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=/tours/5/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=/tours/5/</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/5</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/tours/5/?page=1</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=%2Faccounts%2Flogin%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=%2Faccounts%2Flogin%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=%2Faccounts%2Fsignup%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=%2Faccounts%2Fsignup%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=%2Fbasket%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=%2Fbasket%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=%2Ftours%2F5%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=%2Ftours%2F5%2F</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=/tours/5</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=/tours/5</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/signup/?next=%2Ftours%2F5</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://time-hoppers.herokuapp.com/accounts/login/?next=%2Ftours%2F5</loc>
+  <lastmod>2022-10-06T19:05:11+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+
+
+</urlset>
