@@ -11,7 +11,7 @@
         <h2>Search a Moment in Time</h2>
     </div>
 
-    <div class="filter-menu pt-5 pb-3 col-md-7 offset-md-2 text-center text-md-start">
+    <div class="filter-menu pt-5 pb-3 col-md-8 offset-md-2 text-center text-md-start">
         <!-- Special Offers Filter Menu -->
         <div class="btn-group">
             <a class="btn btn-secondary m-2" href="{% url 'tours-list' %}" aria-label="List All Tours">
@@ -52,6 +52,12 @@
                     aria-label="List 80s Tours">1980s Tours</a>
                 <a href="{% url 'tours-list' %}?category=70s_tours" class="dropdown-item"
                     aria-label="List 70s Tours">1970s Tours</a>
+                <a href="{% url 'tours-list' %}?category=60s_tours" class="dropdown-item"
+                    aria-label="List 60s Tours">1960s Tours</a>
+                <a href="{% url 'tours-list' %}?category=50s_tours" class="dropdown-item"
+                    aria-label="List 50s Tours">1950s Tours</a>
+                <a href="{% url 'tours-list' %}?category=jurassic" class="dropdown-item"
+                    aria-label="List Jurassic Tours">Jurassic Tours</a>
             </div>
         </div>
 
@@ -86,10 +92,10 @@
 
 <!-- List of Tours -->
 <section class="pt-3 pb-3 position-relative">
-    <div class="container px-md-5">
-        <div class="row me-3">
+    <div class="col-md-9 offset-md-2">
+        <div class="row g-0">
             {%  for tour in tours  %}
-            <div class="col-lg-4 col-md-5 col-12 card m-3 shadow p-2 bg-body rounded">
+            <div class="col-lg-3 col-md-5 col-12 card m-3 shadow p-2 bg-body rounded">
                 <div class="card-group">
                     <div class="card">
 
