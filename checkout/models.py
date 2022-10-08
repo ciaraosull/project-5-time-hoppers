@@ -78,7 +78,8 @@ class Order(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.order_number
+        """ To return the individual title objects as a string """
+        return f"{self.order_number}"
 
 
 class OrderLineItem(models.Model):
@@ -115,4 +116,5 @@ class OrderLineItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """ To return the individual title objects as a string """
         return f'{self.tour.tour_name} order no: {self.order.order_number}'

@@ -8,7 +8,8 @@ class Subscriber(models.Model):
     date_subscribed = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.email
+        """ To return the individual title objects as a string """
+        return f"{self.email}"
 
 
 class Newsletter(models.Model):
@@ -17,6 +18,6 @@ class Newsletter(models.Model):
     message = models.TextField(null=True)
     date_posted = models.DateTimeField(auto_now_add=True)
 
-
     def __str__(self):
-        return self.title
+        """ To return the individual title objects as a string """
+        return f"{self.title}"

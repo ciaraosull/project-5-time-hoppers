@@ -119,4 +119,5 @@ class Review(models.Model):
         ordering = ["date_posted"]
 
     def __str__(self):
+        """ To return the name objects as a string """
         return f"Review {self.your_review} by {self.name}"
