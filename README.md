@@ -139,10 +139,9 @@ Story points estimated the effort required to complete a particular User Story i
 
 Timeboxing defined the iteration where the User Stories were developed based on the assigned priority.  The MoSCoW Prioritization technique was used to assign priorities for Product Backlog Items to be completed in a particular time box.  GitHub Labels was used to categories the User Stories into Must Have, Should Have and Could Have. This clearly showed which User Stories were more important to implement first and in what order.  This kept the scope of the project in focus at all times and only implemented what was essential first.
 
-Information radiators in Agile show real-time, informative and straightforward work status.  This project used a Kaban board, which was set up in GitHub Projects ([here]() to help keep track of work to do, in progress and completed.
+Information radiators in Agile show real-time, informative and straightforward work status.  This project used a Kaban board, which was set up in GitHub Projects ([here](https://github.com/users/ciaraosull/projects/1) to help keep track of work to do, in progress and completed.
 
-Within the timeframe work stopped with X of the timebox User Story points total of all Must Have and some Should Have prioritised User Stories.  Any left uncompleted and are documented in the future features section below.
-
+Within the timeframe work stopped with 93% of the timebox User Story points total of All Must Haves completed and all but 1 Should Have completed and some Could Haves prioritised User Stories.  Any left uncompleted and are documented in the future features section below.
 
 ## Features
 
