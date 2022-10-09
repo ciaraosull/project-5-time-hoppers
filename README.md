@@ -122,17 +122,17 @@ To complete the overall aim of the Time Hoppers idea, Epics were formed (documen
     Then I can see my order history and the details of each booking purchased.
     
     Tasks:
-    *	create a profile app for users’ functionality
-    *	create signal to create a user profile when a new user signs up
-    *	link up views & templates & URLs and display link to profile page in nav after user is logged in
-    *	display logged in users name on the profile page
-    *	create a profile model to add profile picture, contact details such as email
-    *	create form to allow users to be able to edit the information displayed on their profile page
-    *	add update button for users to click to submit their changes
-    *	show success message when user profile update
-    *   add view to prepopulate the order form with the profile details information
-    *   display order history in table format on profile page, to be automatically updated after every order
-    *   manually test this works by setting up a test user
+    * create a profile app for users’ functionality
+    * create signal to create a user profile when a new user signs up
+    * link up views & templates & URLs and display link to profile page in nav after user is logged in
+    * display logged in users name on the profile page
+    * create a profile model to add profile picture, contact details such as email
+    * create form to allow users to be able to edit the information displayed on their profile page
+    * add update button for users to click to submit their changes
+    * show success message when user profile update
+    * add view to prepopulate the order form with the profile details information
+    * display order history in table format on profile page, to be automatically updated after every order
+    * manually test this works by setting up a test user
 
 Story points estimated the effort required to complete a particular User Story in one iteration.  To create a Product Backlog GitHub Milestones was used to track progress on groups of issues relating to the User Stories.
 
@@ -148,6 +148,7 @@ Within the timeframe work stopped with 93% of the timebox User Story points tota
 
 
 1. **Favicon**
+A customised favicon was created using a free icon from [Icons.Com](https://icon-icons.com/icon/preferences-system-time/94511), designed further in [Microsoft 3D Paint](https://apps.microsoft.com/store/detail/paint-3d/9NBLGGH5FV99) and generated on [Real Favicon Generator](https://realfavicongenerator.net/).  This favicon is visible on browser tabs, bookmarks, history archives and so on to help users save time by allowing them to identify and browse the website without difficulties.
 
 2. **Header**
 
