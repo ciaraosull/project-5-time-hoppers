@@ -14,13 +14,6 @@ View the live project [Here]( https://time-hoppers.herokuapp.com/)
 ![Responsive Design Screenshot]()
 
 
-
-https://user-images.githubusercontent.com/93194443/190273954-525a4cc1-5582-4610-8571-46d338987220.mp4
-
-
-
-
-
 ## User Experience (UX)
 
 ### User Stories
