@@ -4,23 +4,84 @@ Project 5 README
 
 ## Overview
 
-Time Hoppers is a website for a fictitious time travelling tour guide company.  This site allows people to view, book and purchase tours on offer from different eras in time.  
+Time Hoppers is a website for a fictitious time travelling tour guide company.  This site allows people to view, book and purchase tours on offer from different eras in time.  While this is a fictisious site the logic and design can be used for any kind of tour booking online payment company.
 
-Users can read reviews and ratings of tours, post reviews and rate tours and set up a profile where they can view their purchase history.  User can also search for a specific tour or filter the tour by certain categories.
+This site alows users to search for a specific tour or filter the tour by certain categories, they can read reviews, details and ratings of tours, and set up a profile where they can view their purchase history, save their contact information, upload a profile image and post reviews.
+
+There is also the option to enter an email to subscribe to the newsletter.
+
+Users can make online purchases either as a guest or logged in.  Once payment is successful, the user is sent an email confirmation of their purchase and their order number which is their booking ticket.
+
+Site admin users can add, update and delete tours.  Site admin users can also create newsletters and email these newletters to all subscribers.
 
 
 View the live project [Here]( https://time-hoppers.herokuapp.com/)
 
-![Responsive Design Screenshot]()
+![Responsive Design Screenshot](README/assets/am-i-responsive.png)
 
 
 ## User Experience (UX)
 
 ### User Stories
 
-As a user I want to:
+* As a Customer, I want to be able to choose the date of my tour boking so that I can book a tour that suits my time schedule
 
-*	
+* As a Customer, I want to be able to select the quantity so that I can choose how many tickets of that tour I would like to buy
+
+* As a Customer, I want to be able to review my order before making the final payment so that I can make sure I have not made any mistakes
+
+* As a Customer, I want to be able to easily find my shopping cart so that I can view the items I have selected to buy
+
+* As a Customer, I want to be able to edit my shopping cart so that I can adjust the quantity or remove items before purchasing
+
+* As a Customer, I want to be able to see all tour guides and their contact details so that I can contact my tour guide when needed
+
+* As a Customer, I want to be able to receive an email confirmation after paying so that I can be confident my payment and order was successful
+
+* As a Customer, I want to be able to enter my payment details so that I can purchase my selected tour tickets
+
+* As a Site User, I want to be able to navigate easily around the site so that I can find where I am and where I want to go.
+
+* As a Site User, I want to be able to understand when an error occurs so that I can be given clear feedback on what I should do 
+
+* As a Site User, I want to be able to go to navigate between pages on tour list view and comments so that I do not have to scroll for too long and easily navigate and find what I am looking for.
+
+* As a Site User, I want to be able to sign up and receive an email so that I can be notified on any promotions or sales
+
+* As a Site User, I want to be able to navigate easily to a list of tours so that I can select something to buy
+
+* As a Site User, I want to be able to view tours by category so that I can filter out the products that don't meet my needs
+
+* As a Site User, I want to be able to search for a specific tour so that I can identify quickly the tour I am specifically looking for
+
+* As a Site User, I want to be able to view the details of each tour so that I can identify the price, description of tour, ratings, and reviews before deciding to purchase.
+
+* As a First-Time User, I want to be able to easily register for an account so that I can have an account set up
+
+* As a First-Time User I want to be able to understand why I need to register for an account so that I can decide if I wish to set up an account or continue as a guest
+
+* As a First-Time User, I want to be able to understand the purpose of the site so that I can decide if I would like to use the site
+
+* As a Registered User, I want to be able to receive an email so that I can verify my account has been created successfully
+
+* As a Registered User I want to be able to return back to the page I was on after login in so that I can continue adding reviews etc without having to navigate back to that page after logging in
+
+* As a Registered User, I want to be able to view my Profile so that I can view my order history and update my details
+
+* As a Registered User, I want to be able to add a review or comment so that I can let other customers know what I thought of the product
+
+* As a Registered User, I want to be able to log in and out of my account so that I can access my details and keep them secure
+
+* As an owner I want to be able to have a link from the main site on login so that I can access the admin site
+
+* As an owner I want to be able to have a link from the main site on login so that I can update, delete & add tours from the frontend
+
+* As an owner I want to be able to have an update and delete button on each tour detail page so that I can update & delete the selected tours from the frontend
+
+* As an owner I want to be able to have a link from the main site on login so that I can create & send a newsletter to all subscribers
+
+
+
 ### Agile Approach in this Project
 
 An Agile Approach was used to develop this site.  That is, each activity was broken down into small bite-sized portions and performed iteratively, so that as it was repeated, it was tweaked and improved on with each cycle.  According to a report from the [Standish Group (2018)](https://standishgroup.myshopify.com/), Agile projects are statistically twice more likely to succeed, and a third less likely to fail than waterfall projects.
@@ -29,15 +90,50 @@ To complete the overall aim of the Time Hoppers idea, Epics were formed (documen
 
 **Example:**
 
-    **Epic - **
+    **Epic - User Account**
 
-    User Story - 
+    User Story - Profile Page:
+    
+    As a User, I would like to be able to easily view my profile page so that I can view my order history, update my account details from there and choose an image others can see when I add a review.
+    
     Acceptance Criteria 1
-
+    Given that I am a registered user who is logged in
+    When I click the Profile link in the navigation bar
+    Then I am taken to my profile page and can see my details displayed
+    
     Acceptance Criteria 2
+    Given that I am a registered user who is logged in
+    When I navigate to my profile page and edit my details
+    Then I can click an update button and be alerted that my information was updated successfully.
 
-    Tasks:
-    *
+    Acceptance Criteria 3
+    Given that I am a registered user who is logged in
+    When I navigate to my profile page and save my details
+    Then I can see everytime I go to the order form that my details are prepopulated from my profile page.
+
+    Acceptance Criteria 4
+    Given that I am a registered user who is logged in
+    When I navigate to my profile page and upload an image
+    Then I can see my image displayed on my profile page and when I post a review.
+
+    Acceptance Criteria 5
+    Given that I am a registered user who is logged in
+    When I navigate to my profile page
+    Then I can see my order history and the details of each booking purchased.
+
+
+Tasks:
+*	create a profile app for users’ functionality
+*	create signal to create a user profile when a new user signs up
+*	link up views & templates & URLs and display link to profile page in nav after user is logged in
+*	display logged in users name on the profile page
+*	create a profile model to add profile picture, contact details such as email
+*	create form to allow users to be able to edit the information displayed on their profile page
+*	add update button for users to click to submit their changes
+*	show success message when user profile update
+*   add view to prepopulate the order form with the profile details information
+*   display order history in table format on profile page, to be automatically updated after every order
+*   manually test this works by setting up a test user
 
 Story points estimated the effort required to complete a particular User Story in one iteration.  To create a Product Backlog GitHub Milestones was used to track progress on groups of issues relating to the User Stories.
 
