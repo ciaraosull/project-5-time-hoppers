@@ -358,12 +358,13 @@ After the design of the models [Balsamic Wireframes](www.balsamiq.com) were crea
 
 ### Fonts
 Fonts were imported from [Google Fonts](https://fonts.google.com/).
+The fonts used were Quicksand and serif. Quicksand was chosen for its clear lettering and spacing for reading accessibility for the user.
 
 ### Colour Scheme
 
 The colour scheme was chosen by using [Coolors](https://coolors.co/). The following palette was chosen for using on the fonts throughout the site due to high contrast for user reading accessibility:
 
-![Colour Pallet]()
+![Colour Pallet](README/assets/colour-pallet.png)
 
 ## Testing
 
@@ -378,7 +379,7 @@ All SECRET access keys are stored safely in env.py file to prevent unwanted conn
 
 Django’s setting DEBUG was set to False after development for deployment to prevent access to error screens revealing code or database entries.
 
-Django allauth was used to set up user registration and Django’s LoginRequiredMixin and UserPassesTestMixin were used to ensure only signed in users and authors can edit / delete their own posts or comments etc.
+Django allauth was used to set up user registration and Django’s LoginRequiredMixin and UserPassesTestMixin were used to ensure only signed in users and authors can edit / delete their own reviews etc.
 
 Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this site to prevent valid requests to the backend server being created for malicious purposes.
 
@@ -394,6 +395,7 @@ Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this 
     *   Django: python framework used to create all the backend logic
     *   Bootstrap5: CSS Framework for developing responsiveness and mobile-first
     *   Django-allauth: authentication library used to create the user accounts
+    *   Django-Pandas: used to reaframe to create a list of subscribers to email 
 
 *   Databases:
     *   SQLite: used as the database during development
@@ -403,8 +405,9 @@ Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this 
     *   Balsamiq Wireframes: used to create the wireframes for design
     *   Chrome DevTools: used to debug the website
     *   Crispy Forms: used to manage Django Forms
-    *   AWS: the image hosting service used to upload images
+    *   Cloudinary: the image hosting service used to upload images
     *   Coolors: used to make the colour palette
+    *   Stripe: payment platform
     *   Font Awesome: used to create the icons
     *   Github Projects: used to track the progress of the project
     *   Git: the version control system
@@ -415,6 +418,8 @@ Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this 
     *   Microsoft Paint 3D: used to create and manipulate images
     *   Pip3: the package manager used to install the dependencies
     *   Psycopg2: the database driver used to connect to the database
+    *   Summernote: to allow for more options for admin to create the details of tours
+
 ## Deployment
 
 The site was deployed via Heroku.
@@ -428,6 +433,7 @@ The site was deployed via Heroku.
     *   SECRET_KEY = a secret key for your app.
     *   PORT = 8000
     *   DISABLE_COLLECTSTATIC = 1 during development and remove when deploying to production
+    *   Also include keys for Cloudinary and Stripe if applicable.
 7.  Scroll to the top of the page and now choose the Deploy tab.
 8.  Select Github as the deployment method.
 9.  Confirm you want to connect to GitHub.
@@ -465,6 +471,30 @@ To fork this project, go to the top left of the repository, where you see the Fo
 
 ## Credits
 ### Content
+*   [Bootstrap 5 Classes Cheatsheet](https://www.studytonight.com/bootstrap/how-to-align-bootstrap-5-navbar-items-to-the-right)
+
+*   [Bootstrap 5 Move Nav Links Right](https://www.studytonight.com/bootstrap/how-to-align-bootstrap-5-navbar-items-to-the-right)
+
+*   [Bootstrap Footer Ideas](https://mdbootstrap.com/docs/standard/navigation/footer/): a mix of these were used with customised styling
+
+*   [Jinja Docs](https://jinja.palletsprojects.com/en/3.1.x/templates/#list-of-builtin-filters)
+
+*   [Django Docs](https://docs.djangoproject.com/en/4.0/)
+
+*   [Django Allauth](https://django-allauth.readthedocs.io/en/latest/)
+
+*   [GeeksforGeeks](https://www.geeksforgeeks.org/createview-class-based-views-django/) class based views
+
+*   [Django Docs Pagination](https://docs.djangoproject.com/en/2.2/topics/pagination/#using-paginator-in-a-view)
+
+*   [Cloudinary Field in Django](https://www.section.io/engineering-education/uploading-images-to-cloudinary-from-django-application/)
+
+*   [Summernote in Django](https://djangocentral.com/integrating-summernote-in-django/)
+
+*   [Stripe Documentation](https://stripe.com/docs)
+
+*   Code Institute - Tutorial Videos (For Bag & Order Apps functionality)
 
 ## Acknowledgements
 
+This project was made possible due to the help, advice and support of my Code Institue Tutor Kasia, my Mentor Daisy and all the lovely people on the Code Institue Slack community.
