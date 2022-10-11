@@ -390,8 +390,6 @@ During development, after each User Story was matched to their corresponding fea
 ### Validator Testing
 
 
-### Interesting Bugs & Issues
-
 ## Security
 
 All SECRET access keys are stored safely in env.py file to prevent unwanted connections to the database and this was set up before the first push to Github.
