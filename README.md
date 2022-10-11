@@ -151,45 +151,126 @@ Within the timeframe work stopped with 93% of the timebox User Story points tota
 A customised favicon was created using a free icon from [Icons.Com](https://icon-icons.com/icon/preferences-system-time/94511), designed further in [Microsoft 3D Paint](https://apps.microsoft.com/store/detail/paint-3d/9NBLGGH5FV99) and generated on [Real Favicon Generator](https://realfavicongenerator.net/).  This favicon is visible on browser tabs, bookmarks, history archives and so on to help users save time by allowing them to identify and browse the website without difficulties.
 
 2. **Header**
+The Header is intentionally fixed to the top of the screen, this was considered useful to the user to navigate with ease without having to constantly scroll up and down no matter what page they are on. The colour choice of light gray for background and black for the font was chosen to contrast each other for reading accessibility.
 
 *   Logo
+    *   The logo is positioned in the top left of the navigation bar. The logo is linked to the landing page for ease of navigation for the user, no matter what section they are on they can click the logo in the top left to navigate back.
+    
+    *   The logo is designed to have the orange themed colour of the website. This is to help it be consistant with the site's colour scheme.
 
 *   Navigation Bar
+    *   The header also contains the navigtion bar. This is conventionally located on the top right for larger screens and is adjusted to a hamburger icon for smaller screens to aid responsiveness.
+    
+    *   The navigation bar contains key words that link to each section of the website. Again this is designed to for ease so the user can navigate instantly without having to follow links within the site, if they wish.
+    
+    *   The navigation links, when hovered over, respond by changing to an orange colour and having a line appear underneath to inform the user that it is interactive.  The navigation link remains orange with a line underneath when on that page to inform the user what page they are currently on.
+
+    *   The navigation bar also contains a searchbar with icon and the user's shopping basket, with icon and the total price presently in the basket so the user can see clearly how much is in their basket no matter what page they are on.  The icons change to orange on hover to fit the navigation bar theme and inform the user they are clickable.  For responsive design, the mobile search bar reduces to the icon and the word searched and onclick then expands for the user to type.
 
 3. **Landing Page**
+*   Free images from [The James Webb Space Telescope](https://webbtelescope.org/resource-gallery/images) were carefully chosen as background images.  Javascript is used to change these images change depending on the time of day the user visits the site.  With the use of Javascript, the landing page also contains a live digital clock.  Inspiration for this idea was taken from [Google's Momentum Extension](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca).  These images and the clock were chosen as they are interesting, compliment the site's colour theme and are relevant to the theme of Time Travel.
+
+
+*   The landing page also contains the title of the website and its subtitle. A white font with a drop gray shadow was used for contrast for reading accessibility and consistancy with colours used in the header. CSS animation and keyframes was used as an effect to slowly fade the text in on page load.
+
+*   A Book Tour button links to the list of tours section.  This button's aim is to invite the user to interact and encourages them to continue to view the list of tours on offer. The user can also access this tours list from the navigation bar but this button adds an extra feature incase the instinct to look to the navigation bar does not happen.
+
+*   The explore button is also white and changes to orange on hover for contrast for reading accessibilty.
 
 4. **About Us**
+*   The About Us section contains important information the user needs to know about the site, its purpose, a summary of ordering and paying instructions and why create an account.
+
+
+*   The about us page also contains a list of tour guides, their image, information and contact details for each.  This is to familiarise the user with the guides and allow for ease of contact.  Bootstrap 5 card was used with a shadow to create a 3D layered effect on the screen and the text colour used was black, grey and orange to keep consistancy throughout the site with the header and footer.
 
 5. **Tour List View**
+*   On the Tours page, Django’s generic class-based ListView was used to list all the tours on offer.
 
-6. **Tour Detail View**
+*   For each tour the list displays the title, how many reviews are associated with that particular tour, it's departure time, whether it is accessibility-friendly, the price and the tour's associated image.
 
-7. **Register, Sign In & Log Out**
+*   The first 100 characters of the tour description is displayed by using |slice to give a very short snippet of what the project is about. As Sunmmernote is used for the admin user to add tours, the tours list uses |striptags to stop the html tags from Summernote displaying on the page and then escape HTML for safety using the |safe tag.
+
+*   The tours are listed with the newest first and they are paginated after every 6. The pagination is designed to not only show the page numbers but also the first, previous, next and last page to make it easy for the user to navigate.
+
+6. **Search, Order & Filter**
+
+*   On the Tours List Page the user has the option to not only search but also there are drop down boxes for ordering by and filtering by.  This allows the user to easliy find the tour they wish to view.  The anount of tours found is also displayed and if no results are found the user is infromed of this and asked to search again.
+
+7. **Tour Detail View**
+
+*   From the Tours List View, when the user clicks the title of the tour or it's image, they are taken to a separate page that shows this tour in detail. Django’s generic class-based DetailView was used to display each of the instances of the table in the database so that only that chosen tour and its related details will show on this page. Along with a Book Tour Button that takes them to the Booking Form for that tour.
+
+*   For responsive Design the Tour's image is displayed fullscreen in the background on large screens but as a small rounded image above the card for mobile view.
+
+*   Also, on each of these tour detail view pages the user can see any reviews related to the tour, the number of reviews listed, the name of the user who wrote the review, their profile picture and date posted. The reviews are displayed as oldest first to make it easy for the user to follow the thread of conversation. The reviews are paginated after every 6 reviews and just like the tour list page, the pagination shows not only the page numbers but first, previous, next and last to make navigation easy for the user.
+
+*   If there are no reviews yet for a tour, a message will show, notifying the user of this and inviting them to be the first to add a review for the tour.
+
+8. **Creating, Updating & Deleting a Review**
+
+*   If the user is not signed in, then they will not have permission to post a review. If the user is not logged in and on the tour detail page, then they will see a message asking them to sign in if they want to add a review. The button then takes them to the sign in page.  After signing in, the user is then automatically taken back to that particular tour detail page to make navigation easy for the user. This is achieved by using ?next={{request.path}}. This adds a URL parameter next containing the address of the current page, to the end of the linked URL. After the user has successfully logged in, the views will use this "next" value to redirect the user back to the page where they first clicked the login link, which is the tour detail view page.
+
+*   Once logged in then the user will see their profile picture and name beside a form. It notifies the user that they will be adding a review as their username. Once the user has written their review and clicked the submit button, they are alerted that their review was successfully added and are taken back to the tour detail page where they can view their review if they wish. Again, this is set up to help with ease of navigation for the user.
+
+*   If the user is logged in they are presented with a form, their name and profile picture and asked to add a review.
+
+*   If the user is logged in the option to update or delete their review is displayed beside any review they wrote.
+
+*   If the user chooses to update, then they are presented with the review form, already prepopulated with their review so they can amend as needed and resubmit.
+
+*   If the user decides to delete their review, they are taken to a separate page and asked if they are sure before deciding to permanently delete. This is to provide a safety net in case the user changes their mind or clicked the delete button by mistake.
+
+9. **Book Tour Form**
+
+The users do not have to be signed in to book and purchase a tour.
+
+10. **Basket**
+
+11. **Order From**
+
+12. **Order Confirmation Page**
+
+13. **Profile Page**
+
+*   Once a user registers, they will have a profile page automatically created for them. The link to their profile page appears in the navigation bar once they are logged in. On this page the user can choose to update their profile information such as username, email address, home address and profile image. If no image is chosen, then a default profile image is provided.
+
+*   The details saved here in the profile page are linked to the order form and will prepopulate the order form to make it easy for the user to only have to input or update their details in one place.
+
+*   The Profile page also contains a table listing out the details of all the users purchased bookings.  This is to assist the user to have all their bookings in 1 place for ease.
 
 
-8. **Profile Page**
+14. **Register, Sign In & Log Out**
 
-9. **Booking a Tour**
+As described in the future features section of this README, it is hoped that this project will be expanded to provide support for third-party (social) authentication via services like Github or Gmail. As Django does not support this automatically, allauth was installed and used to create the register, sign in and log out functionality, so the project will already have the foundations in place to expand on this functionality in the future.
 
-10. **Payment**
+At present to register, the user is required to provide an email address.  They are then emailed a verification link to ensure the email they have provided is correct and valid.
 
-11. **Creating a Review**
+As previously described, once a user is logged in the navigation bar will change to display the different features the user has access to.
 
-12. **Updating & Deleting a Review**
+15. **Footer**
 
-13. **Updating & Deleting a Review**
+*   The Footer contains the Contact Us information. The background and font colours are kept consistant with the theme of the site.
 
-14. **Ratings**
+*   The GitHub & LinkedIn icons from Font Awesome open in a new tab and take the user to the respective sites to connect.
 
-15. **Searching & Filtering**
+*   The Footer also contains a copyright and the authours name.
+
+*   Privacy Policy
+    *   A privacy policy is added to the site to inform users of how their information is used and stored.  Access to this page is by the Privacy Policy link found in the footer.
+
+*   Subscribe to Newsletter
+    *   The user is given the option to enter the email address to subscribe to the Newsletter for the site.  If the email they enter has already been added the user will be informed that this email address already belongs to a subscriber.
+
 
 16. **Admin User**
 
-A super user was created to allow access to the admin section of the website.
+A super user was created to allow access to the admin section of the website.  Once logged in as admin, the Admin Site link is displayed un Account in the Navigation Bar.
 
-17. **Footer**
-        
-18. **Error Pages**
+*   Add, Update & Delete Tours as Admin
+
+*   Create & Email Newsletters to Subscribers
+
+17. **Error Pages**
 
 Custom Error Pages were created to support the professionalism design and ensure appropriate link was added back to the main site to guide users who come across these messages.
 
@@ -200,6 +281,17 @@ Custom Error Pages were created to support the professionalism design and ensure
 
 
 ### Features Left to Implement
+
+*   Sign in with Social
+*   Email after subscribing to verify the email address
+*   Subscribers - option to unsubscribe
+*   Order list - option to delete orders from profile page
+*   Wish List
+*   Users can add rating or likes
+*   Reset Password functionality
+*   Accessibility Page - view & url already written, the template with the information just needs to be added
+*   Basket mobile view does not automaticlly delete when 0 entered like the large screen view oes.  Javascript id's for both views need to be changed to be unique
+*   Ability to report inappropriate reviews
 
 ## Design
 
