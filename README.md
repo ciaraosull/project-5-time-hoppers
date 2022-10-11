@@ -296,8 +296,12 @@ As previously described, once a user is logged in the navigation bar will change
 A super user was created to allow access to the admin section of the website.  Once logged in as admin, the Admin Site link is displayed un Account in the Navigation Bar.
 
 *   Add, Update & Delete Tours as Admin
+    *   Once signed in, the admin user is given a link in the Navigation Bar under the Accounts section to Add Tour.  This link takes the user to a form where they can add details of a new tour to be added.  There is the option to choose an image, if not the default image will be used.
+
+    *   Once signed in, the admin user is given the option on every Tour Detail Page to Update or Delete the chosen Tour.  
 
 *   Create & Email Newsletters to Subscribers
+    *   Once signed in, the admin user is given a link in the Navigation Bar un the Accounts section to create and email a Newsletter.  This link takes the user to a form where they can add details to a Newsletter.  Once finsihed the admin can then send the Newsletter and it will be emailed to all the subscribers whose emails are in the database.
 
 17. **Error Pages**
 
