@@ -331,11 +331,30 @@ Custom Error Pages were created to support the professionalism design and ensure
 ### Data Model
 
 [LucidCharts](www.lucidchart.com) was used to visualise the custom models for this project.  [AllAuth](https://django-allauth.readthedocs.io/en/latest/) was also used for the user authentication system.  This uses the built-in Django User Model.
-![ERD Image]()
+
+The Profile model allows users who sign up to have a profile automatically created for them and the user can then update and change their profile information if they wish. One User has One Profile, so this is a One-to-One relationship with the User’s name acting as the Foreign Key to the User Model.
+
+As each User and their Profile can have many Orders, this is represented using the One-to-Many relationship however each Order can only have one User. The Users Profile from the Order Model acts as the Foreign Key to the User Model.
+
+Also, every Tour can have 0 or many Reviews and the tour acts as the Foreign Key to the Review & Tour Model. As only one User can be the author of any one review this is represented by the One-to-One relationship with the User Model and the author of the review is acting as the Foreign Key for the Reviews.
+
+The Staff model is linked to the Tour Model as a Foreign Key to represent the tour that the staff member is the Tour Guide for.
+
+The Categories are linked to the Tour Model as a Tour can only have 1 category but 1 category can be assigned to many tours.
+
+![ERD Image](README/assets/erd-image.png)
+
 
 ### Wireframes
 
-After the design of the models [Balsamic Wireframes](www.balsamiq.com) were created to visualise the content the user sees and to design a positive UX (as described in more detail in the Features section).  A mobile first approach was used to design the site specifically for mobile use and then the design was altered slightly for desktop view.  [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) was used with some customised styling to create a unique feel to the site.  [Font Awesome](https://fontawesome.com/) Icons were used throughout the site for reading accessibility also.
+After the design of the models [Balsamic Wireframes](www.balsamiq.com) were created to visualise the content the user sees and to design a positive UX (as described in more detail in the Features section).  A mobile first approach was used to design the site specifically for mobile use and then the design was altered slightly for desktop view.  [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) was used with some customised styling to create a unique feel to the site.  [Font Awesome](https://fontawesome.com/) Icons were used throughout the site for reading accessibility also.  Below are some examples of the Wireframes created:
+
+![Mobile Tour View](README/assets/wireframe-mobile-tourview.png)
+
+![Desktop Tour View](README/assets/wireframe-desktop-tourview.png)
+
+![Desktop Tour Book View](README/assets/wireframe-desktop-tourbook.png)
+
 
 ### Fonts
 Fonts were imported from [Google Fonts](https://fonts.google.com/).
