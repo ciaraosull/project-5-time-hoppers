@@ -368,6 +368,25 @@ The colour scheme was chosen by using [Coolors](https://coolors.co/). The follow
 
 ## Testing
 
+During development errors or warnings were fixed as they appeared such as indentation errors, lines too long, or extra space issues. This helped keep the code clean and readable so other errors or bugs that arose were identified more easily.
+
+Google Chrome's built-in Developer Tool was used to inspect page elements throughout the build and helped debug issues within the HTML code and CSS styles.
+
+After deployment, all features were tested for responsive design on a laptop and mobile (Samsung Galaxy & iPhone 8). The site was sent to peers to check from their devices that all features functioned correctly and feedback on responsiveness and functionality was positive across all devices checked such as PC, Laptop, Tablets, and Mobiles (Android & IOS). The website was checked on Chrome, Firefox, and Edge.
+
+The README.md was proofread and passed through Grammarly and all links were checked before final submission.
+
+During development, after each User Story was matched to their corresponding feature (acceptance criteria) and manually tested. Manually testing each function was recorded in the commits as development progressed also but the following table tracks the final full manual test of the site after deployment:
+
+![Manual Test Log1](README/assets/manual-testing-log-1.png)
+
+![Manual Test Log2](README/assets/manual-testing-log-2.png)
+
+![Manual Test Log3](README/assets/manual-testing-log-3.png)
+
+![Manual Test Log4](README/assets/manual-testing-log-4.png)
+
+
 ### Validator Testing
 
 
