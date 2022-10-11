@@ -222,13 +222,42 @@ The Header is intentionally fixed to the top of the screen, this was considered 
 
 9. **Book Tour Form**
 
-The users do not have to be signed in to book and purchase a tour.
+*   The users do not have to be signed in to book and purchase a tour.
+
+*   Once the user has clicked the book tour button on the tour detail page they are taken to the Booking Form.
+
+*   Here the short details of the tour are displayed again along with a Date Picker and a Quantity Form.  Javascript is used on the Date Picker so that the user cannot book a date in the past.  The Quantity Form allows the user to enter a digit from 1 onwards and both will display an error message to the user if nothing is entered.
+
+*   Once the add to basket button is clicked a message is diplayed to alert the user the bookiing has been added to their basket and the basket icon in the Navigation Bar will be updated to display the new total price.
+
+*   The user also has the option to go back to browse more tours.
 
 10. **Basket**
 
+*   The user can access thir basket by clicking on the icon on the Navigation Bar.
+
+*   The basket page is diplayed slightly differently for mobile view for responsive design alothough all the information remains the same.
+
+*   The user has the option to update the quantity of tickets they want to purchase or delete the booking altogether.
+
+*   Once the user is happy with the contents of their basket they can continue on to the Order From Page or they have the option to go back and browse more tours to add to their basket.
+
 11. **Order From**
 
+*   Once on the order form page the user has the option of filling in the order form and if they choose to sign in, the details they enter will be saved to their profile page or vice versa, so that their information will automaticlly populate the order form.
+
+*   A summary of the booking is dsplayed on the booking page and Stripe is used as the method of payment.
+
+*   The payment details section is taken directly from Stripe to capture the payment card information. As the Stripe payment system is not fully activated only the test card information can currently be utilised.
+
+*   A stripe developer account was created at [Stripe.com](www.stripe.com) to gain access to the api keys required to run the payment processes.  The stripe public key, stripe secret key and stripe webhook key were inserted into the env.py file and the heroku config vars.  Stripe documentation was followed to impliment Stripe as the payment platform.
+
+
 12. **Order Confirmation Page**
+
+*   Once the payment is successful the user is taken tot he order confirmation page.  Here the user is given a summary of the order, their order number and informed that they have been emailed their tickets.
+
+*   The user is then gven the option to view their profile or return to browse more tours.
 
 13. **Profile Page**
 
@@ -376,7 +405,6 @@ The site was deployed via Heroku.
     *   SECRET_KEY = a secret key for your app.
     *   PORT = 8000
     *   DISABLE_COLLECTSTATIC = 1 during development and remove when deploying to production
-
 7.  Scroll to the top of the page and now choose the Deploy tab.
 8.  Select Github as the deployment method.
 9.  Confirm you want to connect to GitHub.
