@@ -347,6 +347,8 @@ A super user was created to allow access to the admin section of the website.  O
 
 ![Responsive Design Screenshot](README/assets/newletters-screenshots.png)
 
+![Responsive Design Screenshot](README/assets/newsletter-email-screenshot.png)
+
 17. **Error Pages**
 
 Custom Error Pages were created to support the professionalism design and ensure appropriate link was added back to the main site to guide users who come across these messages.
