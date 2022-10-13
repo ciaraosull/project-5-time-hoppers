@@ -167,8 +167,12 @@ The Header is intentionally fixed to the top of the screen, this was considered 
 
     *   The navigation bar also contains a searchbar with icon and the user's shopping basket, with icon and the total price presently in the basket so the user can see clearly how much is in their basket no matter what page they are on.  The icons change to orange on hover to fit the navigation bar theme and inform the user they are clickable.  For responsive design, the mobile search bar reduces to the icon and the word searched and onclick then expands for the user to type.
 
+    ![Responsive Design Screenshot](README/assets/navbar-screenshot.png)
+
 3. **Landing Page**
 *   Free images from [The James Webb Space Telescope](https://webbtelescope.org/resource-gallery/images) were carefully chosen as background images.  Javascript is used to change these images change depending on the time of day the user visits the site.  With the use of Javascript, the landing page also contains a live digital clock.  Inspiration for this idea was taken from [Google's Momentum Extension](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca).  These images and the clock were chosen as they are interesting, compliment the site's colour theme and are relevant to the theme of Time Travel.
+
+![Responsive Design Screenshot](README/assets/landing-page-screenshot.png)
 
 
 *   The landing page also contains the title of the website and its subtitle. A white font with a drop gray shadow was used for contrast for reading accessibility and consistancy with colours used in the header. CSS animation and keyframes was used as an effect to slowly fade the text in on page load.
@@ -183,6 +187,8 @@ The Header is intentionally fixed to the top of the screen, this was considered 
 
 *   The about us page also contains a list of tour guides, their image, information and contact details for each.  This is to familiarise the user with the guides and allow for ease of contact.  Bootstrap 5 card was used with a shadow to create a 3D layered effect on the screen and the text colour used was black, grey and orange to keep consistancy throughout the site with the header and footer.
 
+![Responsive Design Screenshot](README/assets/about-us-screenshot.png)
+
 5. **Tour List View**
 *   On the Tours page, Django’s generic class-based ListView was used to list all the tours on offer.
 
@@ -192,9 +198,13 @@ The Header is intentionally fixed to the top of the screen, this was considered 
 
 *   The tours are listed with the newest first and they are paginated after every 6. The pagination is designed to not only show the page numbers but also the first, previous, next and last page to make it easy for the user to navigate.
 
+![Responsive Design Screenshot](README/assets/tours-list-screenshot.png)
+
 6. **Search, Order & Filter**
 
 *   On the Tours List Page the user has the option to not only search but also there are drop down boxes for ordering by and filtering by.  This allows the user to easliy find the tour they wish to view.  The anount of tours found is also displayed and if no results are found the user is infromed of this and asked to search again.
+
+![Responsive Design Screenshot](README/assets/sort-filter-screenshot.png)
 
 7. **Tour Detail View**
 
@@ -205,6 +215,8 @@ The Header is intentionally fixed to the top of the screen, this was considered 
 *   Also, on each of these tour detail view pages the user can see any reviews related to the tour, the number of reviews listed, the name of the user who wrote the review, their profile picture and date posted. The reviews are displayed as oldest first to make it easy for the user to follow the thread of conversation. The reviews are paginated after every 6 reviews and just like the tour list page, the pagination shows not only the page numbers but first, previous, next and last to make navigation easy for the user.
 
 *   If there are no reviews yet for a tour, a message will show, notifying the user of this and inviting them to be the first to add a review for the tour.
+
+![Responsive Design Screenshot](README/assets/tour-detail-screenshot.png)
 
 8. **Creating, Updating & Deleting a Review**
 
@@ -220,6 +232,9 @@ The Header is intentionally fixed to the top of the screen, this was considered 
 
 *   If the user decides to delete their review, they are taken to a separate page and asked if they are sure before deciding to permanently delete. This is to provide a safety net in case the user changes their mind or clicked the delete button by mistake.
 
+![Responsive Design Screenshot](README/assets/update-delete-reviews-screenshot.png)
+
+
 9. **Book Tour Form**
 
 *   The users do not have to be signed in to book and purchase a tour.
@@ -232,6 +247,8 @@ The Header is intentionally fixed to the top of the screen, this was considered 
 
 *   The user also has the option to go back to browse more tours.
 
+![Responsive Design Screenshot](README/assets/tour-booking-form-screenshot.png)
+
 10. **Basket**
 
 *   The user can access thir basket by clicking on the icon on the Navigation Bar.
@@ -241,6 +258,8 @@ The Header is intentionally fixed to the top of the screen, this was considered 
 *   The user has the option to update the quantity of tickets they want to purchase or delete the booking altogether.
 
 *   Once the user is happy with the contents of their basket they can continue on to the Order From Page or they have the option to go back and browse more tours to add to their basket.
+
+![Responsive Design Screenshot](README/assets/basket-screenshot.png)
 
 11. **Order From**
 
@@ -252,12 +271,18 @@ The Header is intentionally fixed to the top of the screen, this was considered 
 
 *   A stripe developer account was created at [Stripe.com](www.stripe.com) to gain access to the api keys required to run the payment processes.  The stripe public key, stripe secret key and stripe webhook key were inserted into the env.py file and the heroku config vars.  Stripe documentation was followed to impliment Stripe as the payment platform.
 
+![Responsive Design Screenshot](README/assets/order-form-screenshot.png)
+
 
 12. **Order Confirmation Page**
 
 *   Once the payment is successful the user is taken tot he order confirmation page.  Here the user is given a summary of the order, their order number and informed that they have been emailed their tickets.
 
 *   The user is then gven the option to view their profile or return to browse more tours.
+
+![Responsive Design Screenshot](README/assets/order-confirmation-screenshot.png)
+
+![Responsive Design Screenshot](README/assets/order-email.png)
 
 13. **Profile Page**
 
@@ -266,6 +291,8 @@ The Header is intentionally fixed to the top of the screen, this was considered 
 *   The details saved here in the profile page are linked to the order form and will prepopulate the order form to make it easy for the user to only have to input or update their details in one place.
 
 *   The Profile page also contains a table listing out the details of all the users purchased bookings.  This is to assist the user to have all their bookings in 1 place for ease.
+
+![Responsive Design Screenshot](README/assets/profile-screenshot.png)
 
 
 14. **Register, Sign In & Log Out**
@@ -276,6 +303,12 @@ At present to register, the user is required to provide an email address.  They 
 
 As previously described, once a user is logged in the navigation bar will change to display the different features the user has access to.
 
+![Responsive Design Screenshot](README/assets/login-screenshot.png)
+
+![Responsive Design Screenshot](README/assets/logout-screenshot.png)
+
+![Responsive Design Screenshot](README/assets/sign-up-screenshot.png)
+
 15. **Footer**
 
 *   The Footer contains the Contact Us information. The background and font colours are kept consistant with the theme of the site.
@@ -284,11 +317,16 @@ As previously described, once a user is logged in the navigation bar will change
 
 *   The Footer also contains a copyright and the authours name.
 
+*   Subscribe to Newsletter
+    *   The user is given the option to enter the email address to subscribe to the Newsletter for the site.  If the email they enter has already been added the user will be informed that this email address already belongs to a subscriber.
+
+    ![Responsive Design Screenshot](README/assets/footer-screenshot.png)
+
+
 *   Privacy Policy
     *   A privacy policy is added to the site to inform users of how their information is used and stored.  Access to this page is by the Privacy Policy link found in the footer.
 
-*   Subscribe to Newsletter
-    *   The user is given the option to enter the email address to subscribe to the Newsletter for the site.  If the email they enter has already been added the user will be informed that this email address already belongs to a subscriber.
+    ![Responsive Design Screenshot](README/assets/privacy-policy-screenshot.png)
 
 
 16. **Admin User**
@@ -298,10 +336,16 @@ A super user was created to allow access to the admin section of the website.  O
 *   Add, Update & Delete Tours as Admin
     *   Once signed in, the admin user is given a link in the Navigation Bar under the Accounts section to Add Tour.  This link takes the user to a form where they can add details of a new tour to be added.  There is the option to choose an image, if not the default image will be used.
 
-    *   Once signed in, the admin user is given the option on every Tour Detail Page to Update or Delete the chosen Tour.  
+    ![Responsive Design Screenshot](README/assets/add-tour-screenshot.png)
+
+    *   Once signed in, the admin user is given the option on every Tour Detail Page to Update or Delete the chosen Tour.
+
+    ![Responsive Design Screenshot](README/assets/update-delete-tour.png)
 
 *   Create & Email Newsletters to Subscribers
     *   Once signed in, the admin user is given a link in the Navigation Bar un the Accounts section to create and email a Newsletter.  This link takes the user to a form where they can add details to a Newsletter.  Once finsihed the admin can then send the Newsletter and it will be emailed to all the subscribers whose emails are in the database.
+
+![Responsive Design Screenshot](README/assets/newletters-screenshots.png)
 
 17. **Error Pages**
 
@@ -325,6 +369,7 @@ Custom Error Pages were created to support the professionalism design and ensure
 *   Accessibility Page - view & url already written, the template with the information just needs to be added
 *   Basket mobile view does not automaticlly delete when 0 entered like the large screen view oes.  Javascript id's for both views need to be changed to be unique
 *   Ability to report inappropriate reviews
+*   The console seems to log that properties of 'style' are null.  This is coming from the Javascript placed on the Django messages for the user so that the messages will disappear after a few seconds.  The null value appears only in the console when no Django messages need to display.  Keeping the user in mind, a work around for this, given more time, would be to add an X close button on the message so the user can close the message themselves if it was an annoyance displaying before page refresh / reload.
 
 ## Design
 
@@ -388,6 +433,19 @@ During development, after each User Story was matched to their corresponding fea
 
 
 ### Validator Testing
+
+*   CSS stylesheet was run through the W3C CSS Validator and showed no errors.
+![Responsive Design Screenshot](README/assets/css-checker-screenshot.png)
+
+*   All html pages were run through the W3C HTML Validator and showed some minor missing/duplicate end tag errors, and these were fixed accordingly.
+![Responsive Design Screenshot](README/assets/html-checker-screenshot.png)
+
+*   JSHint site was used to validate the JavaScript code. It returned errors with semi-colons missing, whcih were corrected.
+![Responsive Design Screenshot](README/assets/jshint-homepage-screenshot.png)
+![Responsive Design Screenshot](README/assets/jshint-mesage-and-basket-screenshot.png)
+
+*   Lighthouse was used to check perfomance and accessiblitiy.
+
 
 
 ## Security
