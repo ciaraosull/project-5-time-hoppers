@@ -269,7 +269,7 @@ The Header is intentionally fixed to the top of the screen, this was considered 
 
 *   The payment details section is taken directly from Stripe to capture the payment card information. As the Stripe payment system is not fully activated only the test card information can currently be utilised.
 
-*   A stripe developer account was created at [Stripe.com](www.stripe.com) to gain access to the api keys required to run the payment processes.  The stripe public key, stripe secret key and stripe webhook key were inserted into the env.py file and the heroku config vars.  Stripe documentation was followed to impliment Stripe as the payment platform.
+*   A stripe developer account was created at [Stripe.com](https://stripe.com/en-ie) to gain access to the api keys required to run the payment processes.  The stripe public key, stripe secret key and stripe webhook key were inserted into the env.py file and the heroku config vars.  Stripe documentation was followed to impliment Stripe as the payment platform.
 
 ![Responsive Design Screenshot](README/assets/order-form-screenshot.png)
 
@@ -362,7 +362,7 @@ Custom Error Pages were created to support the professionalism design and ensure
 ### Features Left to Implement
 
 *   Sign in with Social
-*   Automatic login after registraion verification - given more time this feature could be implitmented by importing login from (django.contrib.auth)[https://docs.djangoproject.com/en/4.1/topics/auth/default/]
+*   Automatic login after registraion verification - given more time this feature could be implitmented by importing login from [django.contrib.auth](https://docs.djangoproject.com/en/4.1/topics/auth/default/)
 *   Email after subscribing to verify the email address
 *   Subscribers - option to unsubscribe
 *   Order list - option to delete orders from profile page
@@ -383,7 +383,7 @@ Custom Error Pages were created to support the professionalism design and ensure
 
 ### Data Model
 
-[LucidCharts](www.lucidchart.com) was used to visualise the custom models for this project.  [AllAuth](https://django-allauth.readthedocs.io/en/latest/) was also used for the user authentication system.  This uses the built-in Django User Model.
+[LucidCharts](https://www.lucidchart.com/) was used to visualise the custom models for this project.  [AllAuth](https://django-allauth.readthedocs.io/en/latest/) was also used for the user authentication system.  This uses the built-in Django User Model.
 
 The Profile model allows users who sign up to have a profile automatically created for them and the user can then update and change their profile information if they wish. One User has One Profile, so this is a One-to-One relationship with the User’s name acting as the Foreign Key to the User Model.
 
@@ -400,7 +400,7 @@ The Categories are linked to the Tour Model as a Tour can only have 1 category b
 
 ### Wireframes
 
-After the design of the models [Balsamic Wireframes](www.balsamiq.com) were created to visualise the content the user sees and to design a positive UX (as described in more detail in the Features section).  A mobile first approach was used to design the site specifically for mobile use and then the design was altered slightly for desktop view.  [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) was used with some customised styling to create a unique feel to the site.  [Font Awesome](https://fontawesome.com/) Icons were used throughout the site for reading accessibility also.  Below are some examples of the Wireframes created:
+After the design of the models [Balsamic Wireframes](https://balsamiq.com/) were created to visualise the content the user sees and to design a positive UX (as described in more detail in the Features section).  A mobile first approach was used to design the site specifically for mobile use and then the design was altered slightly for desktop view.  [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) was used with some customised styling to create a unique feel to the site.  [Font Awesome](https://fontawesome.com/) Icons were used throughout the site for reading accessibility also.  Below are some examples of the Wireframes created:
 
 ![Mobile Tour View](README/assets/wireframe-mobile-tourview.png)
 
@@ -469,7 +469,7 @@ Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this 
 
 ## Web Marketing
 
-Web marketing is the process of marketing a  business online, and it's a cost-effective way to reach people who are most interested in what a business has to offer. 
+The pupose of this site is a B2C and it's main core business intent is to sell Time Travelling Tours to the general population. Web marketing is the process of marketing a  business online, and it's a cost-effective way to reach people who are most interested in what a business has to offer. 
 
 The following details the strategies used for this project for Web Marketing.
 
