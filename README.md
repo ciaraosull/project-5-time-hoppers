@@ -466,8 +466,13 @@ Django allauth was used to set up user registration and Django’s LoginRequired
 
 Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this site to prevent valid requests to the backend server being created for malicious purposes.
 
-## Site Engine Optimisation
+## Web Marketing
 
+Web marketing is the process of marketing a  business online, and it's a cost-effective way to reach people who are most interested in what a business has to offer. 
+
+The following details the strategies used for this project for Web Marketing.
+
+**Site Engine Optimisation**
 An xml sitemap was created and added to the projects root directory.  This is a file that lists the website’s important page URLs, making sure that search engines can crawl, or navigate, through them. It also helps search engines understand the website structure, so can help speed up content discovery.
 
 The robots.txt file was also created and added to the projects root directory.  This is a simple text file that tells search engines where they are not allowed to go on the website. It lists out any folders or files that will not be crawled or indexed by search engine spiders. Having this robots.txt  file shows that the site acknowledges that search  engines are allowed and that they  may have free access to it.  For this reason, search engines take the existence of this file as a sign of quality, 
@@ -475,6 +480,21 @@ and so should improve the SEO ranking.
 
 The final step for working with a sitemap  and robots files can only be implemented for  web applications that have a DNS certificate.  As this is a fictitious website for project purposes only no further action will be taken.
 
+Key words were research to determine which were most important to the sites potential customers.  Keyword research is the process of finding and analyzing search terms that people enter into search engines, with the goal of using that data for SEO or general web marketing.   The metadata section along with HTML elements like headings,  
+main, section, header, footer, the strong and emphasis tags and alt descriptions on images were all utilised to enter the identified key words for better SEO.  Content Stuffing was avoided and keywords were only utilised if the fit within the flow of the content.
+
+Rel attributes such as noopener and noreferrer were also used on any external links.
+
+*   Noopener is mandatory for any links that have the 'target="_blank"' attribute. This prevents the new page having any access to the tab/session that opened it, preventing common phishing attack vectors.
+
+*   Noreferrer is the older version of 'noopener' and does essentially the same thing, but specifically prevents the site that's being linked to from knowing that you ever linked to it in the first place, so it looks to SEOs that it's a direct link to the site.
+
+**Content Marketing**
+Content marketing comes in many forms, including blog posts, videos, podcasts, webinars and newsletters.  This site gives the users the option to subscribe to the sites Newsletter in an effort to attract new customers and also retain existing customers by keeping them up to date on special offers or new tours.  One disadvantage to this could be that the emailed Newsletter will be seen as spam and not reach the user.
+
+Social media marketing was also chosen for this project as it suits small businesses that don’t have big budgets because it is free.  It is hoped that this would build up a personal connection to the clients, build awareness and spread the brand.  One disadvantage of this is that social media marketing needs to be engaged with and updated on a regular and consistant basis and so can be time consuming.  A mock Facebook WireFrame was created so draft the layout of the page that will be used for social media marketing.
+
+![Facebook Screenshot](README/assets/facebook-screenshot.png)
 
 
 ## Technologies Used
