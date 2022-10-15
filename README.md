@@ -369,9 +369,14 @@ Custom Error Pages were created to support the professionalism design and ensure
 *   Users can add rating or likes
 *   Reset Password functionality
 *   Accessibility Page - view & url already written, the template with the information just needs to be added
-*   Basket mobile view does not automaticlly delete when 0 entered like the large screen view oes.  Javascript id's for both views need to be changed to be unique
+*   Basket mobile view does not automaticlly delete when 0 entered like the large screen view oes.  Javascript id's for both views need to be changed to be unique, however, once the user cicks the delete butoon this does delete the booking so the feature is still functioning.
 *   Ability to report inappropriate reviews
 *   The console seems to log that properties of 'style' are null.  This is coming from the Javascript placed on the Django messages for the user so that the messages will disappear after a few seconds.  The null value appears only in the console when no Django messages need to display.  Keeping the user in mind, a work around for this, given more time, would be to add an X close button on the message so the user can close the message themselves if it was an annoyance displaying before page refresh / reload.
+
+
+### Interesting Bugs & Issues
+
+*   One issue that took some considerable time to identify and resolve was using Summernote editor for the Newsletter message section and trying to email to a mailing list.  When Summernote was used, only one subscriber at a time could be emailed the Newsletter.  Once Summernote was removed and just a Django TextField used instead, this was accpeted and the Newsletter could be emailed to all subscribers at the same time.
 
 ## Design
 
