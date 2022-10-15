@@ -362,6 +362,7 @@ Custom Error Pages were created to support the professionalism design and ensure
 ### Features Left to Implement
 
 *   Sign in with Social
+*   Automatic login after registraion - given more time this feature could be implitmented by importing login from (django.contrib.auth)[https://docs.djangoproject.com/en/4.1/topics/auth/default/]
 *   Email after subscribing to verify the email address
 *   Subscribers - option to unsubscribe
 *   Order list - option to delete orders from profile page
