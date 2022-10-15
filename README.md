@@ -473,6 +473,7 @@ Web marketing is the process of marketing a  business online, and it's a cost-ef
 The following details the strategies used for this project for Web Marketing.
 
 **Site Engine Optimisation**
+
 An xml sitemap was created and added to the projects root directory.  This is a file that lists the website’s important page URLs, making sure that search engines can crawl, or navigate, through them. It also helps search engines understand the website structure, so can help speed up content discovery.
 
 The robots.txt file was also created and added to the projects root directory.  This is a simple text file that tells search engines where they are not allowed to go on the website. It lists out any folders or files that will not be crawled or indexed by search engine spiders. Having this robots.txt  file shows that the site acknowledges that search  engines are allowed and that they  may have free access to it.  For this reason, search engines take the existence of this file as a sign of quality, 
@@ -490,11 +491,24 @@ Rel attributes such as noopener and noreferrer were also used on any external li
 *   Noreferrer is the older version of 'noopener' and does essentially the same thing, but specifically prevents the site that's being linked to from knowing that you ever linked to it in the first place, so it looks to SEOs that it's a direct link to the site.
 
 **Content Marketing**
+
 Content marketing comes in many forms, including blog posts, videos, podcasts, webinars and newsletters.  This site gives the users the option to subscribe to the sites Newsletter in an effort to attract new customers and also retain existing customers by keeping them up to date on special offers or new tours.  One disadvantage to this could be that the emailed Newsletter will be seen as spam and not reach the user.
 
 Social media marketing was also chosen for this project as it suits small businesses that don’t have big budgets because it is free.  It is hoped that this would build up a personal connection to the clients, build awareness and spread the brand.  One disadvantage of this is that social media marketing needs to be engaged with and updated on a regular and consistant basis and so can be time consuming.  A mock Facebook WireFrame was created so draft the layout of the page that will be used for social media marketing.
 
 ![Facebook Screenshot](README/assets/facebook-screenshot.png)
+
+## GDPR Considerations
+
+*   This website contains a Privacy Policy that users can access from the footer.  The purpose of this privacy policy is to be transparent and inform users about how their data is being collected and processed.
+
+*    Data collected on this site is only being used for the purpose it was collected for from the user. 
+
+*   Users are also informed beside the input box for entering their email address to subscribe that this site will never share their email address with anyone.
+
+*   As the users personal data is not being used, there is no need for this project to ask the users for consent to share their data once they are completing the order form or the profile page form with their details.  If this information was being shared then an unticked check box would need to be added at these points to inform the user and ask for their consent.
+
+*   This website does use cookies to collect data and so there is no need for users to be able to easily consent or reject cookies as their usage is not being tracked.
 
 
 ## Technologies Used
