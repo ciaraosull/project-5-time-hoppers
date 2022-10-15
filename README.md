@@ -474,21 +474,21 @@ The following details the strategies used for this project for Web Marketing.
 
 **Site Engine Optimisation**
 
-An xml sitemap was created and added to the projects root directory.  This is a file that lists the website’s important page URLs, making sure that search engines can crawl, or navigate, through them. It also helps search engines understand the website structure, so can help speed up content discovery.
+An xml sitemap was created and added to the project's root directory.  This is a file that lists the website’s important page URLs, making sure that search engines can crawl, or navigate, through them. It also helps search engines understand the website structure, so can help speed up content discovery.
 
 The robots.txt file was also created and added to the projects root directory.  This is a simple text file that tells search engines where they are not allowed to go on the website. It lists out any folders or files that will not be crawled or indexed by search engine spiders. Having this robots.txt  file shows that the site acknowledges that search  engines are allowed and that they  may have free access to it.  For this reason, search engines take the existence of this file as a sign of quality, 
 and so should improve the SEO ranking.
 
-The final step for working with a sitemap  and robots files can only be implemented for  web applications that have a DNS certificate.  As this is a fictitious website for project purposes only no further action will be taken.
+The final step for working with a sitemap  and robots files can only be implemented for web applications that have a DNS certificate.  As this is a fictitious website for project purposes only no further action will be taken.
 
-Key words were research to determine which were most important to the sites potential customers.  Keyword research is the process of finding and analyzing search terms that people enter into search engines, with the goal of using that data for SEO or general web marketing.   The metadata section along with HTML elements like headings,  
-main, section, header, footer, the strong and emphasis tags and alt descriptions on images were all utilised to enter the identified key words for better SEO.  Content Stuffing was avoided and keywords were only utilised if the fit within the flow of the content.
+Key words were researched to determine which were most important to the sites potential customers.  Keyword research is the process of finding and analyzing search terms that people enter into search engines, with the goal of using that data for SEO or general web marketing.   The metadata section along with HTML elements like headings,  
+main, section, header, footer, the strong and emphasis tags and alt descriptions on images were all utilised to enter the identified key words for better SEO.  Content Stuffing was avoided and keywords were only utilised if they fit within the flow of the content.
 
 Rel attributes such as noopener and noreferrer were also used on any external links.
 
 *   Noopener is mandatory for any links that have the 'target="_blank"' attribute. This prevents the new page having any access to the tab/session that opened it, preventing common phishing attack vectors.
 
-*   Noreferrer is the older version of 'noopener' and does essentially the same thing, but specifically prevents the site that's being linked to from knowing that you ever linked to it in the first place, so it looks to SEOs that it's a direct link to the site.
+*   Noreferrer is the older version of 'noopener' and does the same thing, but prevents the site that is being linked to from knowing that you ever linked to it in the first place, so it looks to SEOs that it's a direct link to the site.
 
 **Content Marketing**
 
