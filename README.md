@@ -466,6 +466,16 @@ Django allauth was used to set up user registration and Django’s LoginRequired
 
 Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this site to prevent valid requests to the backend server being created for malicious purposes.
 
+## Site Engine Optimisation
+
+An xml sitemap was created and added to the projects root directory.  This is a file that lists the website’s important page URLs, making sure that search engines can crawl, or navigate, through them. It also helps search engines understand the website structure, so can help speed up content discovery.
+
+The robots.txt file was also created and added to the projects root directory.  This is a simple text file that tells search engines where they are not allowed to go on the website. It lists out any folders or files that will not be crawled or indexed by search engine spiders. Having this robots.txt  file shows that the site acknowledges that search  engines are allowed and that they  may have free access to it.  For this reason, search engines take the existence of this file as a sign of quality, 
+and so should improve the SEO ranking.
+
+The final step for working with a sitemap  and robots files can only be implemented for  web applications that have a DNS certificate.  As this is a fictitious website for project purposes only no further action will be taken.
+
+
 
 ## Technologies Used
 
