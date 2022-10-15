@@ -415,7 +415,7 @@ The colour scheme was chosen by using [Coolors](https://coolors.co/). The follow
 
 ## Testing
 
-During development errors or warnings were fixed as they appeared such as indentation errors, lines too long, or extra space issues. This helped keep the code clean and readable so other errors or bugs that arose were identified more easily.
+During development, using flake8, errors or warnings were fixed as they appeared such as indentation errors, lines too long, or extra space issues. This helped keep the code clean and readable so other errors or bugs that arose were identified more easily.  Django automaticlaly created code with lines too long, such as those in the settings.py were not altered.  Any unnecessary Django automatically created folders and files were also deleted to keep the file system clear and easy to navigate.
 
 Google Chrome's built-in Developer Tool was used to inspect page elements throughout the build and helped debug issues within the HTML code and CSS styles.
 
@@ -437,17 +437,18 @@ During development, after each User Story was matched to their corresponding fea
 ### Validator Testing
 
 *   CSS stylesheet was run through the W3C CSS Validator and showed no errors.
-![Responsive Design Screenshot](README/assets/css-checker-screenshot.png)
+![CSS Validator Screenshot](README/assets/css-checker-screenshot.png)
 
 *   All html pages were run through the W3C HTML Validator and showed some minor missing/duplicate end tag errors, and these were fixed accordingly.
-![Responsive Design Screenshot](README/assets/html-checker-screenshot.png)
+![HTML Validator Screenshot](README/assets/html-checker-screenshot.png)
 
 *   JSHint site was used to validate the JavaScript code. It returned errors with semi-colons missing, whcih were corrected.
-![Responsive Design Screenshot](README/assets/jshint-homepage-screenshot.png)
-![Responsive Design Screenshot](README/assets/jshint-mesage-and-basket-screenshot.png)
+![JSHINT1 Validator Screenshot](README/assets/jshint-homepage-screenshot.png)
+![JSHINT2 Validator Screenshot](README/assets/jshint-mesage-and-basket-screenshot.png)
 
-*   Lighthouse was used to check perfomance and accessiblitiy.
+*   Lighthouse was used to check perfomance and accessiblitiy.  The chosen orange colour for the Logo etc. was not contrasting enough so a darker shade of this orange colour was chsoen for the text to stand out against the light grey backgroud.
 
+![LightHouse Screenshot](README/assets/lighthouse-screenshot.png)
 
 
 ## Security
